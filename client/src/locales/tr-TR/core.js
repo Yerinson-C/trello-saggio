@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Uygulama hakkında',
-      aboutPlanka_title: 'PLANKA Hakkında',
+      aboutTrelloSaggio_title: 'TRELLO SAGGIO Hakkında',
       accessToken: 'Erişim jetonu',
       account: 'Hesap',
       actions: 'Eylemler',
@@ -146,8 +146,8 @@ export default {
       customFieldGroups_title: 'özel alan grupları',
       customField_title: 'Özel alan',
       customFields_title: 'Özel alanlar',
-      discoverPlankaPro: "✨ Panolarınız için daha fazla özellik: PLANKA Pro'yu keşfedin",
-      discoverPlankaPro_title: "PLANKA Pro'yu keşfedin",
+      discoverTrelloSaggioPro: "✨ Panolarınız için daha fazla özellik: TRELLO SAGGIO Pro'yu keşfedin",
+      discoverTrelloSaggioPro_title: "TRELLO SAGGIO Pro'yu keşfedin",
       upgradeTeamToPro_title: "Ekibi Pro'ya yükseltin",
       proFeatureCalendar: '✨ Panolarınız için takvim görünümü',
       proFeatureRecurringCards: '✨ Yinelenen kartlar ve otomasyon',
@@ -275,8 +275,8 @@ export default {
       others: 'Diğerleri',
       passwordIsSet: 'Şifre ayarlandı',
       phone: 'telefon',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        "PLANKA, 100'den fazla popüler servise bildirim göndermek için <1><0>Apprise</0></1> kullanır.",
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        "TRELLO SAGGIO, 100'den fazla popüler servise bildirim göndermek için <1><0>Apprise</0></1> kullanır.",
       port: 'Port',
       preferences: 'Tercihler',
       pressPasteShortcutToAddAttachmentFromClipboard:

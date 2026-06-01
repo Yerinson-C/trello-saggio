@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'O aplikaciji',
-      aboutPlanka_title: 'O PLANKA',
+      aboutTrelloSaggio_title: 'O TRELLO SAGGIO',
       accessToken: 'Token za pristup',
       account: 'Nalog',
       actions: 'Radnje',
@@ -143,8 +143,8 @@ export default {
       customFieldGroups_title: 'Grupe prilagođenih polja',
       customField_title: 'Prilagođeno polje',
       customFields_title: 'Prilagođena polja',
-      discoverPlankaPro: '✨ Više funkcija za vaše table: Otkrijte PLANKA Pro',
-      discoverPlankaPro_title: 'Otkrijte PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ Više funkcija za vaše table: Otkrijte TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'Otkrijte TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'Nadogradite tim na Pro',
       proFeatureCalendar: '✨ Prikaz kalendara za vaše table',
       proFeatureRecurringCards: '✨ Ponavljajuće kartice i automatizacija',
@@ -273,8 +273,8 @@ export default {
       others: 'Ostali',
       passwordIsSet: 'Lozinka je podešena',
       phone: 'Telefon',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA koristi <1><0>Apprise</0></1> za slanje obaveštenja na preko 100 popularnih servisa.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO koristi <1><0>Apprise</0></1> za slanje obaveštenja na preko 100 popularnih servisa.',
       port: 'Port',
       preferences: 'Svojstva',
       pressPasteShortcutToAddAttachmentFromClipboard:

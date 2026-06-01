@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 const { ProxyAgent } = require('undici');
@@ -44,7 +44,7 @@ const Webhook = require('../../models/Webhook');
 async function sendWebhook(webhook, event, data, prevData, user) {
   const headers = {
     'Content-Type': 'application/json',
-    'User-Agent': `planka (+${sails.config.custom.baseUrl})`,
+    'User-Agent': `trello-saggio (+${sails.config.custom.baseUrl})`,
   };
 
   if (webhook.accessToken) {

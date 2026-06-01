@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 import React, { useCallback, useEffect } from 'react';
@@ -73,8 +73,8 @@ const NotificationServices = React.memo(({ ids, onCreate }) => {
   return (
     <>
       <Message>
-        <Trans i18nKey="common.plankaUsesAppriseToSendNotificationsToOver100PopularServices">
-          {'PLANKA uses '}
+        <Trans i18nKey="common.trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices">
+          {'TRELLO SAGGIO uses '}
           <a href="https://appriseit.com/services/" target="_blank" rel="noreferrer">
             <b>Apprise</b>
           </a>

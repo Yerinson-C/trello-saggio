@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: '關於應用程式',
-      aboutPlanka_title: '關於 PLANKA',
+      aboutTrelloSaggio_title: '關於 TRELLO SAGGIO',
       accessToken: '存取權杖',
       account: '帳號',
       actions: '操作',
@@ -125,8 +125,8 @@ export default {
       customFieldGroups_title: '自定義欄位群組',
       customField_title: '自定義欄位',
       customFields_title: '自定義欄位',
-      discoverPlankaPro: '✨ 為您的看板提供更多功能：探索 PLANKA Pro',
-      discoverPlankaPro_title: '探索 PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ 為您的看板提供更多功能：探索 TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: '探索 TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: '將團隊升級至 Pro',
       proFeatureCalendar: '✨ 看板的日曆檢視',
       proFeatureRecurringCards: '✨ 重複卡片與自動化',
@@ -252,8 +252,8 @@ export default {
       others: '其他',
       passwordIsSet: '密碼已設定',
       phone: '電話',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA 使用 <1><0>Apprise</0></1> 向超過 100 個熱門服務發送通知。',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO 使用 <1><0>Apprise</0></1> 向超過 100 個熱門服務發送通知。',
       port: '連接埠',
       preferences: '偏好設定',
       pressPasteShortcutToAddAttachmentFromClipboard:

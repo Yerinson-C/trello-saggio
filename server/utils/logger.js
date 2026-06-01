@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 const winston = require('winston');
@@ -25,7 +25,7 @@ const logFormat = winston.format.combine(
   winston.format.printf((log) => `${log.timestamp} [${log.level[0].toUpperCase()}] ${log.message}`),
 );
 
-const logFile = process.env.LOG_FILE || `${process.cwd()}/logs/planka.log`;
+const logFile = process.env.LOG_FILE || `${process.cwd()}/logs/trello-saggio.log`;
 
 // eslint-disable-next-line new-cap
 const customLogger = new winston.createLogger({

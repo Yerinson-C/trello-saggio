@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'حول التطبيق',
-      aboutPlanka_title: 'حول PLANKA',
+      aboutTrelloSaggio_title: 'حول TRELLO SAGGIO',
       accessToken: 'رمز الوصول',
       account: 'الحساب',
       actions: 'إجراءات',
@@ -138,8 +138,8 @@ export default {
       customFieldGroups_title: 'مجموعات الحقول المخصصة',
       customField_title: 'الحقل المخصص',
       customFields_title: 'الحقول المخصصة',
-      discoverPlankaPro: '✨ المزيد من الميزات لألواحك: اكتشف PLANKA Pro',
-      discoverPlankaPro_title: 'اكتشف PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ المزيد من الميزات لألواحك: اكتشف TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'اكتشف TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'ترقية الفريق إلى Pro',
       proFeatureCalendar: '✨ عرض التقويم للوحاتك',
       proFeatureRecurringCards: '✨ البطاقات المتكررة والأتمتة',
@@ -267,7 +267,7 @@ export default {
       others: 'آخرون',
       passwordIsSet: 'تم تعيين كلمة المرور',
       phone: 'الهاتف',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
         'تستخدم بلانكا <1><0>Apprise</0></1> لإرسال الإشعارات إلى أكثر من 100 خدمة شائعة.',
       port: 'المنفذ',
       preferences: 'التفضيلات',

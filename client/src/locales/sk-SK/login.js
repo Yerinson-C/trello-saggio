@@ -14,7 +14,7 @@ export default {
       or: 'Alebo',
       pageNotFound_title: 'Stránka neexistuje',
       password: 'Heslo',
-      poweredByPlanka: 'Poháňané <1>PLANKA</1>',
+      poweredByTrelloSaggio: 'Poháňané <1>TRELLO SAGGIO</1>',
       serverConnectionFailed: 'Pripojenie k serveru zlyhalo',
       unknownError: 'Neznáma chyba, skúste to neskôr',
       useSingleSignOn: 'Použiť jednotné prihlásenie',

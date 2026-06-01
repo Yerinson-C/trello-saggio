@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: '앱 소개',
-      aboutPlanka_title: 'PLANKA 소개',
+      aboutTrelloSaggio_title: 'TRELLO SAGGIO 소개',
       accessToken: '액세스 토큰',
       account: '계정',
       actions: '작업',
@@ -136,8 +136,8 @@ export default {
       customFieldGroups_title: '사용자 정의 필드 그룹들',
       customField_title: '사용자 정의 필드',
       customFields_title: '사용자 정의 필드들',
-      discoverPlankaPro: '✨ 보드를 위한 더 많은 기능: PLANKA Pro 알아보기',
-      discoverPlankaPro_title: 'PLANKA Pro 알아보기',
+      discoverTrelloSaggioPro: '✨ 보드를 위한 더 많은 기능: TRELLO SAGGIO Pro 알아보기',
+      discoverTrelloSaggioPro_title: 'TRELLO SAGGIO Pro 알아보기',
       upgradeTeamToPro_title: '팀을 Pro로 업그레이드',
       proFeatureCalendar: '✨ 보드용 캘린더 뷰',
       proFeatureRecurringCards: '✨ 반복 카드 및 자동화',
@@ -265,8 +265,8 @@ export default {
       others: '기타',
       passwordIsSet: '비밀번호가 설정됨',
       phone: '전화',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA는 <1><0>Apprise</0></1>를 사용하여 100개 이상의 인기 서비스에 알림을 보냅니다.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO는 <1><0>Apprise</0></1>를 사용하여 100개 이상의 인기 서비스에 알림을 보냅니다.',
       port: '포트',
       preferences: '환경 설정',
       pressPasteShortcutToAddAttachmentFromClipboard:

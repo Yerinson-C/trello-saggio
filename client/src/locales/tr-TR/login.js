@@ -13,7 +13,7 @@ export default {
       or: 'Veya',
       pageNotFound_title: 'Sayfa bulunamadı',
       password: 'Şifre',
-      poweredByPlanka: 'PLANKA tarafından desteklenmektedir',
+      poweredByTrelloSaggio: 'TRELLO SAGGIO tarafından desteklenmektedir',
       serverConnectionFailed: 'Sunucu bağlantı hatası',
       unknownError: 'Bilinmeyen hata, daha sonra tekrar deneyin',
       useSingleSignOn: 'Tek oturum açma kullan',

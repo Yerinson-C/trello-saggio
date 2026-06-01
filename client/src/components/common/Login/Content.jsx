@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 import isEmail from 'validator/lib/isEmail';
@@ -206,7 +206,7 @@ const Content = React.memo(() => {
               <Header
                 as="h1"
                 textAlign="center"
-                content={bootstrap.instanceName || 'PLANKA'}
+                content={bootstrap.instanceName || 'TRELLO SAGGIO'}
                 className={styles.formTitle}
               />
               <Header
@@ -297,10 +297,10 @@ const Content = React.memo(() => {
             </div>
             <div className={styles.poweredBy}>
               <p className={styles.poweredByText}>
-                <Trans i18nKey="common.poweredByPlanka">
+                <Trans i18nKey="common.poweredByTrelloSaggio">
                   {'Powered by '}
-                  <a href="https://github.com/plankanban/planka" target="_blank" rel="noreferrer">
-                    PLANKA
+                  <a href="https://github.com/trello-saggionban/trello-saggio" target="_blank" rel="noreferrer">
+                    TRELLO SAGGIO
                   </a>
                 </Trans>
               </p>

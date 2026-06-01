@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2026 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2026 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -11,7 +11,7 @@ import selectors from '../../../selectors';
 
 import styles from './PromoBanner.module.scss';
 
-const PRO_URL = 'https://planka.app/pro?ref=app-banner';
+const PRO_URL = 'https://trello-saggio.app/pro?ref=app-banner';
 const DISMISS_DURATION_MS = 30 * 24 * 60 * 60 * 1000;
 const CYCLE_INTERVAL_MS = 8000;
 const CSS_VAR = '--promo-banner-height';
@@ -20,16 +20,16 @@ const FEATURES = ['proFeatureCalendar', 'proFeatureRecurringCards', 'proFeatureG
 
 // Alternates: main, sub1, main, sub2, main, sub3
 const TEXTS = [
-  'discoverPlankaPro',
+  'discoverTrelloSaggioPro',
   FEATURES[0],
-  'discoverPlankaPro',
+  'discoverTrelloSaggioPro',
   FEATURES[1],
-  'discoverPlankaPro',
+  'discoverTrelloSaggioPro',
   FEATURES[2],
 ];
 
 function getDismissKey(userId) {
-  return `planka_proBannerDismissed_${userId}`;
+  return `trello-saggio_proBannerDismissed_${userId}`;
 }
 
 function isBannerDismissed(userId) {

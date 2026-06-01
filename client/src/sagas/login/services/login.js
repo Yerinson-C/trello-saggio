@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 import { nanoid } from 'nanoid';
@@ -58,7 +58,7 @@ export function* authenticateWithOidc() {
 }
 
 export function* authenticateWithOidcCallback() {
-  // https://github.com/plankanban/planka/issues/511#issuecomment-1771385639
+  // https://github.com/trello-saggionban/trello-saggio/issues/511#issuecomment-1771385639
   const params = new URLSearchParams(window.location.hash.substring(1) || window.location.search);
 
   const state = window.localStorage.getItem('oidc-state');

@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2026 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2026 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 import React, { useCallback } from 'react';
@@ -105,7 +105,7 @@ const UserActionsStep = React.memo(({ onClose }) => {
             })}
           </Menu.Item>
           <Menu.Item
-            href="https://planka.app/pro?ref=app-menu"
+            href="https://trello-saggio.app/pro?ref=app-menu"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.proMenuItem}
@@ -113,7 +113,7 @@ const UserActionsStep = React.memo(({ onClose }) => {
             <Icon name="gem" className={styles.proMenuItemIcon} />
             {withAdministration
               ? t('common.upgradeTeamToPro', { context: 'title' })
-              : t('common.discoverPlankaPro', { context: 'title' })}
+              : t('common.discoverTrelloSaggioPro', { context: 'title' })}
           </Menu.Item>
           <hr className={styles.divider} />
           <Menu.Item

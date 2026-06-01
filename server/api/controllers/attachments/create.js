@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 /**
@@ -44,7 +44,7 @@
  *                 format: url
  *                 maxLength: 2048
  *                 description: URL for the link attachment
- *                 example: https://google.com/search?q=planka
+ *                 example: https://google.com/search?q=trello-saggio
  *               name:
  *                 type: string
  *                 maxLength: 128

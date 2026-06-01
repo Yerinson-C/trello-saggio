@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Over de app',
-      aboutPlanka_title: 'Over PLANKA',
+      aboutTrelloSaggio_title: 'Over TRELLO SAGGIO',
       accessToken: 'Toegangstoken',
       account: 'Account',
       actions: 'Acties',
@@ -144,8 +144,8 @@ export default {
       customFieldGroups_title: 'Aangepaste veldgroepen',
       customField_title: 'Aangepast veld',
       customFields_title: 'Aangepaste velden',
-      discoverPlankaPro: '✨ Meer functies voor uw borden: Ontdek PLANKA Pro',
-      discoverPlankaPro_title: 'Ontdek PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ Meer functies voor uw borden: Ontdek TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'Ontdek TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'Team upgraden naar Pro',
       proFeatureCalendar: '✨ Kalenderweergave voor uw borden',
       proFeatureRecurringCards: '✨ Terugkerende kaarten en automatisering',
@@ -274,8 +274,8 @@ export default {
       others: 'Anderen',
       passwordIsSet: 'Wachtwoord is ingesteld',
       phone: 'Telefoon',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA gebruikt <1><0>Apprise</0></1> om meldingen naar meer dan 100 populaire services te sturen.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO gebruikt <1><0>Apprise</0></1> om meldingen naar meer dan 100 populaire services te sturen.',
       port: 'Poort',
       preferences: 'Voorkeuren',
       pressPasteShortcutToAddAttachmentFromClipboard:

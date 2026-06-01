@@ -13,7 +13,7 @@ export default {
       or: 'یا',
       pageNotFound_title: 'صفحه یافت نشد',
       password: 'رمز عبور',
-      poweredByPlanka: 'قدرت گرفته از <1>PLANKA</1>',
+      poweredByTrelloSaggio: 'قدرت گرفته از <1>TRELLO SAGGIO</1>',
       serverConnectionFailed: 'اتصال به سرور ناموفق بود',
       unknownError: 'خطای ناشناخته، بعداً دوباره تلاش کنید',
       useSingleSignOn: 'استفاده از ورود یکپارچه',

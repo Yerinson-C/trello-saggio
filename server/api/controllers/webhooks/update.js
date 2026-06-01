@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 /**
@@ -37,7 +37,7 @@
  *                 format: url
  *                 maxLength: 2048
  *                 description: URL endpoint for the webhook
- *                 example: https://service.example.com/planka
+ *                 example: https://service.example.com/trello-saggio
  *               accessToken:
  *                 type: string
  *                 maxLength: 512

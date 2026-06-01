@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Sobre o aplicativo',
-      aboutPlanka_title: 'Sobre o PLANKA',
+      aboutTrelloSaggio_title: 'Sobre o TRELLO SAGGIO',
       accessToken: 'Token de acesso',
       account: 'Conta',
       actions: 'Ações',
@@ -146,8 +146,8 @@ export default {
       customFieldGroups_title: 'Grupos de campo personalizado',
       customField_title: 'Campo personalizado',
       customFields_title: 'Campos personalizados',
-      discoverPlankaPro: '✨ Mais recursos para seus quadros: Descubra o PLANKA Pro',
-      discoverPlankaPro_title: 'Descubra o PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ Mais recursos para seus quadros: Descubra o TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'Descubra o TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'Atualizar equipe para Pro',
       proFeatureCalendar: '✨ Visualização de calendário para seus quadros',
       proFeatureRecurringCards: '✨ Cartões recorrentes e automação',
@@ -276,8 +276,8 @@ export default {
       others: 'Outros',
       passwordIsSet: 'Senha definida',
       phone: 'Telefone',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA usa <1><0>Apprise</0></1> para enviar notificações para mais de 100 serviços populares.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO usa <1><0>Apprise</0></1> para enviar notificações para mais de 100 serviços populares.',
       port: 'Porta',
       preferences: 'Preferências',
       pressPasteShortcutToAddAttachmentFromClipboard:

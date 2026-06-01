@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 import React, { useCallback } from 'react';
@@ -27,7 +27,7 @@ const AboutModal = React.memo(() => {
 
   const panes = [
     {
-      menuItem: t('common.aboutPlanka', {
+      menuItem: t('common.aboutTrelloSaggio', {
         context: 'title',
       }),
       render: () => <AboutPane />,

@@ -14,7 +14,7 @@ export default {
       or: 'Или',
       pageNotFound_title: 'Страница није пронађена',
       password: 'Лозинка',
-      poweredByPlanka: 'Покреће <1>PLANKA</1>',
+      poweredByTrelloSaggio: 'Покреће <1>TRELLO SAGGIO</1>',
       serverConnectionFailed: 'Неуспешна конекција са сервером',
       unknownError: 'Непозната грешка, покушајте поново касније',
       useSingleSignOn: 'Користи универзалну пријаву',

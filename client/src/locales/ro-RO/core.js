@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Despre aplicație',
-      aboutPlanka_title: 'Despre PLANKA',
+      aboutTrelloSaggio_title: 'Despre TRELLO SAGGIO',
       accessToken: 'Token de acces',
       account: 'Cont',
       actions: 'Acțiuni',
@@ -142,8 +142,8 @@ export default {
       customFieldGroups_title: 'Grupuri de câmpuri personalizate',
       customField_title: 'Câmp personalizat',
       customFields_title: 'Câmpuri personalizate',
-      discoverPlankaPro: '✨ Mai multe funcții pentru panourile tale: Descoperă PLANKA Pro',
-      discoverPlankaPro_title: 'Descoperă PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ Mai multe funcții pentru panourile tale: Descoperă TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'Descoperă TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'Actualizează echipa la Pro',
       proFeatureCalendar: '✨ Vizualizare calendar pentru panourile tale',
       proFeatureRecurringCards: '✨ Carduri recurente și automatizare',
@@ -272,8 +272,8 @@ export default {
       others: 'Alții',
       passwordIsSet: 'Parola este setată',
       phone: 'Telefon',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA folosește <1><0>Apprise</0></1> pentru a trimite notificări către peste 100 de servicii populare.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO folosește <1><0>Apprise</0></1> pentru a trimite notificări către peste 100 de servicii populare.',
       port: 'Port',
       preferences: 'Preferințe',
       pressPasteShortcutToAddAttachmentFromClipboard:

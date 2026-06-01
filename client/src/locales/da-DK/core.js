@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Om appen',
-      aboutPlanka_title: 'Om PLANKA',
+      aboutTrelloSaggio_title: 'Om TRELLO SAGGIO',
       accessToken: 'Adgangstoken',
       account: 'Konto',
       actions: 'Handlinger',
@@ -144,8 +144,8 @@ export default {
       customFieldGroups_title: 'Brugerdefinerede feltgrupper',
       customField_title: 'Brugerdefineret felt',
       customFields_title: 'Brugerdefinerede felter',
-      discoverPlankaPro: '✨ Flere funktioner til dine boards: Opdag PLANKA Pro',
-      discoverPlankaPro_title: 'Opdag PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ Flere funktioner til dine boards: Opdag TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'Opdag TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'Opgrader team til Pro',
       proFeatureCalendar: '✨ Kalendervisning til dine boards',
       proFeatureRecurringCards: '✨ Tilbagevendende kort og automatisering',
@@ -274,8 +274,8 @@ export default {
       others: 'Andre',
       passwordIsSet: 'Adgangskode er indstillet',
       phone: 'Telefon',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA bruger <1><0>Apprise</0></1> til at sende notifikationer til over 100 populære tjenester.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO bruger <1><0>Apprise</0></1> til at sende notifikationer til over 100 populære tjenester.',
       port: 'Port',
       preferences: 'Præferencer',
       pressPasteShortcutToAddAttachmentFromClipboard:

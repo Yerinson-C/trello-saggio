@@ -14,7 +14,7 @@ export default {
       or: 'Ou',
       pageNotFound_title: 'Página não encontrada',
       password: 'Palavra-passe',
-      poweredByPlanka: 'Desenvolvido por <1>PLANKA</1>',
+      poweredByTrelloSaggio: 'Desenvolvido por <1>TRELLO SAGGIO</1>',
       serverConnectionFailed: 'Falha na ligação ao servidor',
       unknownError: 'Erro desconhecido, tente novamente mais tarde',
       useSingleSignOn: 'Utilizar início de sessão único',

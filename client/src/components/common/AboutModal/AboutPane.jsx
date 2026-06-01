@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 import React, { useEffect, useState } from 'react';
@@ -37,7 +37,7 @@ const AboutPane = React.memo(() => {
 
   return (
     <Tab.Pane attached={false} className={styles.wrapper}>
-      <a href="https://github.com/plankanban/planka" target="_blank" rel="noreferrer">
+      <a href="https://github.com/trello-saggionban/trello-saggio" target="_blank" rel="noreferrer">
         <Image centered src={aboutLogo} size="large" />
       </a>
       <div className={styles.version}>Community v{version}</div>

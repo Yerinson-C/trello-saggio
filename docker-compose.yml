@@ -1,5 +1,5 @@
 services:
-  planka:
+  trello-saggio:
     image: ghcr.io/plankanban/planka:latest
     restart: on-failure
     volumes:
@@ -13,10 +13,10 @@ services:
       - 3000:1337
     environment:
       - BASE_URL=http://localhost:3000
-      - DATABASE_URL=postgresql://postgres@postgres/planka
+      - DATABASE_URL=postgresql://postgres@postgres/trello-saggio
 
       # Optionally store the database password in secrets:
-      # - DATABASE_URL=postgresql://postgres:$${DATABASE_PASSWORD}@postgres/planka
+      # - DATABASE_URL=postgresql://postgres:$${DATABASE_PASSWORD}@postgres/trello-saggio
       # - DATABASE_PASSWORD__FILE=/run/secrets/database_password
       # And add the following to the service:
       # secrets:
@@ -48,12 +48,10 @@ services:
       # - DEFAULT_LANGUAGE=en-US
 
       # Do not comment out DEFAULT_ADMIN_EMAIL if you want to prevent this user from being edited/deleted
-      # - DEFAULT_ADMIN_EMAIL=demo@demo.demo
-      # - DEFAULT_ADMIN_PASSWORD=demo
-      # Optionally store in secrets - then DEFAULT_ADMIN_PASSWORD should not be set
-      # - DEFAULT_ADMIN_PASSWORD__FILE=/run/secrets/default_admin_password
-      # - DEFAULT_ADMIN_NAME=Demo Demo
-      # - DEFAULT_ADMIN_USERNAME=demo
+      - DEFAULT_ADMIN_EMAIL=admin@trello-saggio.local
+      - DEFAULT_ADMIN_PASSWORD=admin123
+      - DEFAULT_ADMIN_NAME=Admin Saggio
+      - DEFAULT_ADMIN_USERNAME=admin
 
       # Set to true to show more detailed authentication error messages.
       # It should not be enabled without a rate limiter for security reasons.
@@ -141,10 +139,10 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=planka
+      - POSTGRES_DB=trello-saggio
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d planka"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d trello-saggio"]
       interval: 10s
       timeout: 5s
       retries: 5

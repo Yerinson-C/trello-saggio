@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Rakenduse kohta',
-      aboutPlanka_title: 'PLANKA kohta',
+      aboutTrelloSaggio_title: 'TRELLO SAGGIO kohta',
       accessToken: 'Juurdepääsuluba',
       account: 'Konto',
       actions: 'Tegevused',
@@ -144,8 +144,8 @@ export default {
       customFieldGroups_title: 'Kohandatud väljade grupid',
       customField_title: 'Kohandatud väli',
       customFields_title: 'Kohandatud väljad',
-      discoverPlankaPro: '✨ Rohkem funktsioone oma tahvlite jaoks: Avasta PLANKA Pro',
-      discoverPlankaPro_title: 'Avasta PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ Rohkem funktsioone oma tahvlite jaoks: Avasta TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'Avasta TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'Uuenda meeskond Pro-ks',
       proFeatureCalendar: '✨ Kalendervaade oma tahvlite jaoks',
       proFeatureRecurringCards: '✨ Korduvad kaardid ja automatiseerimine',
@@ -274,8 +274,8 @@ export default {
       others: 'Teised',
       passwordIsSet: 'Parool on määratud',
       phone: 'Telefon',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA kasutab <1><0>Apprise</0></1> teavitusteenuse, et teavitada üle 100 populaarset teenust.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO kasutab <1><0>Apprise</0></1> teavitusteenuse, et teavitada üle 100 populaarset teenust.',
       port: 'Port',
       preferences: 'Eelistused',
       pressPasteShortcutToAddAttachmentFromClipboard:

@@ -1,6 +1,6 @@
 /*!
- * Copyright (c) 2024 PLANKA Software GmbH
- * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
 /**
@@ -47,7 +47,7 @@
  *         data:
  *           type: object
  *           description: Attachment specific data (varies by type)
- *           example: {"url": "https://google.com/search?q=planka", "faviconUrl": "https://storage.example.com/favicons/google.com.png"}
+ *           example: {"url": "https://google.com/search?q=trello-saggio", "faviconUrl": "https://storage.example.com/favicons/google.com.png"}
  *         name:
  *           type: string
  *           description: Name/title of the attachment

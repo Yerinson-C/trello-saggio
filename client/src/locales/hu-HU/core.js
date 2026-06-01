@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Az alkalmazásról',
-      aboutPlanka_title: 'PLANKA-ról',
+      aboutTrelloSaggio_title: 'TRELLO SAGGIO-ról',
       accessToken: 'Hozzáférési token',
       account: 'Fiók',
       actions: 'Műveletek',
@@ -138,8 +138,8 @@ export default {
       customFieldGroups_title: 'Egyedi mezőcsoportok',
       customField_title: 'Egyedi mező',
       customFields_title: 'Egyedi mezők',
-      discoverPlankaPro: '✨ Több funkció a tábláidhoz: Fedezd fel a PLANKA Pro-t',
-      discoverPlankaPro_title: 'Fedezd fel a PLANKA Pro-t',
+      discoverTrelloSaggioPro: '✨ Több funkció a tábláidhoz: Fedezd fel a TRELLO SAGGIO Pro-t',
+      discoverTrelloSaggioPro_title: 'Fedezd fel a TRELLO SAGGIO Pro-t',
       upgradeTeamToPro_title: 'Csapat frissítése Pro-ra',
       proFeatureCalendar: '✨ Naptár nézet a tábláidhoz',
       proFeatureRecurringCards: '✨ Ismétlődő kártyák és automatizálás',
@@ -268,8 +268,8 @@ export default {
       others: 'Egyebek',
       passwordIsSet: 'Jelszó beállítva',
       phone: 'Telefon',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'A PLANKA az <1><0>Apprise</0></1> szolgáltatást használja több mint 100 népszerű szolgáltatás értesítéseinek küldésére.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'A TRELLO SAGGIO az <1><0>Apprise</0></1> szolgáltatást használja több mint 100 népszerű szolgáltatás értesítéseinek küldésére.',
       port: 'Port',
       preferences: 'Beállítások',
       pressPasteShortcutToAddAttachmentFromClipboard:

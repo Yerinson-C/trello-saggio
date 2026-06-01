@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'O aplikácii',
-      aboutPlanka_title: 'O Planke',
+      aboutTrelloSaggio_title: 'O Planke',
       accessToken: 'Prístupový token',
       account: 'Účet',
       actions: 'Akcia',
@@ -139,8 +139,8 @@ export default {
       customFieldGroups_title: 'Skupiny vlastných polí',
       customField_title: 'Vlastné pole',
       customFields_title: 'Vlastné polia',
-      discoverPlankaPro: '✨ Viac funkcií pre vaše tabule: Objavte PLANKA Pro',
-      discoverPlankaPro_title: 'Objavte PLANKA Pro',
+      discoverTrelloSaggioPro: '✨ Viac funkcií pre vaše tabule: Objavte TRELLO SAGGIO Pro',
+      discoverTrelloSaggioPro_title: 'Objavte TRELLO SAGGIO Pro',
       upgradeTeamToPro_title: 'Inovovať tím na Pro',
       proFeatureCalendar: '✨ Zobrazenie kalendára pre vaše tabule',
       proFeatureRecurringCards: '✨ Opakujúce sa karty a automatizácia',
@@ -269,8 +269,8 @@ export default {
       others: 'Ostatní',
       passwordIsSet: 'Heslo je nastavené',
       phone: 'Telefón',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA používa <1><0>Apprise</0></1> na posielanie oznámení do viac ako 100 populárnych služieb.',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIO používa <1><0>Apprise</0></1> na posielanie oznámení do viac ako 100 populárnych služieb.',
       port: 'Port',
       preferences: 'Voľby',
       pressPasteShortcutToAddAttachmentFromClipboard:

@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'アプリについて',
-      aboutPlanka_title: 'PLANKAについて',
+      aboutTrelloSaggio_title: 'TRELLO SAGGIOについて',
       accessToken: 'アクセストークン',
       account: 'アカウント',
       actions: 'アクション',
@@ -141,8 +141,8 @@ export default {
       customFieldGroups_title: 'カスタムフィールドグループ',
       customField_title: 'カスタムフィールド',
       customFields_title: 'カスタムフィールド',
-      discoverPlankaPro: '✨ ボードのさらなる機能: PLANKA Proを発見',
-      discoverPlankaPro_title: 'PLANKA Proを発見',
+      discoverTrelloSaggioPro: '✨ ボードのさらなる機能: TRELLO SAGGIO Proを発見',
+      discoverTrelloSaggioPro_title: 'TRELLO SAGGIO Proを発見',
       upgradeTeamToPro_title: 'チームをProにアップグレード',
       proFeatureCalendar: '✨ ボード用カレンダービュー',
       proFeatureRecurringCards: '✨ 繰り返しカードと自動化',
@@ -271,8 +271,8 @@ export default {
       others: 'その他',
       passwordIsSet: 'パスワードが設定されています',
       phone: '電話番号',
-      plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKAは<1><0>Apprise</0></1>を使用して100以上の人気サービスに通知を送信します。',
+      trelloSaggioUsesAppriseToSendNotificationsToOver100PopularServices:
+        'TRELLO SAGGIOは<1><0>Apprise</0></1>を使用して100以上の人気サービスに通知を送信します。',
       port: 'ポート',
       preferences: '環境設定',
       pressPasteShortcutToAddAttachmentFromClipboard:
