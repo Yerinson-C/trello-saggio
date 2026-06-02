@@ -49,15 +49,17 @@
   }
 
   .wrapper {
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 0 1px 0 #ccc;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14), 0 1px 0 rgba(0, 0, 0, 0.08);
     overflow: hidden;
     position: relative;
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
 
     &:hover {
-      background: #f5f6f7;
-      border-bottom-color: rgba(9, 30, 66, 0.25);
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
 
       .actionsButton {
         opacity: 1;

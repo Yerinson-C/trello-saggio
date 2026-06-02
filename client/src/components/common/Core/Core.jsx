@@ -118,7 +118,7 @@ const Core = React.memo(({ adminPage } = {}) => {
       ) : (
         <>
           <Toaster />
-          {project && project.backgroundType && <ProjectBackground />}
+          {project && <ProjectBackground />}
           <Fixed />
           {adminPage || <Static />}
           {!adminPage && modalNode}
