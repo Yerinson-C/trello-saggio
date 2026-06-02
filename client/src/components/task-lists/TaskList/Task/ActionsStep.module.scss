@@ -18,4 +18,59 @@
     float: left;
     margin: 0 0.5em 0 0;
   }
+
+  .dueDateForm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dueDateInput {
+    background: #fff;
+    border: 1px solid #dfe1e6;
+    border-radius: 3px;
+    color: #172b4d;
+    font-size: 14px;
+    padding: 6px 8px;
+    width: 100%;
+
+    &:focus {
+      border-color: #0079bf;
+      outline: none;
+    }
+  }
+
+  .dueDateActions {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dueDateSave {
+    background: #0079bf;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 12px;
+
+    &:hover {
+      background: #026aa7;
+    }
+  }
+
+  .dueDateRemove {
+    background: rgba(9, 30, 66, 0.08);
+    border: none;
+    border-radius: 3px;
+    color: #172b4d;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 6px 12px;
+
+    &:hover {
+      background: rgba(9, 30, 66, 0.16);
+    }
+  }
 }

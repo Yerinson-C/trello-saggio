@@ -122,4 +122,33 @@
   .wrapperDragging {
     background: rgba(247, 246, 247, 0.8);
   }
+
+  .dueDate {
+    align-items: center;
+    background: rgba(235, 90, 70, 0.15);
+    border-radius: 3px;
+    color: #eb5a46;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    gap: 3px;
+    margin-left: 40px;
+    margin-bottom: 2px;
+    padding: 2px 6px;
+  }
+
+  .dueDateCompleted {
+    background: rgba(0, 150, 136, 0.15);
+    color: #00968840;
+    text-decoration: line-through;
+  }
+
+  .dueDateOverdue {
+    background: rgba(235, 90, 70, 0.2);
+    color: #eb5a46;
+  }
+
+  .dueDateIcon {
+    margin: 0 !important;
+  }
 }

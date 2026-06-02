@@ -59,6 +59,11 @@ const TaskList = React.memo(({ id, isCompletedVisible }) => {
     [tasks],
   );
 
+  const progressPercent = useMemo(
+    () => (tasks.length > 0 ? Math.round((completedTasksTotal / tasks.length) * 100) : 0),
+    [completedTasksTotal, tasks.length],
+  );
+
   const handleAddClick = useCallback(() => {
     setIsAddOpened(true);
   }, []);
@@ -75,6 +80,7 @@ const TaskList = React.memo(({ id, isCompletedVisible }) => {
     <>
       {tasks.length > 0 && (
         <div className={styles.progressRow}>
+          <span className={styles.progressPercent}>{progressPercent}%</span>
           <span className={styles.progressWrapper}>
             <Progress
               autoSuccess

@@ -110,6 +110,10 @@ module.exports = {
     isCompleted: {
       type: 'boolean',
     },
+    dueDate: {
+      type: 'ref',
+      allowNull: true,
+    },
   },
 
   exits: {
@@ -174,7 +178,7 @@ module.exports = {
       }
     }
 
-    const values = _.pick(inputs, ['position', 'name', 'isCompleted']);
+    const values = _.pick(inputs, ['position', 'name', 'isCompleted', 'dueDate']);
 
     const task = await sails.helpers.tasks.createOne
       .with({

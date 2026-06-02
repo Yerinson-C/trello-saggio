@@ -91,6 +91,10 @@ module.exports = {
       defaultsTo: false,
       columnName: 'is_completed',
     },
+    dueDate: {
+      type: 'ref',
+      columnName: 'due_date',
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

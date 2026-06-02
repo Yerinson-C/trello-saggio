@@ -15,10 +15,20 @@
   }
 
   .progressRow {
+    align-items: center;
     display: flex;
-    gap: 12px;
+    gap: 8px;
     justify-content: space-between;
     margin-bottom: 16px;
+  }
+
+  .progressPercent {
+    color: #172b4d;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 34px;
+    text-align: right;
   }
 
   .progressWrapper {

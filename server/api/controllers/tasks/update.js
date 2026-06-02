@@ -112,6 +112,10 @@ module.exports = {
     isCompleted: {
       type: 'boolean',
     },
+    dueDate: {
+      type: 'ref',
+      allowNull: true,
+    },
   },
 
   exits: {
@@ -182,7 +186,7 @@ module.exports = {
       }
     }
 
-    const values = _.pick(inputs, ['assigneeUserId', 'position', 'name', 'isCompleted']);
+    const values = _.pick(inputs, ['assigneeUserId', 'position', 'name', 'isCompleted', 'dueDate']);
 
     task = await sails.helpers.tasks.updateOne.with({
       project,

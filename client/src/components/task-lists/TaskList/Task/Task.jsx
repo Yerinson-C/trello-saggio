@@ -12,6 +12,7 @@ import { Link } from 'react-router';
 import { Draggable } from 'react-beautiful-dnd';
 import { Button, Checkbox, Icon } from 'semantic-ui-react';
 import { useDidUpdate } from '../../../../lib/hooks';
+import { useTranslation } from 'react-i18next';
 
 import selectors from '../../../../selectors';
 import entryActions from '../../../../entry-actions';
@@ -60,6 +61,7 @@ const Task = React.memo(({ id, index }) => {
   }, shallowEqual);
 
   const dispatch = useDispatch();
+  const [t] = useTranslation();
   const [isEditNameOpened, setIsEditNameOpened] = useState(false);
   const [, , setIsClosableActive] = useContext(ClosableContext);
 
@@ -154,6 +156,18 @@ const Task = React.memo(({ id, index }) => {
                   )}
                   onClick={handleClick}
                 >
+                  {task.dueDate && (
+                    <span
+                      className={classNames(
+                        styles.dueDate,
+                        task.isCompleted && styles.dueDateCompleted,
+                        !task.isCompleted && new Date(task.dueDate) < new Date() && styles.dueDateOverdue,
+                      )}
+                    >
+                      <Icon name="calendar outline" size="small" className={styles.dueDateIcon} />
+                      {new Date(task.dueDate).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                    </span>
+                  )}
                   <span
                     className={classNames(styles.task, task.isCompleted && styles.taskCompleted)}
                   >

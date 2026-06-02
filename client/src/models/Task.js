@@ -18,6 +18,7 @@ export default class extends BaseModel {
     isCompleted: attr({
       getDefault: () => false,
     }),
+    dueDate: attr(),
     taskListId: fk({
       to: 'TaskList',
       as: 'taskList',
@@ -119,6 +120,7 @@ export default class extends BaseModel {
       position: this.position,
       name: this.name,
       isCompleted: this.isCompleted,
+      dueDate: this.dueDate,
       ...data,
     });
   }
