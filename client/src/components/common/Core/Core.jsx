@@ -21,7 +21,7 @@ import UserSettingsModal from '../../users/UserSettingsModal';
 import ProjectBackground from '../../projects/ProjectBackground';
 import AddProjectModal from '../../projects/AddProjectModal';
 
-const Core = React.memo(() => {
+const Core = React.memo(({ adminPage } = {}) => {
   const isInitializing = useSelector(selectors.selectIsInitializing);
   const isSocketDisconnected = useSelector(selectors.selectIsSocketDisconnected);
   const modal = useSelector(selectors.selectCurrentModal);
@@ -120,8 +120,8 @@ const Core = React.memo(() => {
           <Toaster />
           {project && project.backgroundType && <ProjectBackground />}
           <Fixed />
-          <Static />
-          {modalNode}
+          {adminPage || <Static />}
+          {!adminPage && modalNode}
         </>
       )}
       {messageNode}

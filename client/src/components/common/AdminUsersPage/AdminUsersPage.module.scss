@@ -1,0 +1,272 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ */
+
+:global(#app) {
+  .wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .headerLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .backLink {
+    color: #6b808c;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+
+    &:hover {
+      color: #0079bf;
+    }
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #17394d;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .titleIcon {
+    color: #0079bf;
+  }
+
+  .headerRight {
+    display: flex;
+    align-items: center;
+  }
+
+  .counter {
+    background: #e8f0fe;
+    border: 1px solid #c3d3fc;
+    border-radius: 20px;
+    color: #0079bf;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .searchInput {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .toolbarActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .toggleBtn {
+    white-space: nowrap;
+  }
+
+  .addBtn {
+    white-space: nowrap;
+  }
+
+  /* Stats row */
+  .statsRow {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .statCard {
+    flex: 1;
+    min-width: 160px;
+    background: #fff;
+    border: 1px solid #dfe1e6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .statIcon {
+    color: #0079bf;
+    opacity: 0.85;
+  }
+
+  .statInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .statValue {
+    font-size: 26px;
+    font-weight: 700;
+    color: #17394d;
+    line-height: 1;
+  }
+
+  .statLabel {
+    font-size: 12px;
+    color: #6b808c;
+    margin-top: 3px;
+  }
+
+  /* Table */
+  .tableWrapper {
+    background: #fff;
+    border: 1px solid #dfe1e6;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .table {
+    margin: 0 !important;
+  }
+
+  .emptyCell {
+    padding: 40px !important;
+    color: #6b808c;
+    font-size: 15px;
+  }
+
+  .deactivatedRow {
+    opacity: 0.55;
+  }
+
+  /* User cell */
+  .userCell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .userName {
+    font-weight: 600;
+    color: #17394d;
+    font-size: 14px;
+  }
+
+  .currentUserBadge {
+    font-size: 11px;
+    color: #0079bf;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  /* Contact cell */
+  .contactCell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .contactRow {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: #17394d;
+  }
+
+  .contactIcon {
+    color: #6b808c;
+  }
+
+  .username {
+    color: #5e6c84;
+    font-size: 12px;
+  }
+
+  /* Info cell */
+  .infoCell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .infoRow {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #5e6c84;
+  }
+
+  .infoIcon {
+    color: #6b808c;
+    flex-shrink: 0;
+  }
+
+  .apiKey {
+    font-family: monospace;
+    font-size: 11px;
+    background: #f0f0f0;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* Role label */
+  .roleLabel {
+    white-space: nowrap;
+  }
+
+  /* Actions btn */
+  .actionsBtn {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    &:hover {
+      background: rgba(9, 30, 66, 0.08) !important;
+    }
+  }
+
+  /* Forbidden */
+  .forbidden {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 16px;
+    color: #6b808c;
+  }
+
+  .forbiddenIcon {
+    opacity: 0.4;
+  }
+}
