@@ -21,9 +21,11 @@ const DEFAULT_BACKGROUND = `url("/board-bg.jpg") center / cover no-repeat`;
 const ProjectBackground = React.memo(() => {
   const selectBackgroundImageById = useMemo(() => selectors.makeSelectBackgroundImageById(), []);
 
-  const { backgroundImageId, backgroundType, backgroundGradient } = useSelector(
-    selectors.selectCurrentProject,
-  );
+  const project = useSelector(selectors.selectCurrentProject);
+
+  const backgroundType = project?.backgroundType ?? null;
+  const backgroundGradient = project?.backgroundGradient ?? null;
+  const backgroundImageId = project?.backgroundImageId ?? null;
 
   const backgroundImageUrl = useSelector((state) => {
     if (!backgroundType || backgroundType !== ProjectBackgroundTypes.IMAGE) {

@@ -61,6 +61,36 @@
     }
   }
 
+  .logoLink {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    flex: 0 0 auto;
+    text-decoration: none;
+
+    &:before {
+      background: none;
+    }
+  }
+
+  .logoImage {
+    height: 34px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+    display: block;
+  }
+
+  .logoImageSmall {
+    height: 26px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    display: block;
+  }
+
   .menu {
     background: transparent;
     border: none;

@@ -95,8 +95,8 @@ const Header = React.memo(() => {
   return (
     <div className={styles.wrapper}>
       {!project && (
-        <Link to={Paths.ROOT} className={classNames(styles.logo, styles.title)}>
-          TRELLO SAGGIO
+        <Link to={Paths.ROOT} className={classNames(styles.logo, styles.logoLink)}>
+          <img src="/saggio-logo.png" alt="Saggio ESG" className={styles.logoImage} />
         </Link>
       )}
       <Menu inverted size="large" className={styles.menu}>
@@ -107,7 +107,7 @@ const Header = React.memo(() => {
               to={Paths.ROOT}
               className={classNames(styles.item, styles.itemHoverable)}
             >
-              <Icon fitted name="arrow left" />
+              <img src="/saggio-logo.png" alt="Saggio ESG" className={styles.logoImageSmall} />
             </Menu.Item>
             <Menu.Item className={classNames(styles.item, styles.title)}>
               {project.name}
