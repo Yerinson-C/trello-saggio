@@ -35,6 +35,8 @@ import ListsStep from '../../lists/ListsStep';
 import Attachments from '../../attachments/Attachments';
 import AddAttachmentStep from '../../attachments/AddAttachmentStep';
 import AddCustomFieldGroupStep from '../../custom-field-groups/AddCustomFieldGroupStep';
+import TaskLists from './TaskLists';
+import AddTaskListStep from '../../task-lists/AddTaskListStep';
 
 import styles from './StoryContent.module.scss';
 
@@ -85,6 +87,7 @@ const StoryContent = React.memo(() => {
     canUseLabels,
     canAddAttachment,
     canAddCustomFieldGroup,
+    canAddTaskList,
   } = useSelector((state) => {
     const boardMembership = selectors.selectCurrentUserMembershipForCurrentBoard(state);
 
@@ -113,6 +116,7 @@ const StoryContent = React.memo(() => {
         canUseLabels: false,
         canAddAttachment: false,
         canAddCustomFieldGroup: false,
+        canAddTaskList: false,
       };
     }
 
@@ -132,6 +136,7 @@ const StoryContent = React.memo(() => {
       canUseLabels: isEditor,
       canAddAttachment: isEditor,
       canAddCustomFieldGroup: isEditor,
+      canAddTaskList: isEditor,
     };
   }, shallowEqual);
 
@@ -277,6 +282,7 @@ const StoryContent = React.memo(() => {
   const ListsPopup = usePopupInClosableContext(ListsStep);
   const AddAttachmentPopup = usePopupInClosableContext(AddAttachmentStep);
   const AddCustomFieldGroupPopup = usePopupInClosableContext(AddCustomFieldGroupStep);
+  const AddTaskListPopup = usePopupInClosableContext(AddTaskListStep);
   const MoreActionsPopup = usePopupInClosableContext(MoreActionsStep);
   const ConfirmationPopup = usePopupInClosableContext(ConfirmationStep);
 
@@ -454,6 +460,7 @@ const StoryContent = React.memo(() => {
             )}
           </Gallery>
           <CustomFieldGroups />
+          <TaskLists />
           {attachmentIds.length > 0 && (
             <div className={styles.contentModule}>
               <div className={styles.moduleWrapper}>
@@ -494,9 +501,17 @@ const StoryContent = React.memo(() => {
                 )}
               </div>
             </div>
-            {(canUseMembers || canUseLabels || canAddAttachment || canAddCustomFieldGroup) && (
+            {(canUseMembers || canUseLabels || canAddAttachment || canAddCustomFieldGroup || canAddTaskList) && (
               <div className={styles.actions}>
                 <span className={styles.actionsTitle}>{t('action.addToCard')}</span>
+                {canAddTaskList && (
+                  <AddTaskListPopup>
+                    <Button fluid className={classNames(styles.actionButton, styles.hidable)}>
+                      <Icon name="check square outline" className={styles.actionIcon} />
+                      {t('common.taskList', { context: 'title', defaultValue: 'Checklist' })}
+                    </Button>
+                  </AddTaskListPopup>
+                )}
                 {canUseLabels && (
                   <LabelsPopup
                     currentIds={labelIds}
