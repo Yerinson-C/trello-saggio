@@ -11,14 +11,14 @@ import { Input } from '../../../lib/custom-ui';
 
 import selectors from '../../../selectors';
 import entryActions from '../../../entry-actions';
-import { useField, usePopupInClosableContext } from '../../../hooks';
+import { useField, usePopupInClosableContext, useEventCallback } from '../../../hooks';
 import { UserRoles } from '../../../constants/Enums';
 import { UserRoleIcons } from '../../../constants/Icons';
 import Paths from '../../../constants/Paths';
 import UserAvatar from '../../users/UserAvatar';
 import ActionsStep from '../AdministrationModal/UsersPane/ActionsStep';
-import AddStep from '../AdministrationModal/UsersPane/AddStep';
 import { ClosableContext } from '../../../contexts';
+import CreateUserModal from './CreateUserModal';
 
 import styles from './AdminUsersPage.module.scss';
 
@@ -40,6 +40,7 @@ const AdminUsersPage = React.memo(() => {
   const cleanSearch = useMemo(() => search.trim().toLowerCase(), [search]);
   const [isDeactivatedVisible, setIsDeactivatedVisible] = useState(false);
   const [closableActive, setClosableActive] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   const filteredUsers = useMemo(
     () =>
@@ -124,10 +125,16 @@ const AdminUsersPage = React.memo(() => {
                 : t('action.showDeactivated', { defaultValue: 'Ver desactivados' })}
             </Button>
             {canAdd && (
-              <AddUserButton
-                activeUsersLimit={activeUsersLimit}
-                activeUsersTotal={activeUsersTotal}
-              />
+              <Button
+                primary
+                size="small"
+                disabled={activeUsersLimit !== null && activeUsersTotal >= activeUsersLimit}
+                onClick={() => setShowCreateModal(true)}
+                className={styles.addBtn}
+              >
+                <Icon name="add user" />
+                Crear Usuario
+              </Button>
             )}
           </div>
         </div>
@@ -200,34 +207,15 @@ const AdminUsersPage = React.memo(() => {
           </Table>
         </div>
       </div>
+
+      {showCreateModal && (
+        <CreateUserModal onClose={() => setShowCreateModal(false)} />
+      )}
     </ClosableContext.Provider>
   );
 });
 
 /* ── Sub-components ─────────────────────────────────────── */
-
-const AddUserButton = React.memo(({ activeUsersLimit, activeUsersTotal }) => {
-  const [t] = useTranslation();
-  const [closableActive, setClosableActive] = useState(false);
-
-  const AddPopup = usePopupInClosableContext(AddStep);
-
-  return (
-    <ClosableContext.Provider value={[closableActive, () => setClosableActive(true), setClosableActive]}>
-      <AddPopup>
-        <Button
-          primary
-          size="small"
-          disabled={activeUsersLimit !== null && activeUsersTotal >= activeUsersLimit}
-          className={styles.addBtn}
-        >
-          <Icon name="add user" />
-          {t('action.addUser', { defaultValue: 'Añadir usuario' })}
-        </Button>
-      </AddPopup>
-    </ClosableContext.Provider>
-  );
-});
 
 const UserRow = React.memo(({ id, isCurrentUser }) => {
   const selectUserById = useMemo(() => selectors.makeSelectUserById(), []);
@@ -249,6 +237,13 @@ const UserRow = React.memo(({ id, isCurrentUser }) => {
     [UserRoles.PROJECT_OWNER]: 'orange',
     [UserRoles.BOARD_USER]: 'blue',
   };
+
+  const handleRoleChange = useCallback((e) => {
+    const newRole = e.target.value;
+    if (newRole !== user.role) {
+      dispatch(entryActions.updateUser(id, { role: newRole }));
+    }
+  }, [id, user.role, dispatch]);
 
   return (
     <ClosableContext.Provider value={[closableActive, () => setClosableActive(true), setClosableActive]}>
@@ -304,14 +299,23 @@ const UserRow = React.memo(({ id, isCurrentUser }) => {
           </div>
         </Table.Cell>
         <Table.Cell>
-          <Label
-            size="tiny"
-            color={roleColor[user.role] || 'grey'}
-            className={styles.roleLabel}
-          >
-            <Icon name={UserRoleIcons[user.role]} />
-            {t(`common.${user.role}`, { defaultValue: user.role })}
-          </Label>
+          {isCurrentUser || user.isDeactivated ? (
+            <Label size="tiny" color={roleColor[user.role] || 'grey'} className={styles.roleLabel}>
+              <Icon name={UserRoleIcons[user.role]} />
+              {t(`common.${user.role}`, { defaultValue: user.role })}
+            </Label>
+          ) : (
+            <select
+              className={styles.roleSelect}
+              value={user.role}
+              onChange={handleRoleChange}
+              style={{ borderColor: roleColor[user.role] === 'red' ? '#e53e3e' : roleColor[user.role] === 'orange' ? '#dd6b20' : '#3182ce' }}
+            >
+              <option value={UserRoles.ADMIN}>👑 Administrador</option>
+              <option value={UserRoles.PROJECT_OWNER}>🏢 Project Owner</option>
+              <option value={UserRoles.BOARD_USER}>👤 Usuario</option>
+            </select>
+          )}
         </Table.Cell>
         <Table.Cell>
           {user.isDeactivated ? (
