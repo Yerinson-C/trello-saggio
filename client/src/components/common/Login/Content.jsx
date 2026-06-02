@@ -20,7 +20,7 @@ import { isUsername } from '../../../utils/validator';
 import AccessTokenSteps from '../../../constants/AccessTokenSteps';
 import TermsModal from './TermsModal';
 
-import logo from '../../../assets/images/logo.png';
+import logo from '../../../assets/images/saggio-logo.png';
 
 import styles from './Content.module.scss';
 
@@ -206,15 +206,13 @@ const Content = React.memo(() => {
               <Header
                 as="h1"
                 textAlign="center"
-                content={bootstrap.instanceName || 'TRELLO SAGGIO'}
+                content={bootstrap.instanceName || 'Trello Saggio'}
                 className={styles.formTitle}
               />
               <Header
                 as="h2"
                 textAlign="center"
-                content={t('common.logIn', {
-                  context: 'title',
-                })}
+                content="Gestión de proyectos moderna"
                 className={styles.formSubtitle}
               />
               {message && (

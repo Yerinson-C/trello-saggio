@@ -17,7 +17,22 @@ import Paths from '../../../constants/Paths';
 
 import styles from './Item.module.scss';
 
+// Vibrant colors that contrast well against the dark space background
+const BOARD_COLORS = [
+  '#ff6b6b', // coral red
+  '#ffd93d', // golden yellow
+  '#6bcb77', // fresh green
+  '#4d96ff', // electric blue
+  '#ff922b', // vivid orange
+  '#cc5de8', // bright purple
+  '#20c997', // turquoise
+  '#f06595', // hot pink
+  '#74c0fc', // sky blue
+  '#a9e34b', // lime green
+];
+
 const Item = React.memo(({ id, index }) => {
+  const boardColor = BOARD_COLORS[index % BOARD_COLORS.length];
   const selectBoardById = useMemo(() => selectors.makeSelectBoardById(), []);
 
   const selectNotificationsTotalByBoardId = useMemo(
@@ -50,7 +65,13 @@ const Item = React.memo(({ id, index }) => {
       {({ innerRef, draggableProps, dragHandleProps }) => (
         // eslint-disable-next-line react/jsx-props-no-spreading
         <div {...draggableProps} {...dragHandleProps} ref={innerRef} className={styles.wrapper}>
-          <div className={classNames(styles.tab, isActive && styles.tabActive)}>
+          <div
+            className={classNames(styles.tab, isActive && styles.tabActive)}
+            style={{
+              borderBottom: `3px solid ${boardColor}`,
+              boxShadow: isActive ? `0 -2px 8px ${boardColor}55` : 'none',
+            }}
+          >
             {board.isPersisted ? (
               <>
                 <Link
@@ -61,7 +82,12 @@ const Item = React.memo(({ id, index }) => {
                   {notificationsTotal > 0 && (
                     <span className={styles.notifications}>{notificationsTotal}</span>
                   )}
-                  <span className={styles.name}>{board.name}</span>
+                  <span
+                    className={styles.name}
+                    style={{ color: isActive ? boardColor : undefined }}
+                  >
+                    {board.name}
+                  </span>
                 </Link>
                 {canEdit && (
                   <Button className={styles.editButton} onClick={handleEditClick}>
