@@ -88,6 +88,12 @@ const AddStep = React.memo(({ onClose }) => {
       return;
     }
 
+    const emailDomain = cleanData.email.split('@')[1];
+    if (emailDomain !== 'saggioesg.com') {
+      emailFieldRef.current.select();
+      return;
+    }
+
     if (!cleanData.password || !isPassword(cleanData.password)) {
       passwordFieldRef.current.focus();
       return;
@@ -175,17 +181,28 @@ const AddStep = React.memo(({ onClose }) => {
           />
         )}
         <Form onSubmit={handleSubmit}>
-          <div className={styles.text}>{t('common.email')}</div>
+          <div className={styles.text}>
+            {t('common.email')}
+            <span style={{ color: '#888', fontSize: '11px', marginLeft: '6px' }}>
+              (@saggioesg.com)
+            </span>
+          </div>
           <Input
             fluid
             ref={handleEmailFieldRef}
             name="email"
             value={data.email}
+            placeholder="usuario@saggioesg.com"
             maxLength={256}
             readOnly={isSubmitting}
             className={styles.field}
             onChange={handleFieldChange}
           />
+          {data.email && data.email.includes('@') && !data.email.endsWith('@saggioesg.com') && (
+            <div style={{ color: '#e53e3e', fontSize: '12px', marginBottom: '8px', marginTop: '-4px' }}>
+              Solo se permiten correos @saggioesg.com
+            </div>
+          )}
           <div className={styles.text}>{t('common.password')}</div>
           <Input.Password
             withStrengthBar

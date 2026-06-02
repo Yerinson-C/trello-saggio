@@ -82,6 +82,12 @@ const EditUserEmailStep = React.memo(({ id, onBack, onClose }) => {
       return;
     }
 
+    const emailDomain = cleanData.email.split('@')[1];
+    if (emailDomain !== 'saggioesg.com') {
+      emailFieldRef.current.select();
+      return;
+    }
+
     if (cleanData.email === email) {
       onClose();
       return;
@@ -165,17 +171,25 @@ const EditUserEmailStep = React.memo(({ id, onBack, onClose }) => {
           />
         )}
         <Form onSubmit={handleSubmit}>
-          <div className={styles.text}>{t('common.newEmail')}</div>
+          <div className={styles.text}>
+            {t('common.newEmail')}
+            <span style={{ color: '#888', fontSize: '11px', marginLeft: '6px' }}>(@saggioesg.com)</span>
+          </div>
           <Input
             fluid
             ref={handleEmailFieldRef}
             name="email"
             value={data.email}
-            placeholder={email}
+            placeholder="usuario@saggioesg.com"
             maxLength={256}
             className={styles.field}
             onChange={handleFieldChange}
           />
+          {data.email && data.email.includes('@') && !data.email.endsWith('@saggioesg.com') && (
+            <div style={{ color: '#e53e3e', fontSize: '12px', marginBottom: '8px', marginTop: '-4px' }}>
+              Solo se permiten correos @saggioesg.com
+            </div>
+          )}
           {withPasswordConfirmation && (
             <>
               <div className={styles.text}>{t('common.currentPassword')}</div>

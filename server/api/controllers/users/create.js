@@ -107,9 +107,14 @@
 
 const { isPassword } = require('../../../utils/validators');
 
+const ALLOWED_EMAIL_DOMAIN = 'saggioesg.com';
+
 const Errors = {
   NOT_ENOUGH_RIGHTS: {
     notEnoughRights: 'Not enough rights',
+  },
+  EMAIL_DOMAIN_NOT_ALLOWED: {
+    emailDomainNotAllowed: `Only @${ALLOWED_EMAIL_DOMAIN} email addresses are allowed`,
   },
   EMAIL_ALREADY_IN_USE: {
     emailAlreadyInUse: 'Email already in use',
@@ -186,6 +191,9 @@ module.exports = {
     notEnoughRights: {
       responseType: 'forbidden',
     },
+    emailDomainNotAllowed: {
+      responseType: 'forbidden',
+    },
     emailAlreadyInUse: {
       responseType: 'conflict',
     },
@@ -202,6 +210,11 @@ module.exports = {
 
     if (sails.config.custom.oidcEnforced) {
       throw Errors.NOT_ENOUGH_RIGHTS;
+    }
+
+    const emailDomain = inputs.email.split('@')[1];
+    if (emailDomain !== ALLOWED_EMAIL_DOMAIN) {
+      throw Errors.EMAIL_DOMAIN_NOT_ALLOWED;
     }
 
     const values = _.pick(inputs, [

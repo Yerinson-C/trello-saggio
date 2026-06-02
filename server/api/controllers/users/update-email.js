@@ -68,9 +68,14 @@ const bcrypt = require('bcrypt');
 
 const { idInput } = require('../../../utils/inputs');
 
+const ALLOWED_EMAIL_DOMAIN = 'saggioesg.com';
+
 const Errors = {
   NOT_ENOUGH_RIGHTS: {
     notEnoughRights: 'Not enough rights',
+  },
+  EMAIL_DOMAIN_NOT_ALLOWED: {
+    emailDomainNotAllowed: `Only @${ALLOWED_EMAIL_DOMAIN} email addresses are allowed`,
   },
   INVALID_CURRENT_PASSWORD: {
     invalidCurrentPassword: 'Invalid current password',
@@ -106,6 +111,9 @@ module.exports = {
     notEnoughRights: {
       responseType: 'forbidden',
     },
+    emailDomainNotAllowed: {
+      responseType: 'forbidden',
+    },
     invalidCurrentPassword: {
       responseType: 'forbidden',
     },
@@ -119,6 +127,11 @@ module.exports = {
 
   async fn(inputs) {
     const { currentUser } = this.req;
+
+    const emailDomain = inputs.email.split('@')[1];
+    if (emailDomain !== ALLOWED_EMAIL_DOMAIN) {
+      throw Errors.EMAIL_DOMAIN_NOT_ALLOWED;
+    }
 
     if (inputs.id === currentUser.id) {
       if (!inputs.currentPassword) {
