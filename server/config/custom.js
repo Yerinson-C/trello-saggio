@@ -45,7 +45,7 @@ module.exports.custom = {
   baseUrlSecure: parsedBasedUrl.protocol === 'https:',
 
   maxUploadFileSize: envToBytes(process.env.MAX_UPLOAD_FILE_SIZE),
-  tokenExpiresIn: (parseInt(process.env.TOKEN_EXPIRES_IN, 10) || 365) * 24 * 60 * 60,
+  tokenExpiresIn: (parseInt(process.env.TOKEN_EXPIRES_IN, 10) || 30) * 24 * 60 * 60,
 
   storageLimit: envToBytes(process.env.STORAGE_LIMIT),
   activeUsersLimit: envToNumber(process.env.ACTIVE_USERS_LIMIT),

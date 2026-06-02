@@ -15,7 +15,7 @@ import { Input, Popup } from '../../../lib/custom-ui';
 import selectors from '../../../selectors';
 import entryActions from '../../../entry-actions';
 import { useForm, useNestedRef } from '../../../hooks';
-import { isPassword } from '../../../utils/validator';
+import { isPassword, getPasswordError } from '../../../utils/validator';
 
 import styles from './EditUserPasswordStep.module.scss';
 
@@ -132,7 +132,12 @@ const EditUserPasswordStep = React.memo(({ id, onBack, onClose }) => {
           />
         )}
         <Form onSubmit={handleSubmit}>
-          <div className={styles.text}>{t('common.newPassword')}</div>
+          <div className={styles.text}>
+            {t('common.newPassword')}
+            <span style={{ color: '#888', fontSize: '11px', marginLeft: '6px' }}>
+              (mín. 8 caracteres, 1 mayúscula)
+            </span>
+          </div>
           <Input.Password
             withStrengthBar
             fluid
@@ -143,6 +148,11 @@ const EditUserPasswordStep = React.memo(({ id, onBack, onClose }) => {
             className={styles.field}
             onChange={handleFieldChange}
           />
+          {data.password && getPasswordError(data.password) && (
+            <div style={{ color: '#e53e3e', fontSize: '12px', marginBottom: '8px', marginTop: '-4px' }}>
+              {getPasswordError(data.password)}
+            </div>
+          )}
           {withPasswordConfirmation && (
             <>
               <div className={styles.text}>{t('common.currentPassword')}</div>

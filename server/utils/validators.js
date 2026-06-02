@@ -31,7 +31,15 @@ const isId = (value) =>
 
 const isIds = (values) => _.every(values, isId);
 
-const isPassword = (value) => zxcvbn(value).score >= 2; // TODO: move to config
+/**
+ * Password policy:
+ * - Minimum 8 characters
+ * - At least one uppercase letter
+ */
+const isPassword = (value) =>
+  typeof value === 'string' &&
+  value.length >= 8 &&
+  /[A-Z]/.test(value);
 
 const isEmailOrUsername = (value) =>
   value.includes('@')

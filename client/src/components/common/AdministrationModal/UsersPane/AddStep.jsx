@@ -16,7 +16,7 @@ import { Input, Popup } from '../../../../lib/custom-ui';
 import selectors from '../../../../selectors';
 import entryActions from '../../../../entry-actions';
 import { useForm, useNestedRef, useSteps } from '../../../../hooks';
-import { isPassword, isUsername } from '../../../../utils/validator';
+import { isPassword, isUsername, getPasswordError } from '../../../../utils/validator';
 import { UserRoles } from '../../../../constants/Enums';
 import { UserRoleIcons } from '../../../../constants/Icons';
 import SelectRoleStep from './SelectRoleStep';
@@ -203,7 +203,12 @@ const AddStep = React.memo(({ onClose }) => {
               Solo se permiten correos @saggioesg.com
             </div>
           )}
-          <div className={styles.text}>{t('common.password')}</div>
+          <div className={styles.text}>
+            {t('common.password')}
+            <span style={{ color: '#888', fontSize: '11px', marginLeft: '6px' }}>
+              (mín. 8 caracteres, 1 mayúscula)
+            </span>
+          </div>
           <Input.Password
             withStrengthBar
             fluid
@@ -215,6 +220,11 @@ const AddStep = React.memo(({ onClose }) => {
             className={styles.field}
             onChange={handleFieldChange}
           />
+          {data.password && getPasswordError(data.password) && (
+            <div style={{ color: '#e53e3e', fontSize: '12px', marginBottom: '8px', marginTop: '-4px' }}>
+              {getPasswordError(data.password)}
+            </div>
+          )}
           <div className={styles.text}>{t('common.name')}</div>
           <Input
             fluid
