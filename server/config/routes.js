@@ -140,7 +140,10 @@ module.exports.routes = {
   'PATCH /api/projects/:id': 'projects/update',
   'DELETE /api/projects/:id': 'projects/delete',
 
+  'GET /api/projects/:id/members': 'projects/members',
+  'POST /api/projects/:projectId/managers': 'project-managers/create',
   'POST /api/projects/:projectId/project-managers': 'project-managers/create',
+  'DELETE /api/projects/:projectId/managers/:userId': 'project-managers/delete-by-user',
   'DELETE /api/project-managers/:id': 'project-managers/delete',
 
   'POST /api/projects/:projectId/background-images': 'background-images/create',

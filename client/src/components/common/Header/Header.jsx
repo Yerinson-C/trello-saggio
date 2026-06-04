@@ -145,14 +145,24 @@ const Header = React.memo(() => {
             </Menu.Item>
           )}
           {user.role === UserRoles.ADMIN && (
-            <Menu.Item
-              as={Link}
-              to={Paths.ADMIN_USERS}
-              className={classNames(styles.item, styles.itemHoverable)}
-              title="Gestión de Usuarios"
-            >
-              <Icon fitted name="users" />
-            </Menu.Item>
+            <>
+              <Menu.Item
+                as={Link}
+                to={Paths.ADMIN_PROJECTS}
+                className={classNames(styles.item, styles.itemHoverable)}
+                title="Módulo de Proyectos"
+              >
+                <Icon fitted name="folder" />
+              </Menu.Item>
+              <Menu.Item
+                as={Link}
+                to={Paths.ADMIN_USERS}
+                className={classNames(styles.item, styles.itemHoverable)}
+                title="Gestión de Usuarios"
+              >
+                <Icon fitted name="users" />
+              </Menu.Item>
+            </>
           )}
           <NotificationsPopup>
             <Menu.Item className={classNames(styles.item, styles.itemHoverable)}>

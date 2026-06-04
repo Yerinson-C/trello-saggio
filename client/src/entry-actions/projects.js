@@ -67,6 +67,11 @@ const deleteCurrentProject = () => ({
   payload: {},
 });
 
+const deleteProject = (id) => ({
+  type: EntryActionTypes.CURRENT_PROJECT_DELETE,
+  payload: { id },
+});
+
 const handleProjectDelete = (project) => ({
   type: EntryActionTypes.PROJECT_DELETE_HANDLE,
   payload: {
@@ -84,5 +89,6 @@ export default {
   updateCurrentProject,
   handleProjectUpdate,
   deleteCurrentProject,
+  deleteProject,
   handleProjectDelete,
 };

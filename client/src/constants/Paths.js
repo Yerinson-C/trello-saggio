@@ -12,6 +12,7 @@ const PROJECTS = `${Config.BASE_PATH}/projects/:id`;
 const BOARDS = `${Config.BASE_PATH}/boards/:id`;
 const CARDS = `${Config.BASE_PATH}/cards/:id`;
 const ADMIN_USERS = `${Config.BASE_PATH}/admin/users`;
+const ADMIN_PROJECTS = `${Config.BASE_PATH}/admin/projects`;
 
 export default {
   ROOT,
@@ -21,4 +22,5 @@ export default {
   BOARDS,
   CARDS,
   ADMIN_USERS,
+  ADMIN_PROJECTS,
 };
