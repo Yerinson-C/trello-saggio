@@ -48,9 +48,6 @@ const Errors = {
   PROJECT_NOT_FOUND: {
     projectNotFound: 'Project not found',
   },
-  MUST_NOT_HAVE_BOARDS: {
-    mustNotHaveBoards: 'Must not have boards',
-  },
 };
 
 module.exports = {
@@ -64,9 +61,6 @@ module.exports = {
   exits: {
     projectNotFound: {
       responseType: 'notFound',
-    },
-    mustNotHaveBoards: {
-      responseType: 'unprocessableEntity',
     },
   },
 
@@ -85,13 +79,11 @@ module.exports = {
       throw Errors.PROJECT_NOT_FOUND; // Forbidden
     }
 
-    project = await sails.helpers.projects.deleteOne
-      .with({
-        record: project,
-        actorUser: currentUser,
-        request: this.req,
-      })
-      .intercept('mustNotHaveBoards', () => Errors.MUST_NOT_HAVE_BOARDS);
+    project = await sails.helpers.projects.deleteOne.with({
+      record: project,
+      actorUser: currentUser,
+      request: this.req,
+    });
 
     if (!project) {
       throw Errors.PROJECT_NOT_FOUND;

@@ -18,17 +18,11 @@ module.exports = {
     },
   },
 
-  exits: {
-    mustNotHaveBoards: {},
-  },
+  exits: {},
 
   async fn(inputs) {
-    const boardsTotal = await sails.helpers.projects.getBoardsTotalById(inputs.record.id);
-
-    if (boardsTotal > 0) {
-      throw 'mustNotHaveBoards';
-    }
-
+    // Cascade: deleteRelated already removes boards → lists → cards → comments
+    // → attachments → task-lists → tasks → labels → notifications, etc.
     const { projectManagers } = await sails.helpers.projects.deleteRelated(inputs.record);
     const project = await Project.qm.deleteOne(inputs.record.id);
 
