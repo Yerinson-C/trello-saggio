@@ -12,6 +12,10 @@ import { BoardContexts, BoardViews } from '../../../constants/Enums';
 import KanbanContent from './KanbanContent';
 import FiniteContent from './FiniteContent';
 import EndlessContent from './EndlessContent';
+import TableView from './TableView';
+import CalendarView from './CalendarView';
+import TimelineView from './TimelineView';
+import MapView from './MapView';
 import ShortcutsProvider from './ShortcutsProvider';
 import CardModal from '../../cards/CardModal';
 import BoardActivitiesModal from '../../activities/BoardActivitiesModal';
@@ -20,6 +24,20 @@ const Board = React.memo(() => {
   const board = useSelector(selectors.selectCurrentBoard);
   const modal = useSelector(selectors.selectCurrentModal);
   const isCardModalOpened = useSelector((state) => !!selectors.selectPath(state).cardId);
+
+  // Custom views that bypass ShortcutsProvider
+  if (board.view === BoardViews.TABLE) {
+    return <TableView />;
+  }
+  if (board.view === BoardViews.CALENDAR) {
+    return <CalendarView />;
+  }
+  if (board.view === BoardViews.TIMELINE) {
+    return <TimelineView />;
+  }
+  if (board.view === BoardViews.MAP) {
+    return <MapView />;
+  }
 
   let Content;
   if (board.view === BoardViews.KANBAN) {

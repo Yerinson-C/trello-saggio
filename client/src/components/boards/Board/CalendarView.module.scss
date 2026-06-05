@@ -1,0 +1,159 @@
+:global(#app) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding: 16px 20px;
+    gap: 10px;
+  }
+
+  .header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .headerCenter {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .monthTitle { font-size: 20px; font-weight: 700; }
+
+  .badge {
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 10px;
+  }
+
+  .navBtn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 14px;
+    transition: background 0.15s;
+
+    &:hover { background: rgba(255,255,255,0.3); }
+  }
+
+  .dayNames {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+
+  .dayName {
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 6px 0;
+  }
+
+  .grid {
+    display: grid;
+    flex: 1;
+    gap: 4px;
+    grid-template-columns: repeat(7, 1fr);
+    overflow-y: auto;
+  }
+
+  .cell {
+    background: rgba(255,255,255,0.92);
+    border-radius: 8px;
+    min-height: 90px;
+    overflow: hidden;
+    padding: 6px;
+    position: relative;
+    transition: background 0.1s;
+
+    &:hover { background: #fff; }
+  }
+
+  .cellEmpty {
+    background: rgba(255,255,255,0.08);
+    &:hover { background: rgba(255,255,255,0.08); }
+  }
+
+  .cellToday {
+    background: rgba(49, 130, 206, 0.15) !important;
+    border: 2px solid #3182ce;
+  }
+
+  .dayNum {
+    color: #4a5568;
+    font-size: 13px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+
+    .cellToday & { color: #3182ce; }
+  }
+
+  .cardList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cardItem {
+    background: #ebf8ff;
+    border-left: 3px solid;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 2px 5px;
+
+    &:hover { background: #bee3f8; }
+  }
+
+  .cardText {
+    color: #2b6cb0;
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .more {
+    color: #718096;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 4px;
+  }
+
+  .legend {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    padding: 4px 0;
+  }
+
+  .legendItem {
+    align-items: center;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    font-size: 11px;
+    gap: 5px;
+  }
+
+  .legendDot {
+    border-radius: 50%;
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+  }
+}
