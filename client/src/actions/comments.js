@@ -119,6 +119,36 @@ const handleCommentDelete = (comment) => ({
   },
 });
 
+const searchComments = (query) => ({
+  type: ActionTypes.COMMENTS_SEARCH,
+  payload: {
+    query,
+  },
+});
+
+searchComments.success = (query, comments, users, cards) => ({
+  type: ActionTypes.COMMENTS_SEARCH__SUCCESS,
+  payload: {
+    query,
+    comments,
+    users,
+    cards,
+  },
+});
+
+searchComments.failure = (query, error) => ({
+  type: ActionTypes.COMMENTS_SEARCH__FAILURE,
+  payload: {
+    query,
+    error,
+  },
+});
+
+const clearCommentSearch = () => ({
+  type: ActionTypes.COMMENTS_SEARCH_CLEAR,
+  payload: {},
+});
+
 export default {
   fetchComments,
   createComment,
@@ -127,4 +157,6 @@ export default {
   handleCommentUpdate,
   deleteComment,
   handleCommentDelete,
+  searchComments,
+  clearCommentSearch,
 };

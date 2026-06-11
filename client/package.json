@@ -157,7 +157,7 @@
     "redux-saga": "^1.4.2",
     "reselect": "^5.1.1",
     "sails.io.js": "^1.2.1",
-    "sass-embedded": "^1.98.0",
+    "sass": "^1.100.0",
     "semantic-ui-react": "^2.1.5",
     "socket.io-client": "^4.8.3",
     "validator": "^13.15.26",

@@ -85,12 +85,43 @@ module.exports = {
       maxLength: 1024,
       allowNull: true,
     },
+    clientName: {
+      type: 'string',
+      isNotEmptyString: true,
+      maxLength: 256,
+      allowNull: true,
+    },
+    serviceType: {
+      type: 'string',
+      isNotEmptyString: true,
+      maxLength: 256,
+      allowNull: true,
+    },
+    serviceDescription: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+    },
+    scope: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+    },
+    objectives: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+    },
+    projectStatus: {
+      type: 'string',
+      isIn: ['on_track', 'at_risk', 'on_hold', 'completed'],
+    },
   },
 
   async fn(inputs) {
     const { currentUser } = this.req;
 
-    const values = _.pick(inputs, ['type', 'name', 'description']);
+    const values = _.pick(inputs, ['type', 'name', 'description', 'clientName', 'serviceType', 'serviceDescription', 'scope', 'objectives', 'projectStatus']);
 
     const { project, projectManager } = await sails.helpers.projects.createOne.with({
       values,

@@ -35,4 +35,33 @@
   .text {
     padding-bottom: 6px;
   }
+
+  .textarea {
+    background: rgba(9, 30, 66, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    resize: none;
+    width: 100%;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    &:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+      outline: none;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
 }

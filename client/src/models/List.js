@@ -158,7 +158,7 @@ export default class extends BaseModel {
               });
 
               cardModel.linkedTasks.update({
-                isCompleted: isClosed,
+                status: isClosed ? 'completed' : 'not_started',
               });
             });
           }
@@ -191,7 +191,7 @@ export default class extends BaseModel {
                 });
 
                 cardModel.linkedTasks.update({
-                  isCompleted: isClosed,
+                  status: isClosed ? 'completed' : 'not_started',
                 });
               });
             }

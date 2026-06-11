@@ -25,6 +25,10 @@ module.exports = {
   async fn(inputs) {
     const { values } = inputs;
 
+    // Auto-assign short sequential activity code for email tokens (ACT-450)
+    const maxCode = await Card.count();
+    values.activityCode = maxCode + 1;
+
     if (values.dueDate) {
       if (_.isNil(values.isDueCompleted)) {
         values.isDueCompleted = false;

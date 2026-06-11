@@ -54,6 +54,26 @@ const handleCommentDelete = (comment) => ({
   },
 });
 
+const createCommentAttachmentInCurrentCard = (commentId, data) => ({
+  type: EntryActionTypes.COMMENT_ATTACHMENT_IN_CURRENT_CARD_CREATE,
+  payload: {
+    commentId,
+    data,
+  },
+});
+
+const searchCommentsInCurrentBoard = (query) => ({
+  type: EntryActionTypes.COMMENTS_SEARCH_IN_CURRENT_BOARD,
+  payload: {
+    query,
+  },
+});
+
+const clearCommentSearch = () => ({
+  type: EntryActionTypes.COMMENTS_SEARCH_CLEAR,
+  payload: {},
+});
+
 export default {
   fetchCommentsInCurrentCard,
   createCommentInCurrentCard,
@@ -62,4 +82,7 @@ export default {
   handleCommentUpdate,
   deleteComment,
   handleCommentDelete,
+  createCommentAttachmentInCurrentCard,
+  searchCommentsInCurrentBoard,
+  clearCommentSearch,
 };

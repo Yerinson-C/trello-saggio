@@ -62,7 +62,7 @@ module.exports = {
     const { values } = inputs;
 
     const comment = await Comment.qm.createOne({
-      ...values,
+      ..._.omit(values, ['card', 'user']),
       cardId: values.card.id,
       userId: values.user.id,
     });

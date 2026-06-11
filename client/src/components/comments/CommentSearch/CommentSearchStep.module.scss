@@ -1,0 +1,63 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
+ */
+
+:global(#app) {
+  .menu {
+    margin: 8px auto 0;
+    max-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .item {
+    border-bottom: 1px solid rgba(9, 30, 66, 0.08);
+    padding: 8px !important;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .itemHeader {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .itemUser {
+    color: #17394d;
+    font-weight: bold;
+  }
+
+  .itemDate {
+    color: #6b808c;
+    font-size: 12px;
+    margin-left: auto;
+  }
+
+  .itemCard {
+    color: #6b808c;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .itemText {
+    color: #17394d;
+    font-size: 13px;
+    word-break: break-word;
+  }
+
+  .empty {
+    color: #6b808c;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .loaderWrapper {
+    padding: 16px 0;
+  }
+}

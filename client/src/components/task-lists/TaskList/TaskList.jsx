@@ -48,14 +48,14 @@ const TaskList = React.memo(({ id, isCompletedVisible }) => {
   const filteredTasks = useMemo(
     () =>
       !isCompletedVisible && taskList.hideCompletedTasks
-        ? tasks.filter((task) => !task.isCompleted)
+        ? tasks.filter((task) => task.status !== 'completed')
         : tasks,
     [isCompletedVisible, taskList.hideCompletedTasks, tasks],
   );
 
   // TODO: move to selector?
   const completedTasksTotal = useMemo(
-    () => tasks.reduce((result, task) => (task.isCompleted ? result + 1 : result), 0),
+    () => tasks.reduce((result, task) => (task.status === 'completed' ? result + 1 : result), 0),
     [tasks],
   );
 

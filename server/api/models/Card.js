@@ -145,8 +145,16 @@ const Types = {
   STORY: 'story',
 };
 
+const Priorities = {
+  URGENT: 'urgent',
+  HIGH: 'high',
+  NORMAL: 'normal',
+  LOW: 'low',
+};
+
 module.exports = {
   Types,
+  Priorities,
 
   attributes: {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
@@ -196,6 +204,17 @@ module.exports = {
     listChangedAt: {
       type: 'ref',
       columnName: 'list_changed_at',
+    },
+    priority: {
+      type: 'string',
+      isIn: Object.values(Priorities),
+      defaultsTo: Priorities.NORMAL,
+      columnName: 'priority',
+    },
+    activityCode: {
+      type: 'number',
+      allowNull: true,
+      columnName: 'activity_code',
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

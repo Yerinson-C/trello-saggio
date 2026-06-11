@@ -66,4 +66,34 @@
     top: 0;
     vertical-align: top;
   }
+
+  .attachments {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .attachment {
+    align-items: center;
+    color: #0079bf;
+    display: flex;
+    gap: 6px;
+    font-size: 13px;
+    word-break: break-all;
+  }
+
+  .attachmentIcon {
+    flex: 0 0 auto;
+  }
+
+  .reply {
+    margin-top: 8px;
+  }
+
+  .replies {
+    border-left: 2px solid rgba(9, 30, 66, 0.08);
+    margin-top: 8px !important;
+    padding-left: 16px;
+  }
 }

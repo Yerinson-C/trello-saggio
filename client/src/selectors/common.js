@@ -23,6 +23,8 @@ export const selectProjectCreateForm = ({ ui: { projectCreateForm } }) => projec
 
 export const selectSmtpTestState = ({ ui: { smtpTestState } }) => smtpTestState;
 
+export const selectCommentSearchState = ({ ui: { commentSearchState } }) => commentSearchState;
+
 export default {
   selectIsSocketDisconnected,
   selectIsInitializing,
@@ -34,4 +36,5 @@ export default {
   selectUserCreateForm,
   selectProjectCreateForm,
   selectSmtpTestState,
+  selectCommentSearchState,
 };

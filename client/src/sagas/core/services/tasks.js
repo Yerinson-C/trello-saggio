@@ -12,9 +12,12 @@ import api from '../../../api';
 import { createLocalId } from '../../../utils/local-id';
 
 export function* createTask(taskListId, data) {
-  let isCompleted;
+  let status;
   if (data.linkedCardId) {
-    ({ isClosed: isCompleted } = yield select(selectors.selectCardById, data.linkedCardId));
+    const card = yield select(selectors.selectCardById, data.linkedCardId);
+    if (card && card.isClosed !== undefined) {
+      status = card.isClosed ? 'completed' : 'not_started';
+    }
   }
 
   const localId = yield call(createLocalId);
@@ -29,8 +32,8 @@ export function* createTask(taskListId, data) {
       ...nextData,
       taskListId,
       id: localId,
-      ...(isCompleted !== undefined && {
-        isCompleted,
+      ...(status !== undefined && {
+        status,
       }),
     }),
   );
@@ -53,9 +56,13 @@ export function* handleTaskCreate(task) {
 export function* updateTask(id, data) {
   yield put(actions.updateTask(id, data));
 
+  const apiData = data.status !== undefined
+    ? { ...data, isCompleted: data.status === 'completed', status: undefined }
+    : data;
+
   let task;
   try {
-    ({ item: task } = yield call(request, api.updateTask, id, data));
+    ({ item: task } = yield call(request, api.updateTask, id, apiData));
   } catch (error) {
     yield put(actions.updateTask.failure(id, error));
     return;

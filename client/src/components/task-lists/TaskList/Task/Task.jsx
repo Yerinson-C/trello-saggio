@@ -10,15 +10,14 @@ import classNames from 'classnames';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router';
 import { Draggable } from 'react-beautiful-dnd';
-import { Button, Checkbox, Icon } from 'semantic-ui-react';
+import { Button, Dropdown, Icon } from 'semantic-ui-react';
 import { useDidUpdate } from '../../../../lib/hooks';
-import { useTranslation } from 'react-i18next';
 
 import selectors from '../../../../selectors';
 import entryActions from '../../../../entry-actions';
 import { usePopupInClosableContext } from '../../../../hooks';
 import { isListArchiveOrTrash } from '../../../../utils/record-helpers';
-import { BoardMembershipRoles } from '../../../../constants/Enums';
+import { BoardMembershipRoles, TaskStatuses } from '../../../../constants/Enums';
 import { ClosableContext } from '../../../../contexts';
 import Paths from '../../../../constants/Paths';
 import EditName from './EditName';
@@ -28,6 +27,28 @@ import Linkify from '../../../common/Linkify';
 import UserAvatar from '../../../users/UserAvatar';
 
 import styles from './Task.module.scss';
+
+const STATUS_CONFIG = {
+  [TaskStatuses.NOT_STARTED]: { color: '#6b778c', label: 'No iniciado' },
+  [TaskStatuses.IN_PROGRESS]: { color: '#0079bf', label: 'En proceso' },
+  [TaskStatuses.PENDING_INFO]: { color: '#ff9f1a', label: 'Pend. información' },
+  [TaskStatuses.PENDING_CLIENT]: { color: '#f2d600', label: 'Pend. cliente' },
+  [TaskStatuses.INTERNAL_REVIEW]: { color: '#c377e0', label: 'Rev. interna' },
+  [TaskStatuses.BLOCKED]: { color: '#eb5a46', label: 'Bloqueado' },
+  [TaskStatuses.COMPLETED]: { color: '#61bd4f', label: 'Finalizado' },
+};
+
+const STATUS_OPTIONS = Object.entries(STATUS_CONFIG).map(([value, { color, label }]) => ({
+  key: value,
+  value,
+  text: label,
+  content: (
+    <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: 10, height: 10, borderRadius: '50%', background: color, flexShrink: 0 }} />
+      {label}
+    </span>
+  ),
+}));
 
 const Task = React.memo(({ id, index }) => {
   const selectTaskById = useMemo(() => selectors.makeSelectTaskById(), []);
@@ -61,17 +82,15 @@ const Task = React.memo(({ id, index }) => {
   }, shallowEqual);
 
   const dispatch = useDispatch();
-  const [t] = useTranslation();
   const [isEditNameOpened, setIsEditNameOpened] = useState(false);
   const [, , setIsClosableActive] = useContext(ClosableContext);
 
-  const handleToggleChange = useCallback(() => {
-    dispatch(
-      entryActions.updateTask(id, {
-        isCompleted: !task.isCompleted,
-      }),
-    );
-  }, [id, task.isCompleted, dispatch]);
+  const handleStatusChange = useCallback(
+    (_e, { value }) => {
+      dispatch(entryActions.updateTask(id, { status: value }));
+    },
+    [id, dispatch],
+  );
 
   const handleUserSelect = useCallback(
     (userId) => {
@@ -133,12 +152,26 @@ const Task = React.memo(({ id, index }) => {
             ref={innerRef}
             className={classNames(styles.wrapper, isDragging && styles.wrapperDragging)}
           >
-            <span className={styles.checkboxWrapper}>
-              <Checkbox
-                checked={task.isCompleted}
-                disabled={!!task.linkedCardId || !task.isPersisted || !canToggle}
-                className={styles.checkbox}
-                onChange={handleToggleChange}
+            <span className={styles.statusWrapper}>
+              <Dropdown
+                value={task.status || TaskStatuses.NOT_STARTED}
+                options={STATUS_OPTIONS}
+                disabled={!task.isPersisted || !canToggle}
+                onChange={handleStatusChange}
+                className={styles.statusDropdown}
+                selectOnBlur={false}
+                icon={null}
+                trigger={
+                  <span
+                    className={styles.statusDot}
+                    style={{
+                      backgroundColor: (STATUS_CONFIG[task.status] || STATUS_CONFIG[TaskStatuses.NOT_STARTED]).color,
+                    }}
+                    title={(STATUS_CONFIG[task.status] || STATUS_CONFIG[TaskStatuses.NOT_STARTED]).label}
+                  />
+                }
+                pointing="left"
+                scrolling
               />
             </span>
             {isEditNameOpened ? (
@@ -160,8 +193,8 @@ const Task = React.memo(({ id, index }) => {
                     <span
                       className={classNames(
                         styles.dueDate,
-                        task.isCompleted && styles.dueDateCompleted,
-                        !task.isCompleted && new Date(task.dueDate) < new Date() && styles.dueDateOverdue,
+                        task.status === TaskStatuses.COMPLETED && styles.dueDateCompleted,
+                        task.status !== TaskStatuses.COMPLETED && new Date(task.dueDate) < new Date() && styles.dueDateOverdue,
                       )}
                     >
                       <Icon name="calendar outline" size="small" className={styles.dueDateIcon} />
@@ -169,7 +202,7 @@ const Task = React.memo(({ id, index }) => {
                     </span>
                   )}
                   <span
-                    className={classNames(styles.task, task.isCompleted && styles.taskCompleted)}
+                    className={classNames(styles.task, task.status === TaskStatuses.COMPLETED && styles.taskCompleted)}
                   >
                     {task.linkedCardId ? (
                       <>
@@ -177,7 +210,7 @@ const Task = React.memo(({ id, index }) => {
                         <span
                           className={classNames(
                             styles.name,
-                            task.isCompleted && styles.nameCompleted,
+                            task.status === TaskStatuses.COMPLETED && styles.nameCompleted,
                           )}
                         >
                           <Link
@@ -192,7 +225,7 @@ const Task = React.memo(({ id, index }) => {
                       <span
                         className={classNames(
                           styles.name,
-                          task.isCompleted && styles.nameCompleted,
+                          task.status === TaskStatuses.COMPLETED && styles.nameCompleted,
                         )}
                       >
                         <Linkify linkStopPropagation>{task.name}</Linkify>

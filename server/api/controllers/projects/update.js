@@ -164,6 +164,37 @@ module.exports = {
     isFavorite: {
       type: 'boolean',
     },
+    clientName: {
+      type: 'string',
+      isNotEmptyString: true,
+      maxLength: 256,
+      allowNull: true,
+    },
+    serviceType: {
+      type: 'string',
+      isNotEmptyString: true,
+      maxLength: 256,
+      allowNull: true,
+    },
+    serviceDescription: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+    },
+    scope: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+    },
+    objectives: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+    },
+    projectStatus: {
+      type: 'string',
+      isIn: ['on_track', 'at_risk', 'on_hold', 'completed'],
+    },
   },
 
   exits: {
@@ -229,6 +260,12 @@ module.exports = {
         'description',
         'backgroundType',
         'backgroundGradient',
+        'clientName',
+        'serviceType',
+        'serviceDescription',
+        'scope',
+        'objectives',
+        'projectStatus',
       );
     }
 
@@ -287,6 +324,12 @@ module.exports = {
       'backgroundGradient',
       'isHidden',
       'isFavorite',
+      'clientName',
+      'serviceType',
+      'serviceDescription',
+      'scope',
+      'objectives',
+      'projectStatus',
     ]);
 
     project = await sails.helpers.projects.updateOne

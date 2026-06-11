@@ -35,17 +35,38 @@
     }
   }
 
-  .checkboxWrapper {
-    display: inline-block;
-    padding: 10px 15px 0px 8px;
+  .statusWrapper {
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 10px 8px 0px 10px;
     position: absolute;
-    text-align: center;
     top: 0;
     left: 0;
-    vertical-align: top;
     z-index: 2000;
-    line-height: 1;
     height: 100%;
+  }
+
+  .statusDropdown {
+    line-height: 1 !important;
+    min-width: unset !important;
+
+    .menu {
+      min-width: 180px !important;
+    }
+  }
+
+  .statusDot {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.1s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   .contentHoverable:hover {

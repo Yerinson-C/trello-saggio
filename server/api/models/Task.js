@@ -23,7 +23,7 @@
  *         - assigneeUserId
  *         - position
  *         - name
- *         - isCompleted
+ *         - status
  *         - createdAt
  *         - updatedAt
  *       properties:
@@ -53,11 +53,12 @@
  *           type: string
  *           description: Name/title of the task
  *           example: Write unit tests
- *         isCompleted:
- *           type: boolean
- *           default: false
- *           description: Whether the task is completed
- *           example: false
+ *         status:
+ *           type: string
+ *           enum: [not_started, in_progress, pending_info, pending_client, internal_review, blocked, completed]
+ *           default: not_started
+ *           description: Current status of the task
+ *           example: not_started
  *         createdAt:
  *           type: string
  *           format: date-time
@@ -72,7 +73,19 @@
  *           example: 2024-01-01T00:00:00.000Z
  */
 
+const Statuses = {
+  NOT_STARTED: 'not_started',
+  IN_PROGRESS: 'in_progress',
+  PENDING_INFO: 'pending_info',
+  PENDING_CLIENT: 'pending_client',
+  INTERNAL_REVIEW: 'internal_review',
+  BLOCKED: 'blocked',
+  COMPLETED: 'completed',
+};
+
 module.exports = {
+  Statuses,
+
   attributes: {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
@@ -86,10 +99,11 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    isCompleted: {
-      type: 'boolean',
-      defaultsTo: false,
-      columnName: 'is_completed',
+    status: {
+      type: 'string',
+      isIn: Object.values(Statuses),
+      defaultsTo: Statuses.NOT_STARTED,
+      columnName: 'status',
     },
     dueDate: {
       type: 'ref',

@@ -186,7 +186,7 @@ const update = async (criteria, values) => {
           linkedCardId: sails.helpers.utils.mapRecords(cards),
         })
           .set({
-            isCompleted: values.isClosed,
+            status: values.isClosed ? 'completed' : 'not_started',
           })
           .fetch()
           .usingConnection(db);
@@ -213,7 +213,7 @@ const updateOne = async (criteria, values) => {
           linkedCardId: card.id,
         })
           .set({
-            isCompleted: card.isClosed,
+            status: card.isClosed ? 'completed' : 'not_started',
           })
           .fetch()
           .usingConnection(db);

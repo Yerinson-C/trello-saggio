@@ -61,6 +61,13 @@ export default defineConfig({
       '/socket.io': { target: PROXY_TARGET, ws: true },
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
   build: {
     target: browserslistToEsbuild(['>0.2%', 'not dead', 'not op_mini all']),
   },

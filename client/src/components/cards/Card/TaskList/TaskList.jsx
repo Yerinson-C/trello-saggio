@@ -29,13 +29,13 @@ const TaskList = React.memo(({ id }) => {
   const [isOpened, toggleOpened] = useToggle(defaultIsOpened);
 
   const filteredTasks = useMemo(
-    () => (taskLists.hideCompletedTasks ? tasks.filter((task) => !task.isCompleted) : tasks),
+    () => (taskLists.hideCompletedTasks ? tasks.filter((task) => task.status !== 'completed') : tasks),
     [taskLists.hideCompletedTasks, tasks],
   );
 
   // TODO: move to selector?
   const completedTasksTotal = useMemo(
-    () => tasks.reduce((result, task) => (task.isCompleted ? result + 1 : result), 0),
+    () => tasks.reduce((result, task) => (task.status === 'completed' ? result + 1 : result), 0),
     [tasks],
   );
 

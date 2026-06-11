@@ -82,7 +82,7 @@ module.exports = {
       });
 
       if (values.linkedCard.isClosed) {
-        values.isCompleted = true;
+        values.status = 'completed';
       }
     }
 

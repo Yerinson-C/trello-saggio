@@ -83,5 +83,9 @@ module.exports = {
       model: 'User',
       columnName: 'user_id',
     },
+    parentCommentId: {
+      model: 'Comment',
+      columnName: 'parent_comment_id',
+    },
   },
 };

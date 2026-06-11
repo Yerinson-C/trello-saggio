@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import selectors from '../../../selectors';
 import ModalTypes from '../../../constants/ModalTypes';
 import ProjectSettingsModal from '../ProjectSettingsModal';
+import ProjectInboxModal from '../ProjectInboxModal/ProjectInboxModal';
 import Boards from '../../boards/Boards';
 import BoardSettingsModal from '../../boards/BoardSettingsModal';
 
@@ -26,6 +27,10 @@ const Project = React.memo(() => {
         break;
       case ModalTypes.BOARD_SETTINGS:
         modalNode = <BoardSettingsModal />;
+
+        break;
+      case ModalTypes.PROJECT_INBOX:
+        modalNode = <ProjectInboxModal />;
 
         break;
       default:

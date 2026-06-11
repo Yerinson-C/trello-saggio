@@ -3,7 +3,7 @@
  * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
-import { all, takeEvery } from 'redux-saga/effects';
+import { all, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import services from '../services';
 import EntryActionTypes from '../../../constants/EntryActionTypes';
@@ -29,5 +29,14 @@ export default function* commentsWatchers() {
     takeEvery(EntryActionTypes.COMMENT_DELETE_HANDLE, ({ payload: { comment } }) =>
       services.handleCommentDelete(comment),
     ),
+    takeEvery(
+      EntryActionTypes.COMMENT_ATTACHMENT_IN_CURRENT_CARD_CREATE,
+      ({ payload: { commentId, data } }) =>
+        services.createCommentAttachmentInCurrentCard(commentId, data),
+    ),
+    takeLatest(EntryActionTypes.COMMENTS_SEARCH_IN_CURRENT_BOARD, ({ payload: { query } }) =>
+      services.searchCommentsInCurrentBoard(query),
+    ),
+    takeEvery(EntryActionTypes.COMMENTS_SEARCH_CLEAR, () => services.clearCommentSearch()),
   ]);
 }

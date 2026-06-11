@@ -23,6 +23,10 @@ export default class extends BaseModel {
     isDueCompleted: attr(),
     stopwatch: attr(),
     isClosed: attr(),
+    priority: attr({
+      getDefault: () => 'normal',
+    }),
+    activityCode: attr(),
     commentsTotal: attr({
       getDefault: () => 0,
     }),
@@ -333,7 +337,7 @@ export default class extends BaseModel {
 
         if (payload.data.isClosed !== undefined && payload.data.isClosed !== cardModel.isClosed) {
           cardModel.linkedTasks.update({
-            isCompleted: payload.data.isClosed,
+            status: payload.data.isClosed ? 'completed' : 'not_started',
           });
         }
 
@@ -355,7 +359,7 @@ export default class extends BaseModel {
 
           if (cardModel && payload.card.isClosed !== cardModel.isClosed) {
             cardModel.linkedTasks.update({
-              isCompleted: payload.card.isClosed,
+              status: payload.card.isClosed ? 'completed' : 'not_started',
             });
           }
         }

@@ -16,6 +16,13 @@ import selectors from '../../../selectors';
 import entryActions from '../../../entry-actions';
 import Paths from '../../../constants/Paths';
 import { ProjectBackgroundTypes } from '../../../constants/Enums';
+
+const PROJECT_STATUS_CONFIG = {
+  on_track: { label: 'En curso', color: '#61bd4f' },
+  at_risk: { label: 'En riesgo', color: '#f2d600' },
+  on_hold: { label: 'Detenido', color: '#eb5a46' },
+  completed: { label: 'Completado', color: '#0079bf' },
+};
 import UserAvatar from '../../users/UserAvatar';
 
 import styles from './ProjectCard.module.scss';
@@ -124,8 +131,22 @@ const ProjectCard = React.memo(
             >
               {project.name}
             </div>
+            {project.clientName && (
+              <div className={styles.client}>
+                <Icon fitted name="building" size="small" className={styles.clientIcon} />
+                {project.clientName}
+              </div>
+            )}
             {withDescription && project.description && (
               <div className={styles.description}>{project.description}</div>
+            )}
+            {project.projectStatus && (
+              <div
+                className={styles.statusBadge}
+                style={{ backgroundColor: (PROJECT_STATUS_CONFIG[project.projectStatus] || PROJECT_STATUS_CONFIG.on_track).color }}
+              >
+                {(PROJECT_STATUS_CONFIG[project.projectStatus] || PROJECT_STATUS_CONFIG.on_track).label}
+              </div>
             )}
           </div>
           {withTypeIndicator && (

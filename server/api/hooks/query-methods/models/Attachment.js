@@ -104,6 +104,11 @@ const getByCardIds = (cardIds) =>
     cardId: cardIds,
   });
 
+const getByCommentIds = (commentIds) =>
+  defaultFind({
+    commentId: commentIds,
+  });
+
 const getOneById = (id, { cardId } = {}) => {
   const criteria = {
     id,
@@ -203,6 +208,7 @@ module.exports = {
   getByIds,
   getByCardId,
   getByCardIds,
+  getByCommentIds,
   getOneById,
   update,
   updateOne,

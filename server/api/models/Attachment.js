@@ -110,5 +110,9 @@ module.exports = {
       model: 'User',
       columnName: 'creator_user_id',
     },
+    commentId: {
+      model: 'Comment',
+      columnName: 'comment_id',
+    },
   },
 };

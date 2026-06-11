@@ -44,10 +44,11 @@
  *                 nullable: true
  *                 description: Name/title of the task (required if `linkedCardId` is not provided)
  *                 example: Write unit tests
- *               isCompleted:
- *                 type: boolean
- *                 description: Whether the task is completed
- *                 example: false
+ *               status:
+ *                 type: string
+ *                 enum: [not_started, in_progress, pending_info, pending_client, internal_review, blocked, completed]
+ *                 description: Initial status of the task
+ *                 example: not_started
  *     responses:
  *       200:
  *         description: Task created successfully
@@ -107,11 +108,12 @@ module.exports = {
       maxLength: 1024,
       allowNull: true,
     },
-    isCompleted: {
-      type: 'boolean',
+    status: {
+      type: 'string',
+      isIn: ['not_started', 'in_progress', 'pending_info', 'pending_client', 'internal_review', 'blocked', 'completed'],
     },
     dueDate: {
-      type: 'ref',
+      type: 'string',
       allowNull: true,
     },
   },
@@ -178,7 +180,7 @@ module.exports = {
       }
     }
 
-    const values = _.pick(inputs, ['position', 'name', 'isCompleted', 'dueDate']);
+    const values = _.pick(inputs, ['position', 'name', 'status', 'dueDate']);
 
     const task = await sails.helpers.tasks.createOne
       .with({

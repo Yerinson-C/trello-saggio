@@ -388,6 +388,10 @@ export default {
       whatsNew_title: 'Novedades',
       withoutBaseGroup: 'Sin grupo base',
       writeComment: 'Escribe un comentario...',
+      writeReply: 'Escribe una respuesta...',
+      searchComments: 'Buscar conversaciones...',
+      searchConversations_title: 'Buscar conversaciones',
+      noCommentsFound: 'No se encontraron comentarios',
     },
 
     action: {
@@ -415,6 +419,8 @@ export default {
       archiveCards: 'Archivar tarjetas',
       archiveCards_title: 'Archivar tarjetas',
       assignAsOwner: 'Asignar como propietario',
+      attach: 'Adjuntar',
+      reply: 'Responder',
       cancel: 'Cancelar',
       copy: 'Copiar',
       copyCard_title: 'Copiar tarjeta',

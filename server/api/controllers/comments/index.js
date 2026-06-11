@@ -115,10 +115,15 @@ module.exports = {
     const userIds = sails.helpers.utils.mapRecords(comments, 'userId', true, true);
     const users = await User.qm.getByIds(userIds);
 
+    const commentIds = sails.helpers.utils.mapRecords(comments);
+    const attachments =
+      commentIds.length > 0 ? await Attachment.qm.getByCommentIds(commentIds) : [];
+
     return {
       items: comments,
       included: {
         users: sails.helpers.users.presentMany(users, currentUser),
+        attachments: sails.helpers.attachments.presentMany(attachments),
       },
     };
   },

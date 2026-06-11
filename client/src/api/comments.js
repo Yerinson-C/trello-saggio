@@ -3,7 +3,9 @@
  * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
+import http from './http';
 import socket from './socket';
+import { transformAttachment } from './attachments';
 
 /* Transformers */
 
@@ -26,6 +28,27 @@ const createComment = (cardId, data, headers) =>
   socket.post(`/cards/${cardId}/comments`, data, headers).then((body) => ({
     ...body,
     item: transformComment(body.item),
+  }));
+
+const createCommentAttachment = (commentId, { file, ...data }, requestId, headers) =>
+  http
+    .post(
+      `/comments/${commentId}/attachments?requestId=${requestId}`,
+      {
+        ...data,
+        file,
+      },
+      headers,
+    )
+    .then((body) => ({
+      ...body,
+      item: transformAttachment(body.item),
+    }));
+
+const searchCommentsInBoard = (boardId, data, headers) =>
+  socket.get(`/boards/${boardId}/comments/search`, data, headers).then((body) => ({
+    ...body,
+    items: body.items.map(transformComment),
   }));
 
 const updateComment = (id, data, headers) =>
@@ -56,6 +79,8 @@ const makeHandleCommentDelete = makeHandleCommentUpdate;
 export default {
   getComments,
   createComment,
+  createCommentAttachment,
+  searchCommentsInBoard,
   updateComment,
   deleteComment,
   makeHandleCommentCreate,

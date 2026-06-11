@@ -7,7 +7,14 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Button, Checkbox, Grid, Icon } from 'semantic-ui-react';
+import { Button, Checkbox, Dropdown, Grid, Icon } from 'semantic-ui-react';
+
+const PRIORITY_OPTIONS = [
+  { key: 'urgent', value: 'urgent', text: '🔴 Urgente' },
+  { key: 'high', value: 'high', text: '🟠 Alta' },
+  { key: 'normal', value: 'normal', text: '🔵 Normal' },
+  { key: 'low', value: 'low', text: '⚪ Baja' },
+];
 import { useDidUpdate } from '../../../lib/hooks';
 
 import selectors from '../../../selectors';
@@ -37,6 +44,7 @@ import LabelChip from '../../labels/LabelChip';
 import LabelsStep from '../../labels/LabelsStep';
 import ListsStep from '../../lists/ListsStep';
 import AddTaskListStep from '../../task-lists/AddTaskListStep';
+import InboundEmailInbox from '../../inbound-emails/InboundEmailInbox';
 import Attachments from '../../attachments/Attachments';
 import AddAttachmentStep from '../../attachments/AddAttachmentStep';
 import AddCustomFieldGroupStep from '../../custom-field-groups/AddCustomFieldGroupStep';
@@ -49,6 +57,7 @@ const ProjectContent = React.memo(() => {
 
   const card = useSelector(selectors.selectCurrentCard);
   const board = useSelector(selectors.selectCurrentBoard);
+  const currentProject = useSelector(selectors.selectCurrentProject);
   const userIds = useSelector(selectors.selectUserIdsForCurrentCard);
   const labelIds = useSelector(selectors.selectLabelIdsForCurrentCard);
   const attachmentIds = useSelector(selectors.selectAttachmentIdsForCurrentCard);
@@ -233,6 +242,13 @@ const ProjectContent = React.memo(() => {
   const handleLabelDeselect = useCallback(
     (labelId) => {
       dispatch(entryActions.removeLabelFromCurrentCard(labelId));
+    },
+    [dispatch],
+  );
+
+  const handlePriorityChange = useCallback(
+    (_e, { value }) => {
+      dispatch(entryActions.updateCurrentCard({ priority: value }));
     },
     [dispatch],
   );
@@ -531,6 +547,18 @@ const ProjectContent = React.memo(() => {
           )}
           <CustomFieldGroups />
           <TaskLists />
+          {currentProject && (
+            <div className={styles.contentModule}>
+              <div className={styles.moduleWrapper}>
+                <InboundEmailInbox
+                  projectId={currentProject.id}
+                  cardId={card.id}
+                  projectCode={currentProject.projectCode}
+                  activityCode={card.activityCode}
+                />
+              </div>
+            </div>
+          )}
           {attachmentIds.length > 0 && (
             <div className={styles.contentModule}>
               <div className={styles.moduleWrapper}>
@@ -614,6 +642,16 @@ const ProjectContent = React.memo(() => {
                       })}
                     </Button>
                   </EditDueDatePopup>
+                )}
+                {canEditDueDate && (
+                  <Dropdown
+                    fluid
+                    selection
+                    options={PRIORITY_OPTIONS}
+                    value={card.priority || 'normal'}
+                    className={classNames(styles.actionButton, styles.priorityDropdown)}
+                    onChange={handlePriorityChange}
+                  />
                 )}
                 {canEditStopwatch && (
                   <EditStopwatchPopup cardId={card.id}>

@@ -173,6 +173,18 @@ module.exports = {
     }
 
     const remoteAddress = getRemoteAddress(this.req);
+
+    // Solo se permite iniciar sesión con correos @saggioesg.com
+    const ALLOWED_DOMAIN = sails.config.custom.allowedEmailDomain;
+    if (ALLOWED_DOMAIN) {
+      const emailToCheck = inputs.emailOrUsername.includes('@')
+        ? inputs.emailOrUsername
+        : null;
+      if (emailToCheck && !emailToCheck.toLowerCase().endsWith(`@${ALLOWED_DOMAIN}`)) {
+        throw Errors.INVALID_CREDENTIALS;
+      }
+    }
+
     const user = await User.qm.getOneActiveByEmailOrUsername(inputs.emailOrUsername);
 
     if (!user) {

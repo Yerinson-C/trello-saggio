@@ -141,6 +141,11 @@ module.exports.routes = {
   'DELETE /api/projects/:id': 'projects/delete',
 
   'GET /api/projects/:id/members': 'projects/members',
+
+  // Inbound email integration
+  'GET /api/projects/:projectId/inbound-emails': 'inbound-emails/index',
+  'GET /api/cards/:cardId/inbound-emails': 'inbound-emails/index',
+  'POST /api/inbound-emails/:id/convert': 'inbound-emails/convert',
   'POST /api/projects/:projectId/managers': 'project-managers/create',
   'POST /api/projects/:projectId/project-managers': 'project-managers/create',
   'DELETE /api/projects/:projectId/managers/:userId': 'project-managers/delete-by-user',
@@ -199,6 +204,8 @@ module.exports.routes = {
   'PATCH /api/attachments/:id': 'attachments/update',
   'DELETE /api/attachments/:id': 'attachments/delete',
 
+  'POST /api/comments/:commentId/attachments': 'comments/create-attachment',
+
   'POST /api/boards/:boardId/custom-field-groups': 'custom-field-groups/create-in-board',
   'POST /api/cards/:cardId/custom-field-groups': 'custom-field-groups/create-in-card',
   'GET /api/custom-field-groups/:id': 'custom-field-groups/show',
@@ -221,6 +228,7 @@ module.exports.routes = {
   'POST /api/cards/:cardId/comments': 'comments/create',
   'PATCH /api/comments/:id': 'comments/update',
   'DELETE /api/comments/:id': 'comments/delete',
+  'GET /api/boards/:boardId/comments/search': 'comments/search-in-board',
 
   'GET /api/boards/:boardId/actions': 'actions/index-in-board',
   'GET /api/cards/:cardId/actions': 'actions/index-in-card',

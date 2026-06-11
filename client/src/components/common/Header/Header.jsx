@@ -89,6 +89,10 @@ const Header = React.memo(() => {
     dispatch(entryActions.openProjectSettingsModal());
   }, [canEditProject, dispatch]);
 
+  const handleProjectInboxClick = useCallback(() => {
+    dispatch(entryActions.openProjectInboxModal());
+  }, [dispatch]);
+
   const NotificationsPopup = usePopup(NotificationsStep, POPUP_PROPS);
   const UserActionsPopup = usePopup(UserActionsStep, POPUP_PROPS);
 
@@ -163,6 +167,15 @@ const Header = React.memo(() => {
                 <Icon fitted name="users" />
               </Menu.Item>
             </>
+          )}
+          {project && (
+            <Menu.Item
+              className={classNames(styles.item, styles.itemHoverable)}
+              onClick={handleProjectInboxClick}
+              title="Correos del proyecto"
+            >
+              <Icon fitted name="mail" />
+            </Menu.Item>
           )}
           <NotificationsPopup>
             <Menu.Item className={classNames(styles.item, styles.itemHoverable)}>

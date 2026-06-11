@@ -65,6 +65,9 @@ const Errors = {
   CARD_NOT_FOUND: {
     cardNotFound: 'Card not found',
   },
+  PARENT_COMMENT_NOT_FOUND: {
+    parentCommentNotFound: 'Parent comment not found',
+  },
 };
 
 module.exports = {
@@ -78,6 +81,7 @@ module.exports = {
       maxLength: 1048576,
       required: true,
     },
+    parentCommentId: idInput,
   },
 
   exits: {
@@ -85,6 +89,9 @@ module.exports = {
       responseType: 'forbidden',
     },
     cardNotFound: {
+      responseType: 'notFound',
+    },
+    parentCommentNotFound: {
       responseType: 'notFound',
     },
   },
@@ -111,7 +118,15 @@ module.exports = {
       }
     }
 
-    const values = _.pick(inputs, ['text']);
+    if (inputs.parentCommentId) {
+      const parentComment = await Comment.qm.getOneById(inputs.parentCommentId);
+
+      if (!parentComment || parentComment.cardId !== card.id) {
+        throw Errors.PARENT_COMMENT_NOT_FOUND;
+      }
+    }
+
+    const values = _.pick(inputs, ['text', 'parentCommentId']);
 
     const comment = await sails.helpers.comments.createOne.with({
       project,

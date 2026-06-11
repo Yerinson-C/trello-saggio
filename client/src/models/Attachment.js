@@ -48,6 +48,11 @@ export default class extends BaseModel {
       as: 'creatorUser',
       relatedName: 'createdAttachments',
     }),
+    commentId: fk({
+      to: 'Comment',
+      as: 'comment',
+      relatedName: 'attachments',
+    }),
   };
 
   static reducer({ type, payload }, Attachment) {

@@ -21,6 +21,10 @@ module.exports = {
   async fn(inputs) {
     const { values } = inputs;
 
+    // Auto-assign short sequential project code for email tokens (SGG-PROY-102)
+    const maxCodeResult = await Project.count();
+    values.projectCode = maxCodeResult + 1;
+
     const { project, projectManager } = await Project.qm.createOne(values, {
       user: inputs.actorUser,
     });

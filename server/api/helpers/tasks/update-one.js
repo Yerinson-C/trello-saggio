@@ -136,11 +136,14 @@ module.exports = {
         user: inputs.actorUser,
       });
 
-      if (inputs.record.isCompleted !== task.isCompleted) {
+      const wasCompleted = inputs.record.status === 'completed';
+      const isNowCompleted = task.status === 'completed';
+
+      if (wasCompleted !== isNowCompleted) {
         await sails.helpers.actions.createOne.with({
           webhooks,
           values: {
-            type: task.isCompleted ? Action.Types.COMPLETE_TASK : Action.Types.UNCOMPLETE_TASK,
+            type: isNowCompleted ? Action.Types.COMPLETE_TASK : Action.Types.UNCOMPLETE_TASK,
             data: {
               card: _.pick(inputs.card, ['name']),
               task: _.pick(task, ['id', 'name']),

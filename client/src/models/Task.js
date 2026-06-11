@@ -8,6 +8,14 @@ import { attr, fk } from 'redux-orm';
 import BaseModel from './BaseModel';
 import ActionTypes from '../constants/ActionTypes';
 
+const normalizeTask = (task) => {
+  if (task && task.isCompleted !== undefined && task.status === undefined) {
+    const { isCompleted, ...rest } = task;
+    return { ...rest, status: isCompleted ? 'completed' : 'not_started' };
+  }
+  return task;
+};
+
 export default class extends BaseModel {
   static modelName = 'Task';
 
@@ -15,8 +23,8 @@ export default class extends BaseModel {
     id: attr(),
     position: attr(),
     name: attr(),
-    isCompleted: attr({
-      getDefault: () => false,
+    status: attr({
+      getDefault: () => 'not_started',
     }),
     dueDate: attr(),
     taskListId: fk({
@@ -49,7 +57,7 @@ export default class extends BaseModel {
       case ActionTypes.CARD_TRANSFER__FAILURE:
         if (payload.tasks) {
           payload.tasks.forEach((task) => {
-            Task.upsert(task);
+            Task.upsert(normalizeTask(task));
           });
         }
 
@@ -59,7 +67,7 @@ export default class extends BaseModel {
 
         if (payload.tasks) {
           payload.tasks.forEach((task) => {
-            Task.upsert(task);
+            Task.upsert(normalizeTask(task));
           });
         }
 
@@ -70,7 +78,7 @@ export default class extends BaseModel {
       case ActionTypes.CARD_TRANSFER__SUCCESS:
       case ActionTypes.CARD_DUPLICATE__SUCCESS:
         payload.tasks.forEach((task) => {
-          Task.upsert(task);
+          Task.upsert(normalizeTask(task));
         });
 
         break;
@@ -78,12 +86,12 @@ export default class extends BaseModel {
       case ActionTypes.TASK_CREATE_HANDLE:
       case ActionTypes.TASK_UPDATE__SUCCESS:
       case ActionTypes.TASK_UPDATE_HANDLE:
-        Task.upsert(payload.task);
+        Task.upsert(normalizeTask(payload.task));
 
         break;
       case ActionTypes.TASK_CREATE__SUCCESS:
         Task.withId(payload.localId).delete();
-        Task.upsert(payload.task);
+        Task.upsert(normalizeTask(payload.task));
 
         break;
       case ActionTypes.TASK_CREATE__FAILURE:
@@ -119,7 +127,7 @@ export default class extends BaseModel {
       assigneeUserId: this.assigneeUserId,
       position: this.position,
       name: this.name,
-      isCompleted: this.isCompleted,
+      status: this.status,
       dueDate: this.dueDate,
       ...data,
     });

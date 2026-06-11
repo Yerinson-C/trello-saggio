@@ -46,6 +46,20 @@ const getByCardId = (cardId, { beforeId } = {}) => {
   return defaultFind(criteria, { limit: LIMIT });
 };
 
+const getByParentCommentId = (parentCommentId) =>
+  Comment.find({ parentCommentId }).sort('id ASC');
+
+const getByParentCommentIds = (parentCommentIds) =>
+  Comment.find({ parentCommentId: parentCommentIds }).sort('id ASC');
+
+const searchByCardIds = (cardIds, text) =>
+  Comment.find({
+    cardId: cardIds,
+    text: { contains: text },
+  })
+    .sort('id DESC')
+    .limit(LIMIT);
+
 const getOneById = (id) => Comment.findOne(id);
 
 const update = (criteria, values) => Comment.update(criteria).set(values).fetch();
@@ -117,6 +131,9 @@ module.exports = {
   createOne,
   getByIds,
   getByCardId,
+  getByParentCommentId,
+  getByParentCommentIds,
+  searchByCardIds,
   getOneById,
   update,
   updateOne,

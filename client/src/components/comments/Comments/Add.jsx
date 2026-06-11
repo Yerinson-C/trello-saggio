@@ -4,7 +4,8 @@
  */
 
 import keyBy from 'lodash/keyBy';
-import React, { useCallback, useState, useRef, useMemo } from 'react';
+import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Mention, MentionsInput } from 'react-mentions';
@@ -24,7 +25,7 @@ const DEFAULT_DATA = {
   text: '',
 };
 
-const Add = React.memo(() => {
+const Add = React.memo(({ parentCommentId, autoFocus, onSubmit }) => {
   const boardMemberships = useSelector(selectors.selectMembershipsForCurrentBoard);
 
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const Add = React.memo(() => {
     const cleanData = {
       ...data,
       text: mentionTextToMarkup(data.text.trim(), userByUsername),
+      ...(parentCommentId && { parentCommentId }),
     };
 
     if (!cleanData.text) {
@@ -61,7 +63,11 @@ const Add = React.memo(() => {
     dispatch(entryActions.createCommentInCurrentCard(cleanData));
     setData(DEFAULT_DATA);
     selectTextField();
-  }, [dispatch, data, setData, selectTextField, userByUsername]);
+
+    if (onSubmit) {
+      onSubmit();
+    }
+  }, [dispatch, data, setData, selectTextField, userByUsername, parentCommentId, onSubmit]);
 
   const handleEscape = useCallback(() => {
     if (textMentionsRef.current.isOpened()) {
@@ -138,6 +144,13 @@ const Add = React.memo(() => {
     textInputRef.current.focus();
   }, [selectTextFieldState]);
 
+  useEffect(() => {
+    if (autoFocus) {
+      setIsOpened(true);
+      textInputRef.current.focus();
+    }
+  }, [autoFocus]);
+
   return (
     <Form onSubmit={handleSubmit}>
       <div ref={textFieldRef} className={styles.field}>
@@ -148,7 +161,7 @@ const Add = React.memo(() => {
           ref={textMentionsRef}
           inputRef={textInputRef}
           value={data.text}
-          placeholder={t('common.writeComment')}
+          placeholder={t(parentCommentId ? 'common.writeReply' : 'common.writeComment')}
           maxLength={1048576}
           rows={isOpened ? 3 : 1}
           className="mentions-input"
@@ -187,5 +200,17 @@ const Add = React.memo(() => {
     </Form>
   );
 });
+
+Add.propTypes = {
+  parentCommentId: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  onSubmit: PropTypes.func,
+};
+
+Add.defaultProps = {
+  parentCommentId: undefined,
+  autoFocus: false,
+  onSubmit: undefined,
+};
 
 export default Add;

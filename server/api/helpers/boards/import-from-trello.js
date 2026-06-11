@@ -110,7 +110,7 @@ module.exports = {
               taskListId: id,
               position: trelloCheckItem.pos,
               name: trelloCheckItem.name,
-              isCompleted: trelloCheckItem.state === 'complete',
+              status: trelloCheckItem.state === 'complete' ? 'completed' : 'not_started',
             }),
           ),
         );

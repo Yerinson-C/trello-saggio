@@ -111,7 +111,7 @@ const updateOne = async (criteria, values) => {
               linkedCardId: sails.helpers.utils.mapRecords(cards),
             })
               .set({
-                isCompleted: isClosed,
+                status: isClosed ? 'completed' : 'not_started',
               })
               .fetch()
               .usingConnection(db);

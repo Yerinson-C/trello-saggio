@@ -87,6 +87,13 @@ const Types = {
   SHARED: 'shared',
 };
 
+const Statuses = {
+  ON_TRACK: 'on_track',
+  AT_RISK: 'at_risk',
+  ON_HOLD: 'on_hold',
+  COMPLETED: 'completed',
+};
+
 const BackgroundTypes = {
   GRADIENT: 'gradient',
   IMAGE: 'image',
@@ -122,6 +129,7 @@ const BACKGROUND_GRADIENTS = [
 
 module.exports = {
   Types,
+  Statuses,
   BackgroundTypes,
   BACKGROUND_GRADIENTS,
 
@@ -133,6 +141,42 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
+    },
+    projectCode: {
+      type: 'number',
+      allowNull: true,
+      columnName: 'project_code',
+    },
+    clientName: {
+      type: 'string',
+      allowNull: true,
+      maxLength: 256,
+      columnName: 'client_name',
+    },
+    serviceType: {
+      type: 'string',
+      allowNull: true,
+      maxLength: 256,
+      columnName: 'service_type',
+    },
+    serviceDescription: {
+      type: 'string',
+      allowNull: true,
+      columnName: 'service_description',
+    },
+    scope: {
+      type: 'string',
+      allowNull: true,
+    },
+    objectives: {
+      type: 'string',
+      allowNull: true,
+    },
+    projectStatus: {
+      type: 'string',
+      isIn: Object.values(Statuses),
+      defaultsTo: Statuses.ON_TRACK,
+      columnName: 'project_status',
     },
     description: {
       type: 'string',

@@ -421,7 +421,10 @@ export const selectCommentIdsForCurrentCard = createSelector(
       return cardModel;
     }
 
-    return cardModel.getCommentsModelArray().map((commentModel) => commentModel.id);
+    return cardModel
+      .getCommentsModelArray()
+      .filter((commentModel) => !commentModel.parentCommentId)
+      .map((commentModel) => commentModel.id);
   },
 );
 

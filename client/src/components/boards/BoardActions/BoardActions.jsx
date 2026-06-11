@@ -15,6 +15,7 @@ import { BoardContextIcons } from '../../../constants/Icons';
 import Filters from './Filters';
 import RightSide from './RightSide';
 import BoardMemberships from '../../board-memberships/BoardMemberships';
+import CommentSearch from '../../comments/CommentSearch/CommentSearch';
 
 import styles from './BoardActions.module.scss';
 
@@ -57,6 +58,9 @@ const BoardActions = React.memo(() => {
         )}
         <div className={styles.action}>
           <Filters />
+        </div>
+        <div className={styles.action}>
+          <CommentSearch />
         </div>
         <div className={classNames(styles.action, styles.actionRightSide)}>
           <RightSide />

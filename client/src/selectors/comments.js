@@ -28,7 +28,39 @@ export const makeSelectCommentById = () =>
 
 export const selectCommentById = makeSelectCommentById();
 
+export const makeSelectReplyIdsForCommentId = () =>
+  createSelector(
+    orm,
+    (_, id) => id,
+    ({ Comment }, id) => {
+      const commentModel = Comment.withId(id);
+
+      if (!commentModel) {
+        return [];
+      }
+
+      return commentModel.getRepliesModelArray().map((replyModel) => replyModel.id);
+    },
+  );
+
+export const makeSelectAttachmentIdsForCommentId = () =>
+  createSelector(
+    orm,
+    (_, id) => id,
+    ({ Comment }, id) => {
+      const commentModel = Comment.withId(id);
+
+      if (!commentModel) {
+        return [];
+      }
+
+      return commentModel.getAttachmentsModelArray().map((attachmentModel) => attachmentModel.id);
+    },
+  );
+
 export default {
   makeSelectCommentById,
   selectCommentById,
+  makeSelectReplyIdsForCommentId,
+  makeSelectAttachmentIdsForCommentId,
 };

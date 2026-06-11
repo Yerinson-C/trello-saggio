@@ -96,6 +96,16 @@ export const AttachmentTypes = {
   LINK: 'link',
 };
 
+export const TaskStatuses = {
+  NOT_STARTED: 'not_started',
+  IN_PROGRESS: 'in_progress',
+  PENDING_INFO: 'pending_info',
+  PENDING_CLIENT: 'pending_client',
+  INTERNAL_REVIEW: 'internal_review',
+  BLOCKED: 'blocked',
+  COMPLETED: 'completed',
+};
+
 export const ActivityTypes = {
   CREATE_CARD: 'createCard',
   MOVE_CARD: 'moveCard',

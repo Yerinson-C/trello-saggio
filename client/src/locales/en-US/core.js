@@ -373,6 +373,10 @@ export default {
       whatsNew_title: "What's New",
       withoutBaseGroup: 'Without base group',
       writeComment: 'Write a comment...',
+      writeReply: 'Write a reply...',
+      searchComments: 'Search comments...',
+      searchConversations_title: 'Search Conversations',
+      noCommentsFound: 'No comments found',
     },
 
     action: {
@@ -400,6 +404,8 @@ export default {
       archiveCards: 'Archive cards',
       archiveCards_title: 'Archive Cards',
       assignAsOwner: 'Assign as owner',
+      attach: 'Attach',
+      reply: 'Reply',
       cancel: 'Cancel',
       copy: 'Copy',
       copyCard_title: 'Copy Card',

@@ -46,10 +46,11 @@
  *                 maxLength: 1024
  *                 description: Name/title of the task
  *                 example: Write unit tests
- *               isCompleted:
- *                 type: boolean
- *                 description: Whether the task is completed
- *                 example: true
+ *               status:
+ *                 type: string
+ *                 enum: [not_started, in_progress, pending_info, pending_client, internal_review, blocked, completed]
+ *                 description: Status of the task
+ *                 example: in_progress
  *     responses:
  *       200:
  *         description: Task updated successfully
@@ -109,11 +110,12 @@ module.exports = {
       isNotEmptyString: true,
       maxLength: 1024,
     },
-    isCompleted: {
-      type: 'boolean',
+    status: {
+      type: 'string',
+      isIn: ['not_started', 'in_progress', 'pending_info', 'pending_client', 'internal_review', 'blocked', 'completed'],
     },
     dueDate: {
-      type: 'ref',
+      type: 'string',
       allowNull: true,
     },
   },
@@ -157,7 +159,7 @@ module.exports = {
     }
 
     if (task.linkedCardId) {
-      const availableInputKeys = ['id', 'taskListId', 'position'];
+      const availableInputKeys = ['id', 'taskListId', 'position', 'status'];
 
       if (_.difference(Object.keys(inputs), availableInputKeys).length > 0) {
         throw Errors.NOT_ENOUGH_RIGHTS;
@@ -186,7 +188,7 @@ module.exports = {
       }
     }
 
-    const values = _.pick(inputs, ['assigneeUserId', 'position', 'name', 'isCompleted', 'dueDate']);
+    const values = _.pick(inputs, ['assigneeUserId', 'position', 'name', 'status', 'dueDate']);
 
     task = await sails.helpers.tasks.updateOne.with({
       project,

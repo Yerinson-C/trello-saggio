@@ -35,14 +35,14 @@ const Task = React.memo(({ id }) => {
       {task.linkedCardId ? (
         <>
           <Icon name="exchange" size="small" className={styles.icon} />
-          <span className={classNames(styles.name, task.isCompleted && styles.nameCompleted)}>
+          <span className={classNames(styles.name, task.status === 'completed' && styles.nameCompleted)}>
             <Link to={Paths.CARDS.replace(':id', task.linkedCardId)} onClick={handleLinkClick}>
               {linkedCard ? linkedCard.name : task.name}
             </Link>
           </span>
         </>
       ) : (
-        <span className={classNames(styles.name, task.isCompleted && styles.nameCompleted)}>
+        <span className={classNames(styles.name, task.status === 'completed' && styles.nameCompleted)}>
           <Linkify linkStopPropagation>{task.name}</Linkify>
         </span>
       )}

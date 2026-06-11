@@ -3,6 +3,8 @@
  * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
+import omit from 'lodash/omit';
+import truncate from 'lodash/truncate';
 import { call, put, select } from 'redux-saga/effects';
 
 import request from '../request';
@@ -10,6 +12,7 @@ import selectors from '../../../selectors';
 import actions from '../../../actions';
 import api from '../../../api';
 import { createLocalId } from '../../../utils/local-id';
+import { AttachmentTypes } from '../../../constants/Enums';
 
 export function* fetchComments(cardId) {
   const { lastCommentId } = yield select(selectors.selectCardById, cardId);
@@ -110,6 +113,82 @@ export function* handleCommentDelete(comment) {
   yield put(actions.handleCommentDelete(comment));
 }
 
+export function* createCommentAttachment(commentId, data) {
+  const localId = yield call(createLocalId);
+  const currentUserId = yield select(selectors.selectCurrentUserId);
+  const { cardId } = yield select(selectors.selectPath);
+
+  const nextData = {
+    ...data,
+    name: truncate(data.name, {
+      length: 128,
+    }),
+  };
+
+  yield put(
+    actions.createAttachment({
+      ...omit(nextData, ['file']),
+      type: AttachmentTypes.FILE,
+      cardId,
+      commentId,
+      id: localId,
+      creatorUserId: currentUserId,
+    }),
+  );
+
+  let attachment;
+  try {
+    ({ item: attachment } = yield call(
+      request,
+      api.createCommentAttachment,
+      commentId,
+      nextData,
+      localId,
+    ));
+  } catch (error) {
+    yield put(actions.createAttachment.failure(localId, error));
+    return;
+  }
+
+  yield put(actions.createAttachment.success(localId, attachment));
+}
+
+export function* createCommentAttachmentInCurrentCard(commentId, data) {
+  yield call(createCommentAttachment, commentId, data);
+}
+
+export function* searchCommentsInCurrentBoard(query) {
+  const { boardId } = yield select(selectors.selectPath);
+
+  yield put(actions.searchComments(query));
+
+  if (!query) {
+    yield put(actions.searchComments.success(query, [], [], []));
+    return;
+  }
+
+  let comments;
+  let users;
+  let cards;
+  try {
+    ({
+      items: comments,
+      included: { users, cards },
+    } = yield call(request, api.searchCommentsInBoard, boardId, {
+      q: query,
+    }));
+  } catch (error) {
+    yield put(actions.searchComments.failure(query, error));
+    return;
+  }
+
+  yield put(actions.searchComments.success(query, comments, users, cards));
+}
+
+export function* clearCommentSearch() {
+  yield put(actions.clearCommentSearch());
+}
+
 export default {
   fetchComments,
   fetchCommentsInCurrentCard,
@@ -120,4 +199,8 @@ export default {
   handleCommentUpdate,
   deleteComment,
   handleCommentDelete,
+  createCommentAttachment,
+  createCommentAttachmentInCurrentCard,
+  searchCommentsInCurrentBoard,
+  clearCommentSearch,
 };

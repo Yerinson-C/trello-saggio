@@ -62,6 +62,7 @@ module.exports.custom = {
   defaultAdminEmail:
     process.env.DEFAULT_ADMIN_EMAIL && process.env.DEFAULT_ADMIN_EMAIL.toLowerCase(),
 
+  allowedEmailDomain: process.env.ALLOWED_EMAIL_DOMAIN || null,
   showDetailedAuthErrors: process.env.SHOW_DETAILED_AUTH_ERRORS === 'true',
   outgoingProxy: process.env.OUTGOING_PROXY,
   swaggerExposed: process.env.SWAGGER_EXPOSED === 'true',

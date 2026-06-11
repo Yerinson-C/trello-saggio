@@ -195,6 +195,10 @@ module.exports = {
     isSubscribed: {
       type: 'boolean',
     },
+    priority: {
+      type: 'string',
+      isIn: ['urgent', 'high', 'normal', 'low'],
+    },
   },
 
   exits: {
@@ -256,6 +260,7 @@ module.exports = {
         'dueDate',
         'isDueCompleted',
         'stopwatch',
+        'priority',
       );
     }
 
@@ -317,6 +322,7 @@ module.exports = {
       'isDueCompleted',
       'stopwatch',
       'isSubscribed',
+      'priority',
     ]);
 
     card = await sails.helpers.cards.updateOne

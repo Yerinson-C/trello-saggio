@@ -22,6 +22,15 @@ export default class extends BaseModel {
     isFavorite: attr({
       getDefault: () => false,
     }),
+    projectCode: attr(),
+    clientName: attr(),
+    serviceType: attr(),
+    serviceDescription: attr(),
+    scope: attr(),
+    objectives: attr(),
+    projectStatus: attr({
+      getDefault: () => 'on_track',
+    }),
     ownerProjectManagerId: oneToOne({
       to: 'ProjectManager',
       as: 'ownerProjectManager',

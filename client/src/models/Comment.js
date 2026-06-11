@@ -27,7 +27,34 @@ export default class extends BaseModel {
       as: 'user',
       relatedName: 'comments',
     }),
+    parentCommentId: fk({
+      to: 'Comment',
+      as: 'parentComment',
+      relatedName: 'replies',
+    }),
   };
+
+  getRepliesQuerySet() {
+    return this.replies.orderBy(['id.length', 'id'], ['asc', 'asc']);
+  }
+
+  getRepliesModelArray() {
+    return this.getRepliesQuerySet().toModelArray();
+  }
+
+  getAttachmentsQuerySet() {
+    return this.attachments.orderBy(['id.length', 'id'], ['asc', 'asc']);
+  }
+
+  getAttachmentsModelArray() {
+    return this.getAttachmentsQuerySet().toModelArray();
+  }
+
+  deleteWithRelated() {
+    this.getRepliesModelArray().forEach((replyModel) => replyModel.deleteWithRelated());
+    this.attachments.delete();
+    this.delete();
+  }
 
   static reducer({ type, payload }, Comment) {
     switch (type) {
@@ -69,8 +96,8 @@ export default class extends BaseModel {
         break;
       case ActionTypes.COMMENT_DELETE: {
         const commentModel = Comment.withId(payload.id);
-        commentModel.delete();
         commentModel.card.commentsTotal -= 1;
+        commentModel.deleteWithRelated();
 
         break;
       }
@@ -79,7 +106,7 @@ export default class extends BaseModel {
         const commentModel = Comment.withId(payload.comment.id);
 
         if (commentModel) {
-          commentModel.delete();
+          commentModel.deleteWithRelated();
         }
 
         break;

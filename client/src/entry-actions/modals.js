@@ -61,6 +61,13 @@ const openBoardActivitiesModal = () => ({
   },
 });
 
+const openProjectInboxModal = () => ({
+  type: EntryActionTypes.MODAL_OPEN,
+  payload: {
+    type: ModalTypes.PROJECT_INBOX,
+  },
+});
+
 const closeModal = () => ({
   type: EntryActionTypes.MODAL_CLOSE,
   payload: {},
@@ -74,5 +81,6 @@ export default {
   openProjectSettingsModal,
   openBoardSettingsModal,
   openBoardActivitiesModal,
+  openProjectInboxModal,
   closeModal,
 };

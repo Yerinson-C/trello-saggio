@@ -14,6 +14,13 @@ import entryActions from '../../../entry-actions';
 import { startStopwatch, stopStopwatch } from '../../../utils/stopwatch';
 import { isListArchiveOrTrash } from '../../../utils/record-helpers';
 import { BoardMembershipRoles, BoardViews } from '../../../constants/Enums';
+
+const PRIORITY_CONFIG = {
+  urgent: { label: '🔴 Urgente', color: '#eb5a46' },
+  high: { label: '🟠 Alta', color: '#ff9f1a' },
+  normal: { label: '🔵 Normal', color: '#0079bf' },
+  low: { label: '⚪ Baja', color: '#b3bac5' },
+};
 import TaskList from './TaskList';
 import DueDateChip from '../DueDateChip';
 import StopwatchChip from '../StopwatchChip';
@@ -153,6 +160,15 @@ const ProjectContent = React.memo(({ cardId }) => {
         <div className={styles.coverWrapper}>
           <img src={coverUrl} alt="" className={styles.cover} />
         </div>
+      )}
+      {card.priority && card.priority !== 'normal' && (
+        <span
+          className={styles.priorityBadge}
+          style={{ borderLeftColor: (PRIORITY_CONFIG[card.priority] || PRIORITY_CONFIG.normal).color }}
+          title={(PRIORITY_CONFIG[card.priority] || PRIORITY_CONFIG.normal).label}
+        >
+          {(PRIORITY_CONFIG[card.priority] || PRIORITY_CONFIG.normal).label}
+        </span>
       )}
       {labelIds.length > 0 && (
         <span className={classNames(styles.labels, !isCompact && styles.labelsFull)}>
