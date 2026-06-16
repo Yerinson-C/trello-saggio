@@ -21,10 +21,61 @@ import SelectTypeStep from './SelectTypeStep';
 
 import styles from './AddProjectModal.module.scss';
 
+/* ── Catálogo de servicios Saggio ── */
+const SERVICE_OPTIONS = [
+  // ── Huella de Carbono
+  { key: 'ghg_inventory', value: 'Inventario GEI (Alcances 1, 2 y 3)',       text: 'Inventario GEI (Alcances 1, 2 y 3)',       category: '🌡️ Huella de Carbono' },
+  { key: 'carbon_product', value: 'Huella de Carbono de Producto',            text: 'Huella de Carbono de Producto',            category: '🌡️ Huella de Carbono' },
+  { key: 'carbon_reduce',  value: 'Plan de Reducción de Emisiones',           text: 'Plan de Reducción de Emisiones',           category: '🌡️ Huella de Carbono' },
+  { key: 'carbon_neutral', value: 'Compensación y Neutralidad Climática',     text: 'Compensación y Neutralidad Climática',     category: '🌡️ Huella de Carbono' },
+  { key: 'iso14064',       value: 'Verificación / Certificación ISO 14064',   text: 'Verificación / Certificación ISO 14064',   category: '🌡️ Huella de Carbono' },
+  // ── Huella Hídrica
+  { key: 'water_corp',     value: 'Huella Hídrica Corporativa',               text: 'Huella Hídrica Corporativa',               category: '💧 Huella Hídrica' },
+  { key: 'water_product',  value: 'Huella Hídrica de Producto',               text: 'Huella Hídrica de Producto',               category: '💧 Huella Hídrica' },
+  { key: 'water_plan',     value: 'Plan de Gestión del Agua',                 text: 'Plan de Gestión del Agua',                 category: '💧 Huella Hídrica' },
+  { key: 'iso14046',       value: 'Certificación ISO 14046 / WFN',            text: 'Certificación ISO 14046 / WFN',            category: '💧 Huella Hídrica' },
+  // ── ESG y Sostenibilidad
+  { key: 'esg_strategy',   value: 'Estrategia ESG',                           text: 'Estrategia ESG',                           category: '🌿 ESG y Sostenibilidad' },
+  { key: 'gri_report',     value: 'Reporte de Sostenibilidad (GRI)',          text: 'Reporte de Sostenibilidad (GRI)',          category: '🌿 ESG y Sostenibilidad' },
+  { key: 'lca',            value: 'Análisis de Ciclo de Vida (ACV / LCA)',    text: 'Análisis de Ciclo de Vida (ACV / LCA)',    category: '🌿 ESG y Sostenibilidad' },
+  { key: 'env_diag',       value: 'Diagnóstico Ambiental',                   text: 'Diagnóstico Ambiental',                   category: '🌿 ESG y Sostenibilidad' },
+  { key: 'sdg_mapping',    value: 'Mapeo y Alineación con ODS',               text: 'Mapeo y Alineación con ODS',               category: '🌿 ESG y Sostenibilidad' },
+  // ── Consultoría y Capacitación
+  { key: 'climate_plan',   value: 'Plan de Acción Climática',                 text: 'Plan de Acción Climática',                 category: '📋 Consultoría y Capacitación' },
+  { key: 'training',       value: 'Formación y Capacitación en Sostenibilidad', text: 'Formación y Capacitación en Sostenibilidad', category: '📋 Consultoría y Capacitación' },
+  { key: 'regulatory',     value: 'Asesoría Regulatoria Ambiental',           text: 'Asesoría Regulatoria Ambiental',           category: '📋 Consultoría y Capacitación' },
+  { key: 'supply_chain',   value: 'Sostenibilidad en Cadena de Suministro',   text: 'Sostenibilidad en Cadena de Suministro',   category: '📋 Consultoría y Capacitación' },
+];
+
+const SERVICE_OPTIONS_UI = SERVICE_OPTIONS.map((o) => ({
+  ...o,
+  content: (
+    <div>
+      <span style={{ fontSize: 11, color: '#888', display: 'block' }}>{o.category}</span>
+      {o.text}
+    </div>
+  ),
+}));
+
+/* Normas / estándares de referencia */
+const STANDARD_OPTIONS = [
+  { key: 'ghg',    value: 'GHG Protocol',                    text: 'GHG Protocol' },
+  { key: '14064',  value: 'ISO 14064',                       text: 'ISO 14064' },
+  { key: '14046',  value: 'ISO 14046',                       text: 'ISO 14046' },
+  { key: 'wfn',    value: 'Water Footprint Network (WFN)',   text: 'Water Footprint Network (WFN)' },
+  { key: 'gri',    value: 'GRI Standards',                   text: 'GRI Standards' },
+  { key: 'tcfd',   value: 'TCFD',                            text: 'TCFD' },
+  { key: 'cdp',    value: 'CDP',                             text: 'CDP' },
+  { key: 'sbti',   value: 'Science Based Targets (SBTi)',    text: 'Science Based Targets (SBTi)' },
+  { key: 'iso14001', value: 'ISO 14001',                     text: 'ISO 14001' },
+  { key: 'lca14040', value: 'ISO 14040 / 14044 (ACV)',       text: 'ISO 14040 / 14044 (ACV)' },
+  { key: 'otros',  value: 'Otros / Interno',                 text: 'Otros / Interno' },
+];
+
 const PROJECT_STATUS_OPTIONS = [
-  { key: 'on_track', value: 'on_track', text: '🟢 En curso' },
-  { key: 'at_risk', value: 'at_risk', text: '🟡 En riesgo' },
-  { key: 'on_hold', value: 'on_hold', text: '🔴 Detenido' },
+  { key: 'on_track',  value: 'on_track',  text: '🟢 En curso' },
+  { key: 'at_risk',   value: 'at_risk',   text: '🟡 En riesgo' },
+  { key: 'on_hold',   value: 'on_hold',   text: '🔴 Detenido' },
   { key: 'completed', value: 'completed', text: '✅ Completado' },
 ];
 
@@ -42,10 +93,10 @@ const AddProjectModal = React.memo(() => {
 
   const [data, handleFieldChange, setData] = useForm(() => ({
     name: '',
-    description: '',
     type: ProjectTypes.PRIVATE,
     clientName: '',
     serviceType: '',
+    serviceStandard: '',
     serviceDescription: '',
     scope: '',
     objectives: '',
@@ -54,9 +105,7 @@ const AddProjectModal = React.memo(() => {
     endDate: '',
     memberUserIds: [],
     ...defaultData,
-    ...(defaultType && {
-      type: defaultType,
-    }),
+    ...(defaultType && { type: defaultType }),
   }));
 
   const [nameFieldRef, handleNameFieldRef] = useNestedRef('inputRef');
@@ -65,12 +114,15 @@ const AddProjectModal = React.memo(() => {
     const cleanData = {
       ...data,
       name: data.name.trim(),
-      description: data.description.trim() || null,
       clientName: data.clientName.trim() || null,
-      serviceType: data.serviceType.trim() || null,
-      serviceDescription: data.serviceDescription.trim() || null,
+      serviceType: data.serviceType || null,
+      serviceDescription: [
+        data.serviceStandard ? `Norma/Estándar: ${data.serviceStandard}` : '',
+        data.serviceDescription.trim(),
+      ].filter(Boolean).join('\n') || null,
       scope: data.scope.trim() || null,
       objectives: data.objectives.trim() || null,
+      description: null,
       startDate: data.startDate ? new Date(data.startDate).toISOString() : null,
       endDate: data.endDate ? new Date(data.endDate).toISOString() : null,
     };
@@ -87,23 +139,27 @@ const AddProjectModal = React.memo(() => {
     dispatch(entryActions.closeModal());
   }, [dispatch]);
 
-  const handleSubmit = useCallback(() => {
-    submit();
-  }, [submit]);
+  const handleSubmit = useCallback(() => { submit(); }, [submit]);
 
   const handleKeyDown = useCallback(
     (event) => {
-      if (isModifierKeyPressed(event) && event.key === 'Enter') {
-        submit();
-      }
+      if (isModifierKeyPressed(event) && event.key === 'Enter') submit();
     },
     [submit],
   );
 
+  const handleServiceTypeChange = useCallback(
+    (_e, { value }) => setData((prev) => ({ ...prev, serviceType: value })),
+    [setData],
+  );
+
+  const handleStandardChange = useCallback(
+    (_e, { value }) => setData((prev) => ({ ...prev, serviceStandard: value })),
+    [setData],
+  );
+
   const handleStatusChange = useCallback(
-    (_e, { value }) => {
-      setData((prev) => ({ ...prev, projectStatus: value }));
-    },
+    (_e, { value }) => setData((prev) => ({ ...prev, projectStatus: value })),
     [setData],
   );
 
@@ -121,19 +177,12 @@ const AddProjectModal = React.memo(() => {
   );
 
   const handleMembersChange = useCallback(
-    (_e, { value }) => {
-      setData((prev) => ({ ...prev, memberUserIds: value }));
-    },
+    (_e, { value }) => setData((prev) => ({ ...prev, memberUserIds: value })),
     [setData],
   );
 
   const handleTypeSelect = useCallback(
-    (type) => {
-      setData((prevData) => ({
-        ...prevData,
-        type,
-      }));
-    },
+    (type) => setData((prev) => ({ ...prev, type })),
     [setData],
   );
 
@@ -144,14 +193,29 @@ const AddProjectModal = React.memo(() => {
     nameFieldRef.current.focus();
   }, [deactivateClosable, nameFieldRef]);
 
-  useEffect(() => {
-    nameFieldRef.current.focus();
-  }, [nameFieldRef]);
+  useEffect(() => { nameFieldRef.current.focus(); }, [nameFieldRef]);
 
   const SelectTypePopup = usePopup(SelectTypeStep, {
     onOpen: activateClosable,
     onClose: handleSelectTypeClose,
   });
+
+  /* Placeholder dinámico según servicio seleccionado */
+  const scopePlaceholder = useMemo(() => {
+    if (!data.serviceType) return '¿Qué incluye y qué no incluye este proyecto?';
+    if (data.serviceType.includes('Huella Hídrica')) return 'Ej: Medición de agua azul, verde y gris en la cadena productiva de la empresa. Excluye operaciones fuera del territorio nacional.';
+    if (data.serviceType.includes('GEI') || data.serviceType.includes('Carbono')) return 'Ej: Cuantificación de emisiones directas (Alcance 1) e indirectas (Alcance 2) de todas las instalaciones del cliente. Excluye Alcance 3.';
+    if (data.serviceType.includes('ESG') || data.serviceType.includes('GRI')) return 'Ej: Elaboración del reporte de sostenibilidad bajo estándar GRI 2021, incluyendo materialidad y grupos de interés.';
+    return '¿Qué incluye y qué no incluye este proyecto?';
+  }, [data.serviceType]);
+
+  const objectivesPlaceholder = useMemo(() => {
+    if (!data.serviceType) return '¿Cuáles son los objetivos principales del proyecto?';
+    if (data.serviceType.includes('Huella Hídrica')) return 'Ej: Cuantificar la huella hídrica corporativa, identificar puntos críticos de consumo y formular un plan de eficiencia hídrica.';
+    if (data.serviceType.includes('GEI') || data.serviceType.includes('Carbono')) return 'Ej: Conocer el nivel de emisiones de GEI, establecer línea base y definir metas de reducción alineadas al Acuerdo de París.';
+    if (data.serviceType.includes('Reducción')) return 'Ej: Identificar medidas de abatimiento, calcular potencial de reducción y ROI ambiental por medida.';
+    return '¿Cuáles son los objetivos principales del proyecto?';
+  }, [data.serviceType]);
 
   return (
     <ClosableModal basic closeIcon size="small" onClose={handleClose}>
@@ -161,8 +225,8 @@ const AddProjectModal = React.memo(() => {
         </Header>
         <Form onSubmit={handleSubmit}>
 
-          {/* Nombre */}
-          <div className={styles.text}>{t('common.title')}</div>
+          {/* Nombre del proyecto */}
+          <div className={styles.text}>Nombre del proyecto *</div>
           <Input
             fluid
             inverted
@@ -170,6 +234,7 @@ const AddProjectModal = React.memo(() => {
             name="name"
             value={data.name}
             maxLength={128}
+            placeholder="Ej: Inventario GEI 2024 — Empresa XYZ"
             readOnly={isSubmitting}
             className={styles.field}
             onChange={handleFieldChange}
@@ -183,24 +248,38 @@ const AddProjectModal = React.memo(() => {
             name="clientName"
             value={data.clientName}
             maxLength={256}
-            placeholder="Nombre del cliente"
+            placeholder="Nombre de la empresa o persona"
             readOnly={isSubmitting}
             className={styles.field}
             onChange={handleFieldChange}
           />
 
-          {/* Servicio */}
+          {/* Tipo de servicio */}
           <div className={styles.text}>Tipo de servicio</div>
-          <Input
+          <Dropdown
             fluid
-            inverted
-            name="serviceType"
+            search
+            selection
+            clearable
+            options={SERVICE_OPTIONS_UI}
             value={data.serviceType}
-            maxLength={256}
-            placeholder="Ej: Consultoría, Desarrollo, Auditoría..."
-            readOnly={isSubmitting}
+            placeholder="Seleccionar servicio..."
             className={styles.field}
-            onChange={handleFieldChange}
+            onChange={handleServiceTypeChange}
+          />
+
+          {/* Norma / Estándar */}
+          <div className={styles.text}>Norma / Estándar de referencia</div>
+          <Dropdown
+            fluid
+            search
+            selection
+            clearable
+            options={STANDARD_OPTIONS}
+            value={data.serviceStandard}
+            placeholder="GHG Protocol, ISO 14064, GRI..."
+            className={styles.field}
+            onChange={handleStandardChange}
           />
 
           {/* Descripción del servicio */}
@@ -210,51 +289,39 @@ const AddProjectModal = React.memo(() => {
             value={data.serviceDescription}
             maxLength={2048}
             minRows={2}
-            placeholder="Describe el servicio que se prestará..."
+            placeholder="Describe brevemente el trabajo a realizar, metodología o entregables esperados..."
             className={styles.textarea}
             onKeyDown={handleKeyDown}
             onChange={handleFieldChange}
           />
 
           {/* Alcance */}
-          <div className={styles.text}>Alcance del proyecto</div>
+          <div className={styles.text}>Alcance</div>
           <TextareaAutosize
             name="scope"
             value={data.scope}
             maxLength={4096}
             minRows={2}
-            placeholder="¿Qué incluye y qué no incluye este proyecto?"
+            placeholder={scopePlaceholder}
             className={styles.textarea}
             onKeyDown={handleKeyDown}
             onChange={handleFieldChange}
           />
 
           {/* Objetivos */}
-          <div className={styles.text}>Objetivos</div>
+          <div className={styles.text}>Objetivos del proyecto</div>
           <TextareaAutosize
             name="objectives"
             value={data.objectives}
             maxLength={4096}
             minRows={2}
-            placeholder="¿Cuáles son los objetivos principales?"
+            placeholder={objectivesPlaceholder}
             className={styles.textarea}
             onKeyDown={handleKeyDown}
             onChange={handleFieldChange}
           />
 
-          {/* Descripción general */}
-          <div className={styles.text}>{t('common.description')}</div>
-          <TextareaAutosize
-            name="description"
-            value={data.description}
-            maxLength={1024}
-            minRows={2}
-            className={styles.textarea}
-            onKeyDown={handleKeyDown}
-            onChange={handleFieldChange}
-          />
-
-          {/* Estado del proyecto */}
+          {/* Estado */}
           <div className={styles.text}>Estado del proyecto</div>
           <Dropdown
             fluid
@@ -265,7 +332,7 @@ const AddProjectModal = React.memo(() => {
             onChange={handleStatusChange}
           />
 
-          {/* Fechas del proyecto */}
+          {/* Fechas */}
           <div className={styles.dateRow}>
             <div className={styles.dateField}>
               <div className={styles.text}>Fecha de inicio</div>
@@ -278,7 +345,7 @@ const AddProjectModal = React.memo(() => {
               />
             </div>
             <div className={styles.dateField}>
-              <div className={styles.text}>Fecha de fin</div>
+              <div className={styles.text}>Fecha de entrega</div>
               <input
                 type="date"
                 name="endDate"
@@ -300,11 +367,9 @@ const AddProjectModal = React.memo(() => {
                 selection
                 options={userOptions}
                 value={data.memberUserIds}
-                placeholder="Seleccionar miembros del equipo..."
+                placeholder="Seleccionar consultores del equipo..."
                 className={styles.field}
-                renderLabel={(item) => (
-                  <Label content={item.text} />
-                )}
+                renderLabel={(item) => <Label content={item.text} />}
                 onChange={handleMembersChange}
               />
             </>

@@ -137,8 +137,15 @@ const ProjectCard = React.memo(
                 {project.clientName}
               </div>
             )}
-            {withDescription && project.description && (
-              <div className={styles.description}>{project.description}</div>
+            {project.serviceType && (
+              <div className={styles.serviceChip}>
+                {project.serviceType}
+              </div>
+            )}
+            {withDescription && project.serviceDescription && (
+              <div className={styles.description}>
+                {project.serviceDescription.split('\n')[0]}
+              </div>
             )}
             {project.projectStatus && (
               <div
