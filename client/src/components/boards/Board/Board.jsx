@@ -16,6 +16,7 @@ import TableView from './TableView';
 import CalendarView from './CalendarView';
 import TimelineView from './TimelineView';
 import MapView from './MapView';
+import GanttView from './GanttView/GanttView';
 import ShortcutsProvider from './ShortcutsProvider';
 import CardModal from '../../cards/CardModal';
 import BoardActivitiesModal from '../../activities/BoardActivitiesModal';
@@ -37,6 +38,9 @@ const Board = React.memo(() => {
   }
   if (board.view === BoardViews.MAP) {
     return <MapView />;
+  }
+  if (board.view === BoardViews.GANTT) {
+    return <GanttView />;
   }
 
   let Content;

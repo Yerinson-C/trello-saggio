@@ -53,6 +53,7 @@ export const BoardViewIcons = {
   [BoardViews.CALENDAR]: 'calendar alternate outline',
   [BoardViews.TIMELINE]: 'chart bar outline',
   [BoardViews.MAP]: 'map outline',
+  [BoardViews.GANTT]: 'tasks',
 };
 
 export const BoardContextIcons = {

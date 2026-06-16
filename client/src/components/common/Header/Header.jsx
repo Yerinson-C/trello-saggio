@@ -154,7 +154,7 @@ const Header = React.memo(() => {
                 as={Link}
                 to={Paths.ADMIN_PROJECTS}
                 className={classNames(styles.item, styles.itemHoverable)}
-                title="Módulo de Proyectos"
+                title="Modulo de Proyectos"
               >
                 <Icon fitted name="folder" />
               </Menu.Item>
@@ -162,9 +162,25 @@ const Header = React.memo(() => {
                 as={Link}
                 to={Paths.ADMIN_USERS}
                 className={classNames(styles.item, styles.itemHoverable)}
-                title="Gestión de Usuarios"
+                title="Gestion de Usuarios"
               >
                 <Icon fitted name="users" />
+              </Menu.Item>
+              <Menu.Item
+                as={Link}
+                to={Paths.CRM}
+                className={classNames(styles.item, styles.itemHoverable)}
+                title="CRM Pipeline"
+              >
+                <Icon fitted name="chart line" />
+              </Menu.Item>
+              <Menu.Item
+                as={Link}
+                to={Paths.DASHBOARD}
+                className={classNames(styles.item, styles.itemHoverable)}
+                title="Dashboard Ejecutivo"
+              >
+                <Icon fitted name="chart bar" />
               </Menu.Item>
             </>
           )}

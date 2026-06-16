@@ -11,4 +11,21 @@
     height: 100%;
     padding: 10px 20px 0;
   }
+
+  .projectActions {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+
+  .actionBtn {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3) !important;
+    }
+  }
 }

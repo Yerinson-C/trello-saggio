@@ -1,0 +1,177 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ */
+
+:global(#app) {
+  .modal {
+    max-width: 960px !important;
+  }
+
+  /* ── Header ── */
+  .header {
+    align-items: flex-start !important;
+    background: #172b4d !important;
+    color: #fff !important;
+    display: flex !important;
+    justify-content: space-between;
+    padding: 16px 20px !important;
+  }
+
+  .headerLeft {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+  }
+
+  .headerIcon {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 22px !important;
+  }
+
+  .headerTitle {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .headerSub {
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    font-size: 12px;
+    font-weight: normal;
+    gap: 6px;
+    margin-top: 2px;
+  }
+
+  .clientChip {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    padding: 1px 6px;
+  }
+
+  .headerRight {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .totalBadge {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: #fff;
+    display: flex;
+    font-size: 13px;
+    gap: 6px;
+    padding: 6px 12px;
+  }
+
+  /* ── Content ── */
+  .content {
+    background: #f4f5f7 !important;
+    padding: 0 !important;
+  }
+
+  /* ── Form section ── */
+  .formSection {
+    background: #fff;
+    border-bottom: 1px solid #dfe1e6;
+    padding: 16px 20px;
+  }
+
+  .formTitle {
+    color: #172b4d;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .form {
+    margin: 0 !important;
+  }
+
+  .submitField {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .errorMsg {
+    background: #ffebe6;
+    border-radius: 3px;
+    color: #bf2600;
+    font-size: 12px;
+    margin-top: 8px;
+    padding: 6px 10px;
+  }
+
+  /* ── Table section ── */
+  .tableSection {
+    padding: 16px 20px;
+  }
+
+  .loader {
+    margin: 40px auto !important;
+  }
+
+  .table {
+    font-size: 13px !important;
+  }
+
+  .dateCell {
+    white-space: nowrap;
+    width: 110px;
+  }
+
+  .hoursCell {
+    font-weight: 600;
+    width: 80px;
+  }
+
+  .consultantCell {
+    color: #5e6c84;
+    width: 160px;
+  }
+
+  /* ── Total row ── */
+  .totalRow {
+    align-items: center;
+    background: #e9f2ff;
+    border: 1px solid #b3d4ff;
+    border-radius: 4px;
+    color: #0047b3;
+    display: flex;
+    font-size: 14px;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 16px;
+  }
+
+  .totalValue {
+    font-size: 18px;
+    margin-left: 4px;
+  }
+
+  /* ── Empty ── */
+  .empty {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .emptyIcon {
+    color: #c1c7d0;
+    margin-bottom: 12px !important;
+  }
+
+  .emptyTitle {
+    color: #5e6c84;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+
+  .emptyHint {
+    color: #8993a4;
+    font-size: 13px;
+  }
+}

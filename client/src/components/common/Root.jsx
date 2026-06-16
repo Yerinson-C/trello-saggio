@@ -17,6 +17,8 @@ import Login from './Login';
 import Core from './Core';
 import AdminUsersPage from './AdminUsersPage';
 import ProjectsPage from './ProjectsPage';
+import CrmPage from './CrmPage/CrmPage';
+import DashboardPage from './DashboardPage';
 import GhostError from './GhostError';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -41,6 +43,8 @@ function Root({ store, history }) {
               <Route path={Paths.CARDS} element={<Core />} />
               <Route path={Paths.ADMIN_USERS} element={<Core adminPage={<AdminUsersPage />} />} />
               <Route path={Paths.ADMIN_PROJECTS} element={<Core adminPage={<ProjectsPage />} />} />
+              <Route path={Paths.CRM} element={<Core adminPage={<CrmPage />} />} />
+              <Route path={Paths.DASHBOARD} element={<Core adminPage={<DashboardPage />} />} />
               <Route path="*" element={<GhostError />} />
             </Routes>
           </ToasterProvider>

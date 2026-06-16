@@ -246,6 +246,31 @@ module.exports.routes = {
 
   'PATCH /api/_internal/config': '_internal/update-config',
 
+  // Time entries
+  'POST /api/projects/:projectId/time-entries': 'time-entries/create',
+  'GET /api/projects/:projectId/time-entries': 'time-entries/index',
+  'DELETE /api/time-entries/:id': 'time-entries/delete',
+
+  // Deliverables
+  'POST /api/projects/:projectId/deliverables': 'deliverables/create',
+  'GET /api/projects/:projectId/deliverables': 'deliverables/index',
+  'PATCH /api/deliverables/:id': 'deliverables/update',
+  'DELETE /api/deliverables/:id': 'deliverables/delete',
+
+  // CRM Leads
+  'POST /api/crm-leads': 'crm-leads/create',
+  'GET /api/crm-leads': 'crm-leads/index',
+  'PATCH /api/crm-leads/:id': 'crm-leads/update',
+  'DELETE /api/crm-leads/:id': 'crm-leads/delete',
+
+  // Environmental data
+  'POST /api/projects/:projectId/environmental-data': 'environmental-data/create',
+  'GET /api/projects/:projectId/environmental-data': 'environmental-data/index',
+  'DELETE /api/environmental-data/:id': 'environmental-data/delete',
+
+  // Emission factors
+  'GET /api/emission-factors': 'emission-factors/index',
+
   'GET /swagger.json': 'swagger/show',
 
   'GET /favicons/*': {

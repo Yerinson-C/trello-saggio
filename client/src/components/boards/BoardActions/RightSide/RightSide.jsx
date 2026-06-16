@@ -33,7 +33,7 @@ const RightSide = React.memo(() => {
   const views = [BoardViews.GRID, BoardViews.LIST];
   if (board.context === BoardContexts.BOARD) {
     views.unshift(BoardViews.KANBAN);
-    views.push(BoardViews.TABLE, BoardViews.CALENDAR, BoardViews.TIMELINE, BoardViews.MAP);
+    views.push(BoardViews.TABLE, BoardViews.CALENDAR, BoardViews.TIMELINE, BoardViews.MAP, BoardViews.GANTT);
   }
 
   return (

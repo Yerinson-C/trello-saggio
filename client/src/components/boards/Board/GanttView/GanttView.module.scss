@@ -1,0 +1,373 @@
+:global(#app) {
+  // -------------------------------------------------------------------------
+  // Outer layout
+  // -------------------------------------------------------------------------
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding: 16px 20px 8px;
+    gap: 12px;
+    box-sizing: border-box;
+  }
+
+  // -------------------------------------------------------------------------
+  // Top header bar (title / badges)
+  // -------------------------------------------------------------------------
+  .topBar {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 15px;
+    gap: 10px;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .badge {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 10px;
+  }
+
+  .hint {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11px;
+  }
+
+  .scrollHint {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    margin-left: auto;
+  }
+
+  // -------------------------------------------------------------------------
+  // Main scrollable Gantt container
+  // -------------------------------------------------------------------------
+  .ganttOuter {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+    flex: 1;
+    overflow: auto;
+    position: relative;
+    // Smooth scrolling
+    scroll-behavior: smooth;
+  }
+
+  // -------------------------------------------------------------------------
+  // Sticky double header (month row + day row)
+  // -------------------------------------------------------------------------
+  .headerRow {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .cornerCell {
+    background: #1a202c;
+    border-right: 2px solid #2d3748;
+    flex-shrink: 0;
+    position: sticky;
+    left: 0;
+    z-index: 25;
+  }
+
+  .monthsRow {
+    background: #2d3748;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .monthCell {
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e2e8f0;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    overflow: hidden;
+    padding: 0 8px;
+    position: absolute;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .daysRow {
+    background: #edf2f7;
+    border-bottom: 2px solid #cbd5e0;
+    position: absolute;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .dayCell {
+    border-right: 1px solid #e2e8f0;
+    flex-shrink: 0;
+    position: absolute;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dayCellWeekend {
+    background: rgba(245, 101, 101, 0.08);
+  }
+
+  .dayLabel {
+    color: #4a5568;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  // -------------------------------------------------------------------------
+  // Today vertical line
+  // -------------------------------------------------------------------------
+  .todayLine {
+    border-left: 2px solid #e53e3e;
+    bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    z-index: 15;
+  }
+
+  .todayLabel {
+    background: #e53e3e;
+    border-radius: 0 3px 3px 0;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 2px 5px;
+    position: sticky;
+    top: 58px;
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 2px;
+  }
+
+  // -------------------------------------------------------------------------
+  // List group header row
+  // -------------------------------------------------------------------------
+  .groupHeader {
+    display: flex;
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+    border-top: 2px solid #e2e8f0;
+  }
+
+  .groupHeaderLabel {
+    align-items: center;
+    background: #f7fafc;
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+    padding: 0 12px;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    box-sizing: border-box;
+  }
+
+  .groupDot {
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 10px;
+    width: 10px;
+  }
+
+  .groupName {
+    color: #2d3748;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .groupCount {
+    background: #e2e8f0;
+    border-radius: 10px;
+    color: #718096;
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 7px;
+  }
+
+  .groupHeaderTrack {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  // -------------------------------------------------------------------------
+  // Individual card rows
+  // -------------------------------------------------------------------------
+  .cardRow {
+    border-bottom: 1px solid #edf2f7;
+    display: flex;
+    transition: background 0.15s;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: #f0f4f8;
+
+      .cardLabel {
+        background: #f0f4f8;
+      }
+    }
+  }
+
+  .cardLabel {
+    align-items: center;
+    background: #fff;
+    border-right: 2px solid #e2e8f0;
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    gap: 6px;
+    padding: 0 12px;
+    position: sticky;
+    left: 0;
+    z-index: 8;
+    transition: background 0.15s;
+  }
+
+  .cardName {
+    color: #2d3748;
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dueBadge {
+    background: #ebf8ff;
+    border: 1px solid #bee3f8;
+    border-radius: 4px;
+    color: #2b6cb0;
+    flex-shrink: 0;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 1px 5px;
+    white-space: nowrap;
+  }
+
+  .dueBadgePast {
+    background: #fff5f5;
+    border-color: #fed7d7;
+    color: #c53030;
+  }
+
+  .cardTrack {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  // -------------------------------------------------------------------------
+  // Weekend shading (shared between group headers and card rows)
+  // -------------------------------------------------------------------------
+  .weekendShade {
+    background: rgba(245, 101, 101, 0.05);
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+  }
+
+  // -------------------------------------------------------------------------
+  // Gantt bar
+  // -------------------------------------------------------------------------
+  .bar {
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 22px;
+    margin-top: 8px;
+    overflow: hidden;
+    padding: 0 7px;
+    position: absolute;
+    transition: filter 0.15s, transform 0.1s;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      filter: brightness(1.12);
+      transform: scaleY(1.06);
+      z-index: 5;
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
+    }
+  }
+
+  .barActive {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6), 0 1px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .barPast {
+    opacity: 0.65;
+  }
+
+  .barLabel {
+    font-size: 10px;
+    font-weight: 600;
+    overflow: hidden;
+    pointer-events: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  // -------------------------------------------------------------------------
+  // Empty state
+  // -------------------------------------------------------------------------
+  .empty {
+    align-items: center;
+    color: #718096;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 14px;
+    justify-content: center;
+    min-height: 240px;
+    padding: 48px 32px;
+    text-align: center;
+
+    p {
+      max-width: 360px;
+      line-height: 1.5;
+    }
+  }
+}

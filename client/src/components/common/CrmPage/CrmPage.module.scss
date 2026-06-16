@@ -1,0 +1,415 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ */
+
+:global(#app) {
+  /* ── layout ── */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 50px);
+    background: #f4f5f7;
+    overflow: hidden;
+  }
+
+  /* ── top bar ── */
+  .topBar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 24px;
+    background: #fff;
+    border-bottom: 1px solid #dfe1e6;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .topBarLeft {
+    flex: 0 0 auto;
+  }
+
+  .pageTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #172b4d;
+    margin: 0;
+  }
+
+  /* ── stats ── */
+  .stats {
+    display: flex;
+    gap: 20px;
+    flex: 1 1 auto;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f4f5f7;
+    border-radius: 6px;
+    padding: 6px 16px;
+    min-width: 90px;
+  }
+
+  .statValue {
+    font-size: 20px;
+    font-weight: 700;
+    color: #172b4d;
+    line-height: 1.2;
+  }
+
+  .statValueGreen {
+    color: #27ae60;
+  }
+
+  .statLabel {
+    font-size: 11px;
+    color: #5e6c84;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* ── primary button ── */
+  .btnPrimary {
+    background: #0079bf;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: background 0.15s;
+
+    &:hover:not(:disabled) {
+      background: #005f9a;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  /* ── error banner ── */
+  .errorBanner {
+    background: #fdecea;
+    border: 1px solid #eb5a46;
+    border-radius: 4px;
+    color: #c0392b;
+    padding: 10px 16px;
+    margin: 12px 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    flex: 0 0 auto;
+  }
+
+  .retryBtn {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid #eb5a46;
+    border-radius: 4px;
+    color: #c0392b;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+
+    &:hover {
+      background: #eb5a46;
+      color: #fff;
+    }
+  }
+
+  /* ── loader ── */
+  .loaderWrap {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── form ── */
+  .form {
+    background: #fff;
+    border-bottom: 1px solid #dfe1e6;
+    padding: 20px 24px;
+    flex: 0 0 auto;
+  }
+
+  .formTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-bottom: 14px;
+  }
+
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .formGroupFull {
+    grid-column: 1 / -1;
+  }
+
+  .formLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: #5e6c84;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .formInput,
+  .formSelect {
+    border: 1px solid #dfe1e6;
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #172b4d;
+    background: #fafbfc;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+
+    &:focus {
+      border-color: #0079bf;
+      background: #fff;
+    }
+  }
+
+  .formTextarea {
+    border: 1px solid #dfe1e6;
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #172b4d;
+    background: #fafbfc;
+    outline: none;
+    resize: vertical;
+    width: 100%;
+    font-family: inherit;
+
+    &:focus {
+      border-color: #0079bf;
+      background: #fff;
+    }
+  }
+
+  .formActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    justify-content: flex-end;
+  }
+
+  .btnCancel {
+    background: transparent;
+    border: 1px solid #dfe1e6;
+    border-radius: 4px;
+    padding: 7px 16px;
+    font-size: 14px;
+    color: #5e6c84;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      background: #f4f5f7;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  /* ── kanban board ── */
+  .board {
+    display: flex;
+    gap: 12px;
+    padding: 16px 24px;
+    overflow-x: auto;
+    flex: 1 1 auto;
+    align-items: flex-start;
+  }
+
+  .column {
+    flex: 0 0 220px;
+    background: #ebecf0;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-width: 220px;
+  }
+
+  .columnHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px 8px;
+    border-top: 3px solid #0079bf;
+    border-radius: 6px 6px 0 0;
+    flex: 0 0 auto;
+  }
+
+  .columnTitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #172b4d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .columnCount {
+    background: #0079bf;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    min-width: 22px;
+    text-align: center;
+  }
+
+  .columnBody {
+    padding: 6px 8px 8px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .emptyColumn {
+    text-align: center;
+    color: #97a0af;
+    font-size: 13px;
+    padding: 16px 0;
+  }
+
+  /* ── lead card ── */
+  .card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px 10px 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    cursor: default;
+    transition: box-shadow 0.15s;
+
+    &:hover {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    }
+  }
+
+  .cardHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .cardCompany {
+    font-size: 13px;
+    font-weight: 700;
+    color: #172b4d;
+    line-height: 1.3;
+    flex: 1 1 auto;
+  }
+
+  .cardDeleteBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #97a0af;
+    padding: 0;
+    line-height: 1;
+    flex: 0 0 auto;
+
+    &:hover {
+      color: #eb5a46;
+    }
+  }
+
+  .cardContact {
+    font-size: 12px;
+    color: #5e6c84;
+    margin-bottom: 4px;
+  }
+
+  .cardService {
+    font-size: 11px;
+    color: #0079bf;
+    font-weight: 600;
+    background: #e3f2fd;
+    border-radius: 3px;
+    padding: 2px 5px;
+    display: inline-block;
+    margin-bottom: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cardValue {
+    font-size: 13px;
+    font-weight: 700;
+    color: #27ae60;
+    margin-bottom: 2px;
+  }
+
+  .cardDate {
+    font-size: 11px;
+    color: #97a0af;
+    margin-bottom: 6px;
+  }
+
+  .cardActions {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 6px;
+  }
+
+  .cardMoveBtn {
+    flex: 1 1 auto;
+    background: #f4f5f7;
+    border: 1px solid #dfe1e6;
+    border-radius: 3px;
+    color: #5e6c84;
+    cursor: pointer;
+    padding: 3px 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s;
+
+    &:hover:not(:disabled) {
+      background: #0079bf;
+      color: #fff;
+      border-color: #0079bf;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+}

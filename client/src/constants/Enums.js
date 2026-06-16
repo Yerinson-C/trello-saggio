@@ -55,6 +55,7 @@ export const BoardViews = {
   CALENDAR: 'calendar',
   TIMELINE: 'timeline',
   MAP: 'map',
+  GANTT: 'gantt',
 };
 
 export const BoardContexts = {

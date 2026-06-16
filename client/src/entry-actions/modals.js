@@ -68,6 +68,27 @@ const openProjectInboxModal = () => ({
   },
 });
 
+const openTimeEntriesModal = () => ({
+  type: EntryActionTypes.MODAL_OPEN,
+  payload: {
+    type: ModalTypes.TIME_ENTRIES,
+  },
+});
+
+const openDeliverablesModal = () => ({
+  type: EntryActionTypes.MODAL_OPEN,
+  payload: {
+    type: ModalTypes.DELIVERABLES,
+  },
+});
+
+const openEnvironmentalDataModal = () => ({
+  type: EntryActionTypes.MODAL_OPEN,
+  payload: {
+    type: ModalTypes.ENVIRONMENTAL_DATA,
+  },
+});
+
 const closeModal = () => ({
   type: EntryActionTypes.MODAL_CLOSE,
   payload: {},
@@ -82,5 +103,8 @@ export default {
   openBoardSettingsModal,
   openBoardActivitiesModal,
   openProjectInboxModal,
+  openTimeEntriesModal,
+  openDeliverablesModal,
+  openEnvironmentalDataModal,
   closeModal,
 };
