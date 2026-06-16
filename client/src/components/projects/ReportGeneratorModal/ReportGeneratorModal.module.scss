@@ -1,0 +1,346 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ */
+
+:global(#app) {
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(9, 30, 66, 0.54);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    max-width: 1100px;
+    width: 95%;
+    max-height: 92vh;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(9, 30, 66, 0.32);
+  }
+
+  .header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #dfe1e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .headerTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #172b4d;
+  }
+
+  .closeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b808c;
+    font-size: 20px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    line-height: 1;
+
+    &:hover {
+      background: #f4f5f7;
+      color: #172b4d;
+    }
+  }
+
+  .body {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .leftPanel {
+    width: 340px;
+    flex-shrink: 0;
+    padding: 24px;
+    border-right: 1px solid #dfe1e6;
+    overflow-y: auto;
+  }
+
+  .rightPanel {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background: #f4f5f7;
+  }
+
+  .sectionLabel {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b808c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    margin-top: 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .typeOption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #172b4d;
+    margin-bottom: 4px;
+    border: 1px solid #dfe1e6;
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+
+    &:hover {
+      border-color: #b3c4d6;
+      background: #f4f5f7;
+    }
+  }
+
+  .typeOptionSelected {
+    border-color: #0079bf;
+    background: #e6f3ff;
+    color: #0079bf;
+    font-weight: 600;
+  }
+
+  .dateRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .dateInput {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #dfe1e6;
+    border-radius: 6px;
+    font-size: 13px;
+    box-sizing: border-box;
+    color: #172b4d;
+
+    &:focus {
+      outline: none;
+      border-color: #0079bf;
+    }
+  }
+
+  .checkItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #172b4d;
+    cursor: pointer;
+
+    input {
+      accent-color: #0079bf;
+      cursor: pointer;
+    }
+  }
+
+  .logoBox {
+    border: 2px dashed #dfe1e6;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    color: #6b808c;
+    font-size: 13px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+
+    &:hover {
+      border-color: #0079bf;
+      background: #f4f5f7;
+    }
+  }
+
+  .notesTextarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dfe1e6;
+    border-radius: 6px;
+    font-size: 13px;
+    min-height: 80px;
+    resize: vertical;
+    margin-top: 8px;
+    box-sizing: border-box;
+    color: #172b4d;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: #0079bf;
+    }
+
+    &::placeholder {
+      color: #aab0ba;
+    }
+  }
+
+  /* Preview document */
+
+  .previewDoc {
+    background: white;
+    border-radius: 6px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    min-height: 400px;
+    max-height: 480px;
+    overflow-y: auto;
+    font-family: Georgia, serif;
+  }
+
+  .previewConfidential {
+    font-size: 10px;
+    color: #eb5a46;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-bottom: 16px;
+    font-family: Arial, sans-serif;
+  }
+
+  .previewTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #172b4d;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .previewSubtitle {
+    font-size: 14px;
+    color: #6b808c;
+    text-align: center;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .previewRule {
+    border: none;
+    border-top: 1px solid #dfe1e6;
+    margin: 16px 0;
+  }
+
+  .previewMeta {
+    font-size: 12px;
+    color: #5e6c84;
+    margin-bottom: 6px;
+    font-family: Arial, sans-serif;
+  }
+
+  .previewSectionTitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-family: Arial, sans-serif;
+  }
+
+  .previewText {
+    font-size: 12px;
+    color: #5e6c84;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .previewTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+
+    th {
+      background: #f4f5f7;
+      padding: 6px 10px;
+      text-align: left;
+      font-weight: 600;
+      color: #5e6c84;
+      border-bottom: 1px solid #dfe1e6;
+    }
+
+    td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #f4f5f7;
+      color: #172b4d;
+    }
+  }
+
+  /* Footer */
+
+  .footer {
+    padding: 16px 24px;
+    border-top: 1px solid #dfe1e6;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+    background: white;
+  }
+
+  .cancelBtn {
+    padding: 9px 18px;
+    border: 1px solid #dfe1e6;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    color: #172b4d;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #f4f5f7;
+    }
+  }
+
+  .downloadBtn {
+    padding: 9px 18px;
+    border-radius: 6px;
+    background: #0079bf;
+    color: white;
+    border: none;
+    cursor: not-allowed;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.6;
+  }
+
+  .sendBtn {
+    padding: 9px 18px;
+    border-radius: 6px;
+    background: #61bd4f;
+    color: white;
+    border: none;
+    cursor: not-allowed;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.6;
+  }
+}

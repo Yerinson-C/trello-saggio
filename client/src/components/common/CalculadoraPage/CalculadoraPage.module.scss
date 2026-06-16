@@ -1,0 +1,259 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ */
+
+:global(#app) {
+  .wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px 24px;
+  }
+
+  /* Page header */
+  .pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .pageTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #172b4d;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pageSubtitle {
+    color: #6b808c;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #dfe1e6;
+  }
+
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: #6b808c;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s, border-bottom-color 0.15s;
+  }
+
+  .tab:hover {
+    color: #172b4d;
+  }
+
+  .tabActive {
+    color: #0079bf;
+    border-bottom-color: #0079bf;
+  }
+
+  /* Stats row */
+  .statsRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .statCard {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  }
+
+  .statValue {
+    font-size: 26px;
+    font-weight: 700;
+    color: #172b4d;
+    line-height: 1;
+  }
+
+  .statLabel {
+    font-size: 12px;
+    color: #6b808c;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Generic card */
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    margin-bottom: 20px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-bottom: 16px;
+  }
+
+  /* Table */
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th {
+    background: #f4f5f7;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b808c;
+    border-bottom: 1px solid #dfe1e6;
+  }
+
+  .table td {
+    padding: 11px 12px;
+    font-size: 13px;
+    color: #172b4d;
+    border-bottom: 1px solid #f4f5f7;
+  }
+
+  .table tr:hover td {
+    background: #f8f9fa;
+  }
+
+  /* Table header row (title + button) */
+  .tableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  /* Add button */
+  .addBtn {
+    background: #0079bf;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s;
+  }
+
+  .addBtn:hover {
+    background: #005f99;
+  }
+
+  /* Scope / type badges */
+  .scopeBadge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .scope1 {
+    background: #e3fcef;
+    color: #006644;
+  }
+
+  .scope2 {
+    background: #e6f3ff;
+    color: #0052cc;
+  }
+
+  .scope3 {
+    background: #fff8e6;
+    color: #974f0c;
+  }
+
+  .azul {
+    background: #e6f3ff;
+    color: #0052cc;
+  }
+
+  .verde {
+    background: #e3fcef;
+    color: #006644;
+  }
+
+  .gris {
+    background: #f4f5f7;
+    color: #5e6c84;
+  }
+
+  /* Scope results grid */
+  .scopeResults {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .scopeCard {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  }
+
+  .scopeLabel {
+    font-size: 13px;
+    font-weight: 600;
+    color: #172b4d;
+    margin-bottom: 4px;
+  }
+
+  .scopeValue {
+    font-size: 20px;
+    font-weight: 700;
+    color: #172b4d;
+  }
+
+  .scopePct {
+    font-size: 12px;
+    color: #6b808c;
+    margin-bottom: 10px;
+  }
+
+  /* Progress bar */
+  .progressBar {
+    height: 8px;
+    background: #dfe1e6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progressFill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+}

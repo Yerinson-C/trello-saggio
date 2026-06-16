@@ -89,6 +89,11 @@ const openEnvironmentalDataModal = () => ({
   },
 });
 
+const openReportGeneratorModal = () => ({
+  type: EntryActionTypes.MODAL_OPEN,
+  payload: { type: ModalTypes.REPORT_GENERATOR },
+});
+
 const closeModal = () => ({
   type: EntryActionTypes.MODAL_CLOSE,
   payload: {},
@@ -106,5 +111,6 @@ export default {
   openTimeEntriesModal,
   openDeliverablesModal,
   openEnvironmentalDataModal,
+  openReportGeneratorModal,
   closeModal,
 };

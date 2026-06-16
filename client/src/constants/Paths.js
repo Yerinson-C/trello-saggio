@@ -15,6 +15,10 @@ const ADMIN_USERS = `${Config.BASE_PATH}/admin/users`;
 const ADMIN_PROJECTS = `${Config.BASE_PATH}/admin/projects`;
 const CRM = `${Config.BASE_PATH}/crm`;
 const DASHBOARD = `${Config.BASE_PATH}/dashboard`;
+const CALCULADORA = Config.BASE_PATH + '/calculadora';
+const REDUCCION = Config.BASE_PATH + '/reduccion';
+const FACTURACION = Config.BASE_PATH + '/facturacion';
+const PORTAL_CLIENTE = Config.BASE_PATH + '/portal/:projectId';
 
 export default {
   ROOT,
@@ -27,4 +31,8 @@ export default {
   ADMIN_PROJECTS,
   CRM,
   DASHBOARD,
+  CALCULADORA,
+  REDUCCION,
+  FACTURACION,
+  PORTAL_CLIENTE,
 };

@@ -15,6 +15,7 @@ import ProjectInboxModal from '../ProjectInboxModal/ProjectInboxModal';
 import TimeEntriesModal from '../TimeEntriesModal/TimeEntriesModal';
 import DeliverablesModal from '../DeliverablesModal/DeliverablesModal';
 import EnvironmentalDataModal from '../EnvironmentalDataModal/EnvironmentalDataModal';
+import ReportGeneratorModal from '../ReportGeneratorModal/ReportGeneratorModal';
 import Boards from '../../boards/Boards';
 import BoardSettingsModal from '../../boards/BoardSettingsModal';
 
@@ -27,6 +28,7 @@ const Project = React.memo(() => {
   const handleOpenTimeEntries     = useCallback(() => dispatch(entryActions.openTimeEntriesModal()),     [dispatch]);
   const handleOpenDeliverables    = useCallback(() => dispatch(entryActions.openDeliverablesModal()),    [dispatch]);
   const handleOpenEnvironmental   = useCallback(() => dispatch(entryActions.openEnvironmentalDataModal()), [dispatch]);
+  const handleOpenReportGenerator = useCallback(() => dispatch(entryActions.openReportGeneratorModal()), [dispatch]);
 
   let modalNode = null;
   if (modal) {
@@ -48,6 +50,9 @@ const Project = React.memo(() => {
         break;
       case ModalTypes.ENVIRONMENTAL_DATA:
         modalNode = <EnvironmentalDataModal />;
+        break;
+      case ModalTypes.REPORT_GENERATOR:
+        modalNode = <ReportGeneratorModal onClose={() => dispatch(entryActions.closeModal())} />;
         break;
       default:
     }
@@ -83,6 +88,15 @@ const Project = React.memo(() => {
           >
             <Icon name="leaf" />
             Datos Ambientales
+          </Button>
+          <Button
+            size="small"
+            className={styles.actionBtn}
+            onClick={handleOpenReportGenerator}
+            title="Generar Informe"
+          >
+            <Icon name="file pdf outline" />
+            Informe
           </Button>
         </div>
         <Boards />

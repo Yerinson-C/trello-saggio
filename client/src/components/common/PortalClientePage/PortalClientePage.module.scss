@@ -1,0 +1,292 @@
+:global(#app) {
+  .page {
+    min-height: 100vh;
+    background: #f4f5f7;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 18px;
+    font-weight: 800;
+    color: #2d9c6e;
+    letter-spacing: -0.5px;
+  }
+
+  .clientBadge {
+    background: #e8f5f0;
+    color: #2d9c6e;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #2d9c6e 0%, #0093a7 100%);
+    padding: 60px 24px 36px;
+    margin-top: 56px;
+    text-align: center;
+  }
+
+  .heroTitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .heroProject {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+    margin-bottom: 20px;
+  }
+
+  .cardTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .infoTable {
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+      padding: 10px 0;
+      font-size: 13px;
+      border-bottom: 1px solid #f4f5f7;
+      vertical-align: top;
+
+      &:first-child {
+        color: #6b808c;
+        width: 40%;
+        font-weight: 500;
+      }
+
+      &:last-child {
+        color: #172b4d;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #dfe1e6;
+    }
+  }
+
+  .timelineItem {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .timelineDot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: absolute;
+    left: -24px;
+    top: 2px;
+    border: 2px solid white;
+  }
+
+  .dotCompleted {
+    background: #61bd4f;
+  }
+
+  .dotInProgress {
+    background: #0079bf;
+  }
+
+  .dotPending {
+    background: #dfe1e6;
+  }
+
+  .timelineName {
+    font-size: 13px;
+    color: #172b4d;
+    font-weight: 500;
+  }
+
+  .timelineDate {
+    font-size: 12px;
+    color: #6b808c;
+    margin-top: 2px;
+  }
+
+  .statusBadge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .badgeAprobado {
+    background: #e3fcef;
+    color: #006644;
+  }
+
+  .badgeRevision {
+    background: #e6f3ff;
+    color: #0052cc;
+  }
+
+  .badgeBorrador {
+    background: #fff8e6;
+    color: #974f0c;
+  }
+
+  .badgePendiente {
+    background: #f4f5f7;
+    color: #6b808c;
+  }
+
+  .progressCircle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .progressSvg {
+    transform: rotate(-90deg);
+  }
+
+  .progressNumber {
+    font-size: 32px;
+    font-weight: 800;
+    color: #2d9c6e;
+    margin-top: 12px;
+  }
+
+  .progressLabel {
+    font-size: 12px;
+    color: #6b808c;
+    text-align: center;
+  }
+
+  .resultRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f4f5f7;
+    font-size: 13px;
+  }
+
+  .resultDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .resultLabel {
+    color: #5e6c84;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .resultValue {
+    font-weight: 700;
+    color: #172b4d;
+  }
+
+  .nextMilestone {
+    background: linear-gradient(135deg, #e8f5f0 0%, #e6f3ff 100%);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .nextName {
+    font-size: 14px;
+    font-weight: 600;
+    color: #172b4d;
+    margin-bottom: 4px;
+  }
+
+  .nextDate {
+    font-size: 12px;
+    color: #0079bf;
+  }
+
+  .nextCountdown {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0079bf;
+    margin-top: 8px;
+  }
+
+  .contactCard {
+    text-align: center;
+  }
+
+  .contactEmail {
+    font-size: 14px;
+    color: #0079bf;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #6b808c;
+    font-size: 12px;
+    margin-top: 24px;
+  }
+}

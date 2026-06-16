@@ -1,0 +1,322 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ */
+
+:global(#app) {
+  .wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px 24px;
+  }
+
+  /* Page header */
+  .pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .pageTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #172b4d;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pageSubtitle {
+    color: #6b808c;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .headerRight {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .clientSelect {
+    padding: 8px 12px;
+    border: 1px solid #dfe1e6;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #172b4d;
+    background: white;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .clientSelect:focus {
+    border-color: #0079bf;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #dfe1e6;
+  }
+
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: #6b808c;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s, border-bottom-color 0.15s;
+  }
+
+  .tab:hover {
+    color: #172b4d;
+  }
+
+  .tabActive {
+    color: #0079bf;
+    border-bottom-color: #0079bf;
+  }
+
+  /* Stats row */
+  .statsRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .statCard {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  }
+
+  .statValue {
+    font-size: 24px;
+    font-weight: 700;
+    color: #172b4d;
+    line-height: 1;
+  }
+
+  .statLabel {
+    font-size: 12px;
+    color: #6b808c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* Generic card */
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    margin-bottom: 20px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-bottom: 20px;
+  }
+
+  /* Chart area */
+  .chartArea {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    height: 200px;
+    position: relative;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #dfe1e6;
+    margin-bottom: 24px;
+  }
+
+  .bar {
+    background: #0079bf;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    min-width: 60px;
+    transition: height 0.3s;
+  }
+
+  .barLabel {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #6b808c;
+    white-space: nowrap;
+  }
+
+  .barValue {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 600;
+    color: #172b4d;
+    white-space: nowrap;
+  }
+
+  .targetLine {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 2px dashed #eb5a46;
+    pointer-events: none;
+  }
+
+  .targetLabel {
+    position: absolute;
+    right: 0;
+    font-size: 11px;
+    color: #eb5a46;
+    font-weight: 600;
+    top: -18px;
+  }
+
+  .trendText {
+    font-size: 13px;
+    color: #5e6c84;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* Table */
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th {
+    background: #f4f5f7;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b808c;
+    border-bottom: 1px solid #dfe1e6;
+  }
+
+  .table td {
+    padding: 11px 12px;
+    font-size: 13px;
+    color: #172b4d;
+    border-bottom: 1px solid #f4f5f7;
+  }
+
+  .table tr:hover td {
+    background: #f8f9fa;
+  }
+
+  /* Mini progress bar */
+  .progressMini {
+    height: 6px;
+    background: #dfe1e6;
+    border-radius: 3px;
+    width: 80px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .progressMiniBar {
+    height: 100%;
+    border-radius: 3px;
+    display: block;
+  }
+
+  .barGreen {
+    background: #61bd4f;
+  }
+
+  .barBlue {
+    background: #0079bf;
+  }
+
+  .barRed {
+    background: #eb5a46;
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .badgeImplementado {
+    background: #e3fcef;
+    color: #006644;
+  }
+
+  .badgeEnProgreso {
+    background: #e6f3ff;
+    color: #0052cc;
+  }
+
+  .badgePlanificado {
+    background: #f4f5f7;
+    color: #6b808c;
+  }
+
+  /* Add button */
+  .addBtn {
+    background: white;
+    border: 1px solid #0079bf;
+    color: #0079bf;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .addBtn:hover {
+    background: #0079bf;
+    color: white;
+  }
+
+  /* Summary row */
+  .summaryRow {
+    background: #f4f5f7;
+    padding: 16px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: #172b4d;
+    margin-top: 16px;
+  }
+}
