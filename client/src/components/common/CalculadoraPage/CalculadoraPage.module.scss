@@ -243,6 +243,259 @@
     margin-bottom: 10px;
   }
 
+  /* Tab count badge */
+  .tabCount {
+    background: #0079bf;
+    color: white;
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 4px;
+  }
+
+  /* Empty state */
+  .emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 56px 24px;
+    text-align: center;
+  }
+
+  .emptyIcon {
+    font-size: 40px !important;
+    color: #dfe1e6;
+    margin-bottom: 16px;
+  }
+
+  .emptyTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-bottom: 8px;
+  }
+
+  .emptyText {
+    font-size: 14px;
+    color: #6b808c;
+    max-width: 360px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .addBtnLarge {
+    background: #0079bf;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s;
+  }
+
+  .addBtnLarge:hover {
+    background: #005f99;
+  }
+
+  /* Icon button (delete) */
+  .iconBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: background 0.1s;
+  }
+
+  .iconBtn:hover {
+    background: #f4f5f7;
+  }
+
+  /* Modal overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(9, 30, 66, 0.54);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 12px;
+    width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+  }
+
+  .modalHeader {
+    padding: 18px 24px;
+    border-bottom: 1px solid #dfe1e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modalTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172b4d;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .closeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b808c;
+    font-size: 18px;
+    padding: 4px;
+    line-height: 1;
+    border-radius: 4px;
+    transition: background 0.1s;
+  }
+
+  .closeBtn:hover {
+    background: #f4f5f7;
+    color: #172b4d;
+  }
+
+  .modalBody {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .formLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: #5e6c84;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .factorHint {
+    font-size: 11px;
+    color: #6b808c;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .formInput {
+    padding: 9px 12px;
+    border: 1px solid #dfe1e6;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #172b4d;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+  }
+
+  .formInput:focus {
+    outline: none;
+    border-color: #0079bf;
+  }
+
+  .formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .resultPreview {
+    background: #f4f5f7;
+    border-radius: 6px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .resultPreviewLabel {
+    font-size: 13px;
+    color: #5e6c84;
+    font-weight: 500;
+  }
+
+  .resultPreviewValue {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0079bf;
+  }
+
+  .modalFooter {
+    padding: 16px 24px;
+    border-top: 1px solid #dfe1e6;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .cancelBtn {
+    padding: 9px 18px;
+    border: 1px solid #dfe1e6;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    color: #172b4d;
+    transition: background 0.1s;
+  }
+
+  .cancelBtn:hover {
+    background: #f4f5f7;
+  }
+
+  .saveBtn {
+    padding: 9px 18px;
+    background: #0079bf;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s;
+  }
+
+  .saveBtn:hover:not(:disabled) {
+    background: #005f99;
+  }
+
+  .saveBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   /* Progress bar */
   .progressBar {
     height: 8px;
