@@ -70,7 +70,6 @@ module.exports = {
     expectedCloseDate: {
       type: 'ref',
       columnType: 'timestamptz',
-      allowNull: true,
       columnName: 'expected_close_date',
     },
 
@@ -80,7 +79,6 @@ module.exports = {
 
     assignedUserId: {
       model: 'User',
-      allowNull: true,
       columnName: 'assigned_user_id',
     },
   },

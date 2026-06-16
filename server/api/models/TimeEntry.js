@@ -50,7 +50,6 @@ module.exports = {
 
     cardId: {
       model: 'Card',
-      allowNull: true,
       columnName: 'card_id',
     },
   },

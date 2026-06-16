@@ -36,7 +36,6 @@ module.exports = {
     dueDate: {
       type: 'ref',
       columnType: 'timestamptz',
-      allowNull: true,
       columnName: 'due_date',
     },
 
