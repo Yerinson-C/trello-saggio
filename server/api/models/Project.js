@@ -178,6 +178,14 @@ module.exports = {
       defaultsTo: Statuses.ON_TRACK,
       columnName: 'project_status',
     },
+    startDate: {
+      type: 'ref',
+      columnName: 'start_date',
+    },
+    endDate: {
+      type: 'ref',
+      columnName: 'end_date',
+    },
     description: {
       type: 'string',
       isNotEmptyString: true,

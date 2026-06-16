@@ -19,6 +19,7 @@ import styles from './ActionsStep.module.scss';
 
 const StepTypes = {
   DELETE: 'DELETE',
+  START_DATE: 'START_DATE',
   DUE_DATE: 'DUE_DATE',
 };
 
@@ -30,6 +31,10 @@ const ActionsStep = React.memo(({ taskId, onNameEdit, onClose }) => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
   const [step, openStep, handleBack] = useSteps();
+
+  const [startDateInput, setStartDateInput] = useState(
+    task.startDate ? new Date(task.startDate).toISOString().split('T')[0] : '',
+  );
 
   const [dueDateInput, setDueDateInput] = useState(
     task.dueDate ? new Date(task.dueDate).toISOString().split('T')[0] : '',
@@ -47,6 +52,24 @@ const ActionsStep = React.memo(({ taskId, onNameEdit, onClose }) => {
   const handleDeleteClick = useCallback(() => {
     openStep(StepTypes.DELETE);
   }, [openStep]);
+
+  const handleStartDateClick = useCallback(() => {
+    openStep(StepTypes.START_DATE);
+  }, [openStep]);
+
+  const handleStartDateSave = useCallback(() => {
+    dispatch(
+      entryActions.updateTask(taskId, {
+        startDate: startDateInput ? new Date(startDateInput).toISOString() : null,
+      }),
+    );
+    onClose();
+  }, [taskId, startDateInput, dispatch, onClose]);
+
+  const handleStartDateRemove = useCallback(() => {
+    dispatch(entryActions.updateTask(taskId, { startDate: null }));
+    onClose();
+  }, [taskId, dispatch, onClose]);
 
   const handleDueDateClick = useCallback(() => {
     openStep(StepTypes.DUE_DATE);
@@ -75,6 +98,36 @@ const ActionsStep = React.memo(({ taskId, onNameEdit, onClose }) => {
         onConfirm={handleDeleteConfirm}
         onBack={handleBack}
       />
+    );
+  }
+
+  if (step && step.type === StepTypes.START_DATE) {
+    return (
+      <>
+        <Popup.Header onBack={handleBack}>
+          {t('common.startDate', { context: 'title', defaultValue: 'Fecha de inicio' })}
+        </Popup.Header>
+        <Popup.Content>
+          <div className={styles.dueDateForm}>
+            <input
+              type="date"
+              className={styles.dueDateInput}
+              value={startDateInput}
+              onChange={(e) => setStartDateInput(e.target.value)}
+            />
+            <div className={styles.dueDateActions}>
+              <button type="button" className={styles.dueDateSave} onClick={handleStartDateSave}>
+                {t('action.save', { defaultValue: 'Guardar' })}
+              </button>
+              {task.startDate && (
+                <button type="button" className={styles.dueDateRemove} onClick={handleStartDateRemove}>
+                  {t('action.remove', { defaultValue: 'Eliminar' })}
+                </button>
+              )}
+            </div>
+          </div>
+        </Popup.Content>
+      </>
     );
   }
 
@@ -125,6 +178,10 @@ const ActionsStep = React.memo(({ taskId, onNameEdit, onClose }) => {
               })}
             </Menu.Item>
           )}
+          <Menu.Item className={styles.menuItem} onClick={handleStartDateClick}>
+            <Icon name="play" className={styles.menuItemIcon} />
+            {t('action.startDate', { defaultValue: 'Fecha de inicio' })}
+          </Menu.Item>
           <Menu.Item className={styles.menuItem} onClick={handleDueDateClick}>
             <Icon name="calendar outline" className={styles.menuItemIcon} />
             {t('action.dueDate', { defaultValue: 'Fecha de vencimiento' })}

@@ -116,12 +116,18 @@ module.exports = {
       type: 'string',
       isIn: ['on_track', 'at_risk', 'on_hold', 'completed'],
     },
+    startDate: {
+      type: 'ref',
+    },
+    endDate: {
+      type: 'ref',
+    },
   },
 
   async fn(inputs) {
     const { currentUser } = this.req;
 
-    const values = _.pick(inputs, ['type', 'name', 'description', 'clientName', 'serviceType', 'serviceDescription', 'scope', 'objectives', 'projectStatus']);
+    const values = _.pick(inputs, ['type', 'name', 'description', 'clientName', 'serviceType', 'serviceDescription', 'scope', 'objectives', 'projectStatus', 'startDate', 'endDate']);
 
     const { project, projectManager } = await sails.helpers.projects.createOne.with({
       values,

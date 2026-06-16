@@ -5,6 +5,17 @@
 
 const defaultFind = (criteria, { sort = 'id' } = {}) => Board.find(criteria).sort(sort);
 
+const DEFAULT_LIST_NAMES = [
+  'Por iniciar',
+  'En proceso',
+  'Pendiente cliente',
+  'En revisión',
+  'Bloqueado',
+  'Finalizado',
+];
+
+const POSITION_GAP = 2 ** 14;
+
 /* Query methods */
 
 const createOne = (values, { user } = {}) =>
@@ -22,12 +33,18 @@ const createOne = (values, { user } = {}) =>
       .fetch()
       .usingConnection(db);
 
-    const lists = await List.createEach(
-      [List.Types.ARCHIVE, List.Types.TRASH].map((type) => ({
+    const lists = await List.createEach([
+      ...DEFAULT_LIST_NAMES.map((name, index) => ({
+        type: List.Types.ACTIVE,
+        boardId: board.id,
+        name,
+        position: (index + 1) * POSITION_GAP,
+      })),
+      ...[List.Types.ARCHIVE, List.Types.TRASH].map((type) => ({
         type,
         boardId: board.id,
       })),
-    )
+    ])
       .fetch()
       .usingConnection(db);
 

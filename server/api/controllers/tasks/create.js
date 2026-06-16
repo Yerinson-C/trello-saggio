@@ -112,6 +112,10 @@ module.exports = {
       type: 'string',
       isIn: ['not_started', 'in_progress', 'pending_info', 'pending_client', 'internal_review', 'blocked', 'completed'],
     },
+    startDate: {
+      type: 'string',
+      allowNull: true,
+    },
     dueDate: {
       type: 'string',
       allowNull: true,
@@ -180,7 +184,7 @@ module.exports = {
       }
     }
 
-    const values = _.pick(inputs, ['position', 'name', 'status', 'dueDate']);
+    const values = _.pick(inputs, ['position', 'name', 'status', 'startDate', 'dueDate']);
 
     const task = await sails.helpers.tasks.createOne
       .with({

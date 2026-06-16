@@ -172,4 +172,22 @@
   .dueDateIcon {
     margin: 0 !important;
   }
+
+  .startDate {
+    align-items: center;
+    background: rgba(9, 30, 66, 0.08);
+    border-radius: 3px;
+    color: #172b4d;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    gap: 3px;
+    margin-left: 40px;
+    margin-bottom: 2px;
+    padding: 2px 6px;
+  }
+
+  .startDateIcon {
+    margin: 0 !important;
+  }
 }

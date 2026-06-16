@@ -27,8 +27,10 @@ const EditInformation = React.memo(() => {
     () => ({
       name: project.name,
       description: project.description,
+      startDate: project.startDate ? new Date(project.startDate).toISOString().split('T')[0] : '',
+      endDate: project.endDate ? new Date(project.endDate).toISOString().split('T')[0] : '',
     }),
-    [project.name, project.description],
+    [project.name, project.description, project.startDate, project.endDate],
   );
 
   const [data, handleFieldChange] = useForm(() => ({
@@ -42,6 +44,8 @@ const EditInformation = React.memo(() => {
       ...data,
       name: data.name.trim(),
       description: data.description.trim() || null,
+      startDate: data.startDate ? new Date(data.startDate).toISOString() : null,
+      endDate: data.endDate ? new Date(data.endDate).toISOString() : null,
     }),
     [data],
   );
@@ -93,6 +97,28 @@ const EditInformation = React.memo(() => {
         onKeyDown={handleDescriptionKeyDown}
         onChange={handleFieldChange}
       />
+      <div className={styles.dateRow}>
+        <div className={styles.dateField}>
+          <div className={styles.text}>Fecha de inicio</div>
+          <input
+            type="date"
+            name="startDate"
+            value={data.startDate}
+            className={styles.dateInput}
+            onChange={handleFieldChange}
+          />
+        </div>
+        <div className={styles.dateField}>
+          <div className={styles.text}>Fecha de fin</div>
+          <input
+            type="date"
+            name="endDate"
+            value={data.endDate}
+            className={styles.dateInput}
+            onChange={handleFieldChange}
+          />
+        </div>
+      </div>
       <Button positive disabled={dequal(cleanData, defaultData)} content={t('action.save')} />
     </Form>
   );

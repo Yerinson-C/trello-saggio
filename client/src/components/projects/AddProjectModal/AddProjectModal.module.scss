@@ -59,6 +59,36 @@
     }
   }
 
+  .dateRow {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .dateField {
+    flex: 1;
+  }
+
+  .dateInput {
+    background: rgba(9, 30, 66, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px 12px;
+    width: 100%;
+
+    &:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+      outline: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+  }
+
   .actions {
     display: flex;
     align-items: center;

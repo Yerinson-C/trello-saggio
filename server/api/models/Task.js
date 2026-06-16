@@ -105,6 +105,10 @@ module.exports = {
       defaultsTo: Statuses.NOT_STARTED,
       columnName: 'status',
     },
+    startDate: {
+      type: 'ref',
+      columnName: 'start_date',
+    },
     dueDate: {
       type: 'ref',
       columnName: 'due_date',

@@ -3,11 +3,11 @@
  * Licensed under the Fair Use License: https://github.com/trello-saggionban/trello-saggio/blob/master/LICENSE.md
  */
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import TextareaAutosize from 'react-textarea-autosize';
-import { Button, Dropdown, Form, Header, Icon } from 'semantic-ui-react';
+import { Button, Dropdown, Form, Header, Icon, Label } from 'semantic-ui-react';
 import { usePopup } from '../../../lib/popup';
 import { Input } from '../../../lib/custom-ui';
 
@@ -34,6 +34,8 @@ const AddProjectModal = React.memo(() => {
   );
 
   const { data: defaultData, isSubmitting } = useSelector(selectors.selectProjectCreateForm);
+  const currentUser = useSelector(selectors.selectCurrentUser);
+  const allUsers = useSelector(selectors.selectUsers);
 
   const dispatch = useDispatch();
   const [t] = useTranslation();
@@ -48,6 +50,9 @@ const AddProjectModal = React.memo(() => {
     scope: '',
     objectives: '',
     projectStatus: 'on_track',
+    startDate: '',
+    endDate: '',
+    memberUserIds: [],
     ...defaultData,
     ...(defaultType && {
       type: defaultType,
@@ -66,6 +71,8 @@ const AddProjectModal = React.memo(() => {
       serviceDescription: data.serviceDescription.trim() || null,
       scope: data.scope.trim() || null,
       objectives: data.objectives.trim() || null,
+      startDate: data.startDate ? new Date(data.startDate).toISOString() : null,
+      endDate: data.endDate ? new Date(data.endDate).toISOString() : null,
     };
 
     if (!cleanData.name) {
@@ -96,6 +103,26 @@ const AddProjectModal = React.memo(() => {
   const handleStatusChange = useCallback(
     (_e, { value }) => {
       setData((prev) => ({ ...prev, projectStatus: value }));
+    },
+    [setData],
+  );
+
+  const userOptions = useMemo(
+    () =>
+      allUsers
+        .filter((u) => u.id !== currentUser.id)
+        .map((u) => ({
+          key: u.id,
+          value: u.id,
+          text: u.name || u.username,
+          description: u.email,
+        })),
+    [allUsers, currentUser.id],
+  );
+
+  const handleMembersChange = useCallback(
+    (_e, { value }) => {
+      setData((prev) => ({ ...prev, memberUserIds: value }));
     },
     [setData],
   );
@@ -237,6 +264,51 @@ const AddProjectModal = React.memo(() => {
             className={styles.field}
             onChange={handleStatusChange}
           />
+
+          {/* Fechas del proyecto */}
+          <div className={styles.dateRow}>
+            <div className={styles.dateField}>
+              <div className={styles.text}>Fecha de inicio</div>
+              <input
+                type="date"
+                name="startDate"
+                value={data.startDate}
+                className={styles.dateInput}
+                onChange={handleFieldChange}
+              />
+            </div>
+            <div className={styles.dateField}>
+              <div className={styles.text}>Fecha de fin</div>
+              <input
+                type="date"
+                name="endDate"
+                value={data.endDate}
+                className={styles.dateInput}
+                onChange={handleFieldChange}
+              />
+            </div>
+          </div>
+
+          {/* Equipo asignado */}
+          {userOptions.length > 0 && (
+            <>
+              <div className={styles.text}>Equipo asignado</div>
+              <Dropdown
+                fluid
+                multiple
+                search
+                selection
+                options={userOptions}
+                value={data.memberUserIds}
+                placeholder="Seleccionar miembros del equipo..."
+                className={styles.field}
+                renderLabel={(item) => (
+                  <Label content={item.text} />
+                )}
+                onChange={handleMembersChange}
+              />
+            </>
+          )}
 
           <div className={styles.actions}>
             <Button

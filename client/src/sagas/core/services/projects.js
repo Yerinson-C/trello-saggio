@@ -38,7 +38,9 @@ export function* toggleHiddenProjects(isVisible) {
 }
 
 export function* createProject(data) {
-  yield put(actions.createProject(omit(data, 'type')));
+  const { memberUserIds, ...projectData } = data;
+
+  yield put(actions.createProject(omit(projectData, 'type')));
 
   let project;
   let projectManagers;
@@ -47,13 +49,24 @@ export function* createProject(data) {
     ({
       item: project,
       included: { projectManagers },
-    } = yield call(request, api.createProject, data));
+    } = yield call(request, api.createProject, projectData));
   } catch (error) {
     yield put(actions.createProject.failure(error));
     return;
   }
 
   yield put(actions.createProject.success(project, projectManagers));
+
+  if (memberUserIds && memberUserIds.length > 0) {
+    for (const userId of memberUserIds) {
+      try {
+        yield call(request, api.createProjectManager, project.id, { userId });
+      } catch {
+        /* ignore individual failures */
+      }
+    }
+  }
+
   yield call(goToProject, project.id);
 }
 

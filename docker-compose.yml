@@ -1,6 +1,6 @@
 services:
   trello-saggio:
-    image: ghcr.io/plankanban/planka:latest
+    image: trello-saggio-v2:local
     restart: on-failure
     volumes:
       - data:/app/data

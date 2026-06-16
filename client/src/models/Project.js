@@ -31,6 +31,8 @@ export default class extends BaseModel {
     projectStatus: attr({
       getDefault: () => 'on_track',
     }),
+    startDate: attr(),
+    endDate: attr(),
     ownerProjectManagerId: oneToOne({
       to: 'ProjectManager',
       as: 'ownerProjectManager',

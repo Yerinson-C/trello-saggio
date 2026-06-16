@@ -26,6 +26,7 @@ export default class extends BaseModel {
     status: attr({
       getDefault: () => 'not_started',
     }),
+    startDate: attr(),
     dueDate: attr(),
     taskListId: fk({
       to: 'TaskList',
@@ -128,6 +129,7 @@ export default class extends BaseModel {
       position: this.position,
       name: this.name,
       status: this.status,
+      startDate: this.startDate,
       dueDate: this.dueDate,
       ...data,
     });

@@ -189,6 +189,12 @@ const Task = React.memo(({ id, index }) => {
                   )}
                   onClick={handleClick}
                 >
+                  {task.startDate && (
+                    <span className={styles.startDate}>
+                      <Icon name="play" size="small" className={styles.startDateIcon} />
+                      {new Date(task.startDate).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                    </span>
+                  )}
                   {task.dueDate && (
                     <span
                       className={classNames(

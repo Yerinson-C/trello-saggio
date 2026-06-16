@@ -195,6 +195,12 @@ module.exports = {
       type: 'string',
       isIn: ['on_track', 'at_risk', 'on_hold', 'completed'],
     },
+    startDate: {
+      type: 'ref',
+    },
+    endDate: {
+      type: 'ref',
+    },
   },
 
   exits: {
@@ -266,6 +272,8 @@ module.exports = {
         'scope',
         'objectives',
         'projectStatus',
+        'startDate',
+        'endDate',
       );
     }
 
@@ -330,6 +338,8 @@ module.exports = {
       'scope',
       'objectives',
       'projectStatus',
+      'startDate',
+      'endDate',
     ]);
 
     project = await sails.helpers.projects.updateOne
