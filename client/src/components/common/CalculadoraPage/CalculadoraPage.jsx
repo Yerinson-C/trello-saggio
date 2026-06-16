@@ -230,12 +230,29 @@ function EmptyState({ type, onAdd }) {
   );
 }
 
+/* ── Datos iniciales de ejemplo ──────────────────────────────────────────── */
+
+const CARBON_INIT = [
+  { id: 1, categoria: 'Combustión estacionaria', descripcion: 'Gas natural - caldera',          cantidad: 12500, unidad: 'm³',    factor: 0.00202,  co2e: 25.25, alcance: 'Alcance 1' },
+  { id: 2, categoria: 'Combustión móvil',         descripcion: 'Vehículo diesel empresa',        cantidad: 4200,  unidad: 'L',     factor: 0.00268,  co2e: 11.26, alcance: 'Alcance 1' },
+  { id: 3, categoria: 'Electricidad',             descripcion: 'Consumo red eléctrica',          cantidad: 85000, unidad: 'kWh',   factor: 0.000126, co2e: 10.71, alcance: 'Alcance 2' },
+  { id: 4, categoria: 'Vuelos de negocios',       descripcion: 'Viajes aéreos corta distancia',  cantidad: 8,     unidad: 'vuelos',factor: 0.255,    co2e: 2.04,  alcance: 'Alcance 3' },
+  { id: 5, categoria: 'Residuos sólidos',         descripcion: 'Residuos sólidos a vertedero',   cantidad: 3200,  unidad: 'kg',    factor: 0.000486, co2e: 1.556, alcance: 'Alcance 3' },
+];
+
+const WATER_INIT = [
+  { id: 1, categoria: 'Agua municipal / potable',    descripcion: 'Consumo oficina',           cantidad: 1200,  unidad: 'm³', factor: 1.0,   huella: 1200, tipo: 'Azul'  },
+  { id: 2, categoria: 'Agua subterránea (pozo propio)', descripcion: 'Pozo propio',           cantidad: 850,   unidad: 'm³', factor: 1.0,   huella: 850,  tipo: 'Azul'  },
+  { id: 3, categoria: 'Materia prima agrícola',      descripcion: 'Cultivo de insumos',        cantidad: 42000, unidad: 'kg', factor: 0.101, huella: 4242, tipo: 'Verde' },
+  { id: 4, categoria: 'Aguas residuales generadas',  descripcion: 'Efluentes proceso',         cantidad: 980,   unidad: 'm³', factor: 1.02,  huella: 999.6,tipo: 'Gris'  },
+];
+
 /* ── Main component ──────────────────────────────────────────────────────── */
 
 const CalculadoraPage = React.memo(() => {
   const [activeTab, setActiveTab]       = useState('carbon');
-  const [carbonRows, setCarbonRows]     = useState([]);
-  const [waterRows, setWaterRows]       = useState([]);
+  const [carbonRows, setCarbonRows]     = useState(CARBON_INIT);
+  const [waterRows, setWaterRows]       = useState(WATER_INIT);
   const [showModal, setShowModal]       = useState(false);
 
   /* ── Totals ── */
