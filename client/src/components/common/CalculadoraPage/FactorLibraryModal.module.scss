@@ -1,0 +1,214 @@
+/*!
+ * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
+ */
+
+:global(#app) {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(9, 30, 66, 0.54);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 860px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+  }
+
+  .header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #dfe1e6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .headerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172b4d;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .searchWrapper {
+    position: relative;
+    flex: 1;
+  }
+
+  .searchInput {
+    width: 100%;
+    padding: 9px 12px 9px 36px;
+    border: 1px solid #dfe1e6;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #172b4d;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+  }
+
+  .searchInput:focus {
+    outline: none;
+    border-color: #0079bf;
+  }
+
+  .searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b808c;
+    font-size: 14px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .closeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b808c;
+    font-size: 18px;
+    padding: 4px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: background 0.1s, color 0.1s;
+  }
+
+  .closeBtn:hover {
+    background: #f4f5f7;
+    color: #172b4d;
+  }
+
+  .tableWrapper {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 4px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th {
+    background: #f4f5f7;
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6b808c;
+    border-bottom: 1px solid #dfe1e6;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .table td {
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #172b4d;
+    border-bottom: 1px solid #f4f5f7;
+  }
+
+  .table tr:hover td {
+    background: #f8f9fa;
+  }
+
+  .colFactor {
+    font-weight: 700;
+    font-family: monospace;
+    color: #0052cc;
+  }
+
+  .colNota {
+    font-size: 11px;
+    color: #6b808c;
+    max-width: 160px;
+  }
+
+  .colombiaRow td:first-child {
+    border-left: 3px solid #2d9c6e;
+  }
+
+  .usarBtn {
+    padding: 4px 12px;
+    background: white;
+    border: 1px solid #0079bf;
+    color: #0079bf;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.1s;
+  }
+
+  .usarBtn:hover {
+    background: #e6f3ff;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .scope1 {
+    background: #e3fcef;
+    color: #006644;
+  }
+
+  .scope2 {
+    background: #e6f3ff;
+    color: #0052cc;
+  }
+
+  .scope3 {
+    background: #fff8e6;
+    color: #974f0c;
+  }
+
+  .azul {
+    background: #e6f3ff;
+    color: #0052cc;
+  }
+
+  .verde {
+    background: #e3fcef;
+    color: #006644;
+  }
+
+  .gris {
+    background: #f4f5f7;
+    color: #5e6c84;
+  }
+
+  .footer {
+    padding: 10px 20px;
+    border-top: 1px solid #dfe1e6;
+    font-size: 11px;
+    color: #6b808c;
+    text-align: center;
+  }
+}

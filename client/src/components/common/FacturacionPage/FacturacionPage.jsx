@@ -139,6 +139,17 @@ function FacturacionPage() {
     setShowNewModal(false);
   }, []);
 
+  const handleExportCSV = useCallback(() => {
+    const rows = activeFilter === 'todas' ? MOCK_FACTURAS : MOCK_FACTURAS.filter(f => f.status === activeFilter);
+    const csv = 'ID,Proyecto,Cliente,Servicio,Emitida,Vencimiento,Monto COP,Estado\n' +
+      rows.map(f => [f.id, f.project, f.client, f.service, f.issued, f.due, f.amount, f.status].join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'facturas.csv'; a.click();
+    URL.revokeObjectURL(url);
+  }, [activeFilter]);
+
   /* ── Render ── */
   return (
     <div className={styles.wrapper}>
@@ -148,10 +159,15 @@ function FacturacionPage() {
           <div className={styles.pageTitle}>Facturación</div>
           <div className={styles.pageSubtitle}>Gestión de propuestas y facturas</div>
         </div>
-        <button className={styles.newBtn} type="button" onClick={handleOpenModal}>
-          <Icon name="plus" />
-          Nueva factura
-        </button>
+        <div style={{display:'flex',gap:8}}>
+          <button type="button" style={{background:'white',border:'1px solid #0079bf',color:'#0079bf',borderRadius:6,padding:'9px 16px',fontSize:13,fontWeight:600,cursor:'pointer'}} onClick={handleExportCSV}>
+            ↓ Exportar CSV
+          </button>
+          <button className={styles.newBtn} type="button" onClick={handleOpenModal}>
+            <Icon name="plus" />
+            Nueva factura
+          </button>
+        </div>
       </div>
 
       {/* Summary stats */}

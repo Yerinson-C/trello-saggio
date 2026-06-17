@@ -6,6 +6,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { Icon } from 'semantic-ui-react';
 
 import styles from './CalculadoraPage.module.scss';
+import FactorLibraryModal from './FactorLibraryModal';
 
 /* ── Categorías carbono ──────────────────────────────────────────────────── */
 
@@ -71,10 +72,15 @@ const WATER_EMPTY  = { categoria: '', descripcion: '', cantidad: '', unidad: 'm�
 
 function AddActivityModal({ type, onSave, onClose }) {
   const [form, setForm] = useState(type === 'carbon' ? CARBON_EMPTY : WATER_EMPTY);
+  const [showLibrary, setShowLibrary] = useState(false);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+  }, []);
+
+  const handleFactorSelect = useCallback((factor, unit) => {
+    setForm((prev) => ({ ...prev, factor: String(factor), unidad: unit }));
   }, []);
 
   const computed = useMemo(() => {
@@ -162,10 +168,12 @@ function AddActivityModal({ type, onSave, onClose }) {
 
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
-              <label className={styles.formLabel}>
-                Factor de emisión *
-                <span className={styles.factorHint}> ({type === 'carbon' ? 'tCO₂e/unidad' : 'm³/unidad'})</span>
-              </label>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                <label className={styles.formLabel}>Factor de emisión * <span className={styles.factorHint}>({type === 'carbon' ? 'tCO₂e/unidad' : 'm³/unidad'})</span></label>
+                <button type="button" style={{ background:'none', border:'none', color:'#0079bf', fontSize:12, cursor:'pointer', padding:'0 0 4px 0', fontWeight:600 }} onClick={() => setShowLibrary(true)}>
+                  🔍 Buscar en biblioteca
+                </button>
+              </div>
               <input
                 type="number"
                 name="factor"
@@ -205,6 +213,13 @@ function AddActivityModal({ type, onSave, onClose }) {
           </button>
         </div>
       </div>
+      {showLibrary && (
+        <FactorLibraryModal
+          type={type}
+          onSelect={handleFactorSelect}
+          onClose={() => setShowLibrary(false)}
+        />
+      )}
     </div>
   );
 }
@@ -282,6 +297,26 @@ const CalculadoraPage = React.memo(() => {
     else setWaterRows((prev) => prev.filter((r) => r.id !== id));
   }, [activeTab]);
 
+  const handleExportCSV = useCallback(() => {
+    const rows = activeTab === 'carbon' ? carbonRows : waterRows;
+    if (rows.length === 0) return;
+    let csv, filename;
+    if (activeTab === 'carbon') {
+      csv = 'Categoría,Descripción,Cantidad,Unidad,Factor (tCO₂e/u),CO₂e (tCO₂e),Alcance\n' +
+        rows.map(r => [r.categoria, r.descripcion||'', r.cantidad, r.unidad, r.factor, r.co2e, r.alcance].join(',')).join('\n');
+      filename = 'huella_carbono.csv';
+    } else {
+      csv = 'Categoría,Descripción,Cantidad,Unidad,Factor (m³/u),Huella (m³),Tipo\n' +
+        rows.map(r => [r.categoria, r.descripcion||'', r.cantidad, r.unidad, r.factor, r.huella, r.tipo].join(',')).join('\n');
+      filename = 'huella_hidrica.csv';
+    }
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.click();
+    URL.revokeObjectURL(url);
+  }, [activeTab, carbonRows, waterRows]);
+
   const fmt = (n) => n.toFixed(4).replace(/\.?0+$/, '') || '0';
   const pct = (part, total) => (total > 0 ? ((part / total) * 100).toFixed(1) : '0.0');
 
@@ -351,12 +386,19 @@ const CalculadoraPage = React.memo(() => {
           <div className={styles.card}>
             <div className={styles.tableHeader}>
               <span className={styles.cardTitle}>Actividades de emisión</span>
-              {currentRows.length > 0 && (
-                <button type="button" className={styles.addBtn} onClick={() => setShowModal(true)}>
-                  <Icon name="plus" style={{ margin: 0 }} />
-                  Agregar actividad
-                </button>
-              )}
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                {currentRows.length > 0 && (
+                  <button type="button" className={styles.exportBtn} onClick={handleExportCSV}>
+                    ↓ Exportar CSV
+                  </button>
+                )}
+                {currentRows.length > 0 && (
+                  <button type="button" className={styles.addBtn} onClick={() => setShowModal(true)}>
+                    <Icon name="plus" style={{ margin: 0 }} />
+                    Agregar actividad
+                  </button>
+                )}
+              </div>
             </div>
 
             {carbonRows.length === 0 ? (
@@ -450,12 +492,19 @@ const CalculadoraPage = React.memo(() => {
           <div className={styles.card}>
             <div className={styles.tableHeader}>
               <span className={styles.cardTitle}>Actividades hídricas</span>
-              {currentRows.length > 0 && (
-                <button type="button" className={styles.addBtn} onClick={() => setShowModal(true)}>
-                  <Icon name="plus" style={{ margin: 0 }} />
-                  Agregar actividad
-                </button>
-              )}
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                {currentRows.length > 0 && (
+                  <button type="button" className={styles.exportBtn} onClick={handleExportCSV}>
+                    ↓ Exportar CSV
+                  </button>
+                )}
+                {currentRows.length > 0 && (
+                  <button type="button" className={styles.addBtn} onClick={() => setShowModal(true)}>
+                    <Icon name="plus" style={{ margin: 0 }} />
+                    Agregar actividad
+                  </button>
+                )}
+              </div>
             </div>
 
             {waterRows.length === 0 ? (

@@ -23,6 +23,7 @@ import CalculadoraPage from './CalculadoraPage';
 import PortalClientePage from './PortalClientePage';
 import FacturacionPage from './FacturacionPage';
 import ReduccionPage from './ReduccionPage';
+import EquipoPage from './EquipoPage';
 import GhostError from './GhostError';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -52,6 +53,7 @@ function Root({ store, history }) {
               <Route path={Paths.CALCULADORA} element={<Core adminPage={<CalculadoraPage />} />} />
               <Route path={Paths.REDUCCION} element={<Core adminPage={<ReduccionPage />} />} />
               <Route path={Paths.FACTURACION} element={<Core adminPage={<FacturacionPage />} />} />
+              <Route path={Paths.EQUIPO} element={<Core adminPage={<EquipoPage />} />} />
               <Route path={Paths.PORTAL_CLIENTE} element={<PortalClientePage />} />
               <Route path="*" element={<GhostError />} />
             </Routes>

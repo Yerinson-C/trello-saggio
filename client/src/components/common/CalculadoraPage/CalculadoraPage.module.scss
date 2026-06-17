@@ -171,6 +171,25 @@
     background: #005f99;
   }
 
+  .exportBtn {
+    background: white;
+    color: #0079bf;
+    border: 1px solid #0079bf;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s;
+  }
+
+  .exportBtn:hover {
+    background: #e6f3ff;
+  }
+
   /* Scope / type badges */
   .scopeBadge {
     display: inline-block;

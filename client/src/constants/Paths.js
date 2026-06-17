@@ -19,6 +19,7 @@ const CALCULADORA = Config.BASE_PATH + '/calculadora';
 const REDUCCION = Config.BASE_PATH + '/reduccion';
 const FACTURACION = Config.BASE_PATH + '/facturacion';
 const PORTAL_CLIENTE = Config.BASE_PATH + '/portal/:projectId';
+const EQUIPO = Config.BASE_PATH + '/equipo';
 
 export default {
   ROOT,
@@ -35,4 +36,5 @@ export default {
   REDUCCION,
   FACTURACION,
   PORTAL_CLIENTE,
+  EQUIPO,
 };

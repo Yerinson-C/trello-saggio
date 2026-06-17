@@ -2,7 +2,7 @@
  * Copyright (c) 2024 TRELLO SAGGIO Software GmbH
  */
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Icon } from 'semantic-ui-react';
 
 import styles from './ReduccionPage.module.scss';
@@ -242,6 +242,25 @@ const ReduccionPage = () => {
 
   const clients = MOCK_TARGETS.map((t) => t.client);
 
+  const handleExportCSV = useCallback(() => {
+    let csv, filename;
+    if (activeTab === 'comparador') {
+      csv = 'Año,Emisiones (tCO₂e),Cliente\n' + MOCK_ANNUAL.map(r => [r.year, r.emissions, r.client].join(',')).join('\n');
+      filename = 'comparador_emisiones.csv';
+    } else if (activeTab === 'metas') {
+      csv = 'Cliente,Año base,Emisiones base,Meta año,% Reducción,Norma,Alcance\n' + MOCK_TARGETS.map(r => [r.client, r.baseYear, r.baseEmissions, r.targetYear, r.targetReduction, r.standard, r.scope].join(',')).join('\n');
+      filename = 'metas_reduccion.csv';
+    } else {
+      csv = 'Acción,Categoría,Reducción estimada (tCO₂e),Inversión COP,Estado,Año previsto\n' + MOCK_ACTIONS.map(r => [r.action, r.category, r.reduction, r.cost, r.status, r.year].join(',')).join('\n');
+      filename = 'plan_acciones.csv';
+    }
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.click();
+    URL.revokeObjectURL(url);
+  }, [activeTab]);
+
   return (
     <div className={styles.wrapper}>
       {/* Header */}
@@ -263,6 +282,9 @@ const ReduccionPage = () => {
               <option key={c} value={c}>{c}</option>
             ))}
           </select>
+          <button type="button" style={{background:'white',border:'1px solid #0079bf',color:'#0079bf',borderRadius:6,padding:'8px 14px',fontSize:13,fontWeight:600,cursor:'pointer'}} onClick={handleExportCSV}>
+            ↓ Exportar CSV
+          </button>
         </div>
       </div>
 

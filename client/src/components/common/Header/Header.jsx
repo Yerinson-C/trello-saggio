@@ -191,6 +191,9 @@ const Header = React.memo(() => {
               <Menu.Item as={Link} to={Paths.FACTURACION} className={classNames(styles.item, styles.itemHoverable)} title="Facturación">
                 <Icon fitted name="file alternate outline" />
               </Menu.Item>
+              <Menu.Item as={Link} to={Paths.EQUIPO} className={classNames(styles.item, styles.itemHoverable)} title="Equipo y KPIs">
+                <Icon fitted name="chart pie" />
+              </Menu.Item>
             </>
           )}
           {project && (

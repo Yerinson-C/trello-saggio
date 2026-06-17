@@ -94,4 +94,102 @@
     align-items: center;
     margin-top: 8px;
   }
+
+  .templatesStep {
+    padding: 8px 0;
+  }
+
+  .templatesHeader {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .templatesTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-bottom: 6px;
+  }
+
+  .templatesSubtitle {
+    font-size: 13px;
+    color: #6b808c;
+  }
+
+  .templatesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .templateCard {
+    background: white;
+    border: 2px solid #dfe1e6;
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &:hover {
+      border-color: #0079bf;
+      box-shadow: 0 2px 8px rgba(0, 121, 191, 0.15);
+    }
+  }
+
+  .templateCardBlank {
+    background: white;
+    border: 2px dashed #c1c7d0;
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0.8;
+
+    &:hover {
+      border-color: #6b808c;
+      box-shadow: none;
+      opacity: 1;
+    }
+  }
+
+  .templateIcon {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  .templateTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #172b4d;
+  }
+
+  .templateSubtitle {
+    font-size: 11px;
+    color: #0079bf;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .templateDesc {
+    font-size: 12px;
+    color: #5e6c84;
+    line-height: 1.4;
+    margin-top: 4px;
+    flex: 1;
+  }
+
+  .templateDuration {
+    font-size: 11px;
+    color: #6b808c;
+    margin-top: 6px;
+    font-weight: 500;
+  }
 }
